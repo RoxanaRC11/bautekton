@@ -1,1753 +1,3607 @@
-<doctype html>
-<html lang="en">
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="utf-8">
-  <title>ArchitecturaEterna</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
 
-  <!-- Favicons -->
-  <link href="img/slider/logo.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+	<meta charset="utf-8">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+	<title>Bautekton</title>
 
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <!-- Libraries CSS Files -->
-  <link href="lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.carousel.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.transitions.css" rel="stylesheet">
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/venobox/venobox.css" rel="stylesheet">
+	<meta content="" name="keywords">
 
-  <!-- Nivo Slider Theme -->
-  <link href="css/nivo-slider-theme.css" rel="stylesheet">
+	<meta content="" name="description">
 
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+	<!-- Favicons -->
 
-  <!-- Responsive Stylesheet File -->
-  <link href="css/responsive.css" rel="stylesheet">
+	<link rel="icon" type="image/png" th:href="@{/img/slider/icons8-tractor-16.png?v=2}">
 
-  <!-- =======================================================
+
+
+	<!-- Google Fonts -->
+
+	<link
+
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
+
+		rel="stylesheet">
+
+	<!-- Bootstrap CSS File -->
+
+	<link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Libraries CSS Files -->
+
+	<link th:href="@{/lib/nivo-slider/css/nivo-slider.css}" rel="stylesheet">
+
+	<link th:href="@{/lib/owlcarousel/owl.carousel.css}" rel="stylesheet">
+
+	<link th:href="@{/lib/owlcarousel/owl.transitions.css}" rel="stylesheet">
+
+	<link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+
+	<link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
+
+	<link th:href="@{/lib/venobox/venobox.css}" rel="stylesheet">
+
+	<!-- Nivo Slider Theme -->
+
+	<link th:href="@{/css/nivo-slider-theme.css}" rel="stylesheet">
+
+	<!-- Main Stylesheet File -->
+
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+
+	<link th:href="@{/css/estilos.css}" rel="stylesheet">
+
+	<!-- Responsive Stylesheet File -->
+
+	<link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+	<!-- =======================================================
+
     Theme Name: eBusiness
+
     Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
+
     Author: BootstrapMade.com
+
     License: https://bootstrapmade.com/license/
+
   ======================================================= -->
+
+
+    <!-- Estilos del modal de acceso -->
+    <style>
+        .login-modal-card {
+            border: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 18px 60px rgba(0,0,0,.35);
+        }
+        .login-modal-header {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 55%, #3ec1d5 100%);
+            color: #fff;
+            border-bottom: 0;
+            padding: 28px 28px 20px;
+        }
+        .login-modal-header .close {
+            color: #fff;
+            opacity: .85;
+            text-shadow: none;
+        }
+        .login-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.24);
+            font-size: 25px;
+        }
+        .login-subtitle {
+            margin: 6px 0 0;
+            color: rgba(255,255,255,.78);
+            font-size: 13px;
+        }
+        #login-form2 .modal-body {
+            padding: 25px 28px 20px;
+        }
+        .login-input-group .input-group-addon {
+            min-width: 42px;
+            background: #f5f7f9;
+        }
+        .login-input-group .form-control,
+        .login-input-group .input-group-addon,
+        .login-input-group .input-group-btn .btn {
+            height: 44px;
+        }
+        .login-submit {
+            min-height: 45px;
+            background: #3ec1d5;
+            border-color: #3ec1d5;
+            font-weight: 700;
+            letter-spacing: .2px;
+        }
+        .login-submit:hover,
+        .login-submit:focus {
+            background: #2ca9bc;
+            border-color: #2ca9bc;
+        }
+        .login-alert {
+            margin-bottom: 18px;
+        }
+        .login-demo-info {
+            font-size: 12px;
+            line-height: 1.65;
+            margin: 18px 0;
+        }
+        .login-modal-footer {
+            background: #f8fafb;
+            border-top: 1px solid #edf0f2;
+            padding: 12px 20px;
+        }
+        .login-modal-footer p {
+            margin: 0;
+            font-size: 12px;
+            color: #667085;
+        }
+        @media (max-width: 767px) {
+            .modal-dialog.modal-sm {
+                margin: 20px auto;
+                width: calc(100% - 30px);
+                max-width: 380px;
+            }
+        }
+    </style>
+
 </head>
 
 <body data-spy="scroll" data-target="#navbar-example">
 
-  <div id="preloader"></div>
-<!-- header-inicio -->
-  <header>
-    <!-- header-area start -->
-    <div id="sticker" class="header-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12">
+	<div id="preloader"></div>
 
-            <!-- Navigation -->
-            <nav class="navbar navbar-default">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
-										<span class="sr-only">Toggle navigation</span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-									</button>
-                <!-- Brand/Marke -->
-                <a class="navbar-brand page-scroll sticky-logo" href="index.html">
-                  <h1><span>architectura</span>Eterna</h1>
-                  <!-- Uncomment below if you prefer to use an image logo. Logo verwenden -->
-                  <!-- <img src="img/logo.png" alt="" title=""> -->
+	<!-- header-inicio -->
+
+	<header>
+
+		<!-- header-area start -->
+
+		<div id="sticker" class="header-area">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-md-12 col-sm-12">
+
+						<!-- Navigation -->
+
+						<nav class="navbar navbar-default">
+
+							<!-- Brand and toggle get grouped for better mobile display -->
+
+							<div class="navbar-header">
+
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+
+									data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+
+									<span class="sr-only">Toggle navigation</span>
+
+									<span class="icon-bar"></span>
+
+									<span class="icon-bar"></span>
+
+									<span class="icon-bar"></span>
+
+								</button>
+
+								<!-- Brand/Marke -->
+
+								<a class="navbar-brand page-scroll sticky-logo" th:href="@{/principal}">
+
+									<h1><span>BAUTE</span>KTON</h1>
+
+									<!-- Uncomment below if you prefer to use an image logo. Logo verwenden -->
+
+									<!-- <img src="img/logo.png" alt="" title=""> -->
+
 								</a>
-              </div>
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="active">
-                    <a class="page-scroll" href="#home">Pagina Principal</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#about">Sobre nosotros</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#services">Servicios</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#team">Equipo</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#portfolio">Portafolio</a>
-                  </li>
-                  <li>
-                    <a class="page-scroll" href="#contact">Contacto</a>
-                  </li>
-                  <li>
-                    <a href="#" class="log-top" data-toggle="modal" data-target="#login-modal">Login</a>
-                  </li>>
-                  <li>
-                    <a class="page-scroll" href="#contact">Proteccion de Datos</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- navbar-collapse. Barra de navegacion -->
-            </nav>
-            <!-- END: Navigation -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- header-area end -->
-  </header>
-  <!-- header end -->
 
-  <!--====================================================
+							</div>
+
+							<!-- Collect the nav links, forms, and other content for toggling -->
+
+							<div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
+
+								id="navbar-example">
+
+								<ul class="nav navbar-nav navbar-right">
+
+									<li class="active">
+
+										<a class="page-scroll" href="#home">Pagina Principal</a>
+
+									</li>
+
+									<li>
+
+										<a class="page-scroll" href="#about">Sobre nosotros</a>
+
+									</li>
+
+									<li>
+
+										<a class="page-scroll" href="#services">Servicios</a>
+
+									</li>
+
+									<li>
+
+										<a class="page-scroll" href="#team">Equipo</a>
+
+									</li>
+
+									<li>
+
+										<a class="page-scroll" href="#portfolio">Portafolio</a>
+
+									</li>
+
+									<li>
+
+										<a class="page-scroll" href="#contact">Contacto</a>
+
+									</li>
+
+									<li>
+
+										<a href="#" id="nav-login" class="log-top" data-toggle="modal"
+
+											data-target="#login-modal2"><i class="fa fa-sign-in"></i> Iniciar sesión</a>
+
+									</li>
+
+									<li>
+
+										<a class="page-scroll" href="#" data-toggle="modal"
+
+											data-target="#modalProteccionDatos">Protección de Datos</a>
+
+									</li>
+
+									<!--Para que aparesca el contenido se coloca esta nueva linea de codigo-->
+
+									<!--<li>
+
+										<a th:href="@{/politica-privacidad}" target="_blank">Política de privacidad
+
+											Completa</a>
+
+									</li>-->
+
+								</ul>
+
+							</div>
+
+							<!-- navbar-collapse. Barra de navegacion -->
+
+						</nav>
+
+						<!-- END: Navigation -->
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- header-area end -->
+
+	</header>
+
+	<!-- header end -->
+
+	<!--====================================================
+
                     LOGIN OR REGISTER
+
 ======================================================-->
-<section id="login">
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header" align="center">  <!-- ausrichten -->
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span class="fa fa-times" aria-hidden="true"></span>
-                  </button>
-              </div>
-              <div id="div-forms">
-                  <form id="login-form">
-                      <h3 class="text-center">Acceso</h3>
-                      <div class="modal-body">
-                          <label for="username">Nombre de usuario</label> 
-                          <input id="login_username" class="form-control" type="text" placeholder="Fügen Sie Ihre Benutzername " required>
-                          <label for="username">Contraseña</label> 
-                          <input id="login_password" class="form-control" type="password" placeholder="Fügen Sie Ihr Password" required>
-                          <div class="checkbox">
-                              <label>
-                                  <input type="checkbox"> Recuerde 
-                              </label>
-                          </div>
-                      </div>
-                      <div class="modal-footer text-center">
-                          <div>
-                              <button type="submit" class="btn btn-general btn-white">Login</button>
-                          </div>
-                          <div>
-                              <button id="login_register_btn" type="button" class="btn btn-link">Registrarse</button>
-                          </div>
-                      </div>
-                  </form>
-                  <form id="register-form" style="display:none;">
-                      <h3 class="text-center">Registrarse</h3>
-                      <div class="modal-body"> 
-                          <label for="username">Nombre de usuario</label> 
-                          <input id="register_username" class="form-control" type="text" placeholder="Enter username" required>
-                          <label for="register_email">E-mailId</label> 
-                          <input id="register_email" class="form-control" type="text" placeholder="Enter eMail" required>
-                          <label for="register_password">Contraseña</label> 
-                          <input id="register_password" class="form-control" type="password" placeholder="Password" required>
-                      </div>
-                      <div class="modal-footer">
-                          <div>
-                              <button type="submit" class="btn btn-general btn-white">Registrarse</button>
-                          </div>
-                          <div>
-                              <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
-                          </div>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
+
+	
+
+	<!--====================================================
+
+                    INICIO O REGISTRAR 2
+
+======================================================-->
+
+<section id="nuevologin">
+    <div class="modal fade" id="login-modal2" tabindex="-1" role="dialog"
+         aria-labelledby="tituloLogin" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content login-modal-card">
+
+                <div class="modal-header login-modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="text-center">
+                        <div class="login-icon"><i class="fa fa-lock"></i></div>
+                        <h3 class="modal-title" id="tituloLogin">Acceso al sistema</h3>
+                        <p class="login-subtitle">BauTekton · Gestión de proyectos</p>
+                    </div>
+                </div>
+
+				<form id="login-form2" th:action="@{/login}" method="post" autocomplete="off">
+				    <div class="modal-body">
+
+				        <div th:if="${param.error}" class="alert alert-danger text-center login-alert">
+				            <i class="fa fa-exclamation-circle"></i>
+				            Correo o contraseña incorrectos.
+				        </div>
+
+				        <div th:if="${param.logout}" class="alert alert-success text-center login-alert">
+				            <i class="fa fa-check-circle"></i>
+				            La sesión se cerró correctamente.
+				        </div>
+
+				        <!-- ⚠️ ELIMINA ESTA LÍNEA, YA NO ES NECESARIA (CSRF DESACTIVADO) ⚠️ -->
+				        <!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
+
+				        <div class="form-group">
+				            <label for="login_email2">Correo electrónico</label>
+				            <div class="input-group login-input-group">
+				                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+				                <input id="login_email2" name="username" class="form-control"
+				                       type="email" placeholder="correo@revilla.com"
+				                       autocomplete="username" required autofocus>
+				            </div>
+				        </div>
+
+				        <div class="form-group">
+				            <label for="login_pass2">Contraseña</label>
+				            <div class="input-group login-input-group">
+				                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+				                <input id="login_pass2" name="password" class="form-control"
+				                       type="password" placeholder="Ingrese su contraseña"
+				                       autocomplete="current-password" required>
+				                <span class="input-group-btn">
+				                    <button class="btn btn-default" type="button" id="btnMostrarClave"
+				                            title="Mostrar u ocultar contraseña">
+				                        <i class="fa fa-eye" id="iconoClave"></i>
+				                    </button>
+				                </span>
+				            </div>
+				        </div>
+
+				        <div class="alert alert-info login-demo-info">
+				            <strong>Acceso temporal de desarrollo</strong><br>
+				            ADMIN: <code>admin@revilla.com</code> / <code>Admin123</code><br>
+				            USER: <code>usuario@revilla.com</code> / <code>Usuario123</code>
+				        </div>
+
+				        <button type="submit" class="btn btn-primary btn-block login-submit">
+				            <i class="fa fa-sign-in"></i> Ingresar al sistema
+				        </button>
+				    </div>
+
+				    <div class="modal-footer login-modal-footer">
+				        <p class="text-center">
+				            <i class="fa fa-shield"></i>
+				            Acceso protegido por Spring Security
+				        </p>
+				    </div>
+				</form>  
+            </div>
+        </div>
+    </div>
 </section>
 
-  <!-- Start Slider Area. Inicio de las vias positivas o pantallas. Beginn positiver Pfade oder Bildschirme -->
-  <div id="home" class="slider-area">
-    <div class="bend niceties preview-2">
-      <div id="ensign-nivoslider" class="slides">
-        <img src="img/slider/imagen1.jpeg" alt="" title="#slider-direction-1" />
-        <img src="img/slider/imagen01.jpeg" alt="" title="#slider-direction-2" />
-        <img src="img/slider/imagen9.jpeg" alt="" title="#slider-direction-3" />
-        <img src="img/slider/imagen10.jpeg" alt="" title="#slider-direction-4" />
-      </div>
+	<!-- Start Slider Area. Inicio de las vias positivas o pantallas. Beginn positiver Pfade oder Bildschirme -->
 
-      <!-- Bildschirm 1 / patalla 1 -->
-      <div id="slider-direction-1" class="slider-direction slider-one">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="slider-content">
-                <!-- Schicht 1 . layer 1 -->
-                <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
-                  <br>
-                  <h2 class="title1">Bienvenidos a architecturaEterna</h2>
-                </div>
-                <!-- Schicht 2 . layer 2 -->
-                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h1 class="title2">Nuestra Misión:Materializar su visión en cada plano, espacio y detalle</h1>
-                </div>
-                <!-- Schicht 3 . layer 3 -->
-                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <br>
-                  <a class="ready-btn right-btn page-scroll" href="#services">Nuestros Servicios</a>
-                  <a class="ready-btn page-scroll" href="#about">más Información</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+	<div id="home" class="slider-area">
 
-      <!-- Bildschirm 2 . Patalla 2 -->
-      <div id="slider-direction-2" class="slider-direction slider-two">
-        <div class="container"> <!-- recipiente-->
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="slider-content text-center">
-                <!-- Schicht 1 . layer 1 -->
-                <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h2 class="title1">Transformamos conceptos en realidades funcionales y estéticas</h2>
-                </div>
-                <!-- Schicht 2 . layer 2 -->
-                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h1 class="title2">Bivienda y diseño arquitectónico</h1>
-                </div>
-                <!-- Schicht 3 . layer 3 -->
-                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">a nuestros servicios</a>
-                  <a class="ready-btn page-scroll" href="#about">más Información</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+		<div class="bend niceties preview-2">
 
-      <!-- Bildschirm 3 . patalla 3 -->
-      <div id="slider-direction-3" class="slider-direction slider-two">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="slider-content">
-                <!-- Schicht 1 . layer 1 -->
-                <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h2 class="title1">En cada construcción: la mejor fusión de arte y tecnología</h2>
-                </div>
-                <!-- Schicht 2 . layer 2 -->
-                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h1 class="title2">Arquitectura comercial</h1>
-                </div>
-                <!-- Schicht 3 . layer 3 -->
-                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">a nuestros servicios</a>
-                  <a class="ready-btn page-scroll" href="#about">más Información </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-       <!-- Bildschirm 4 . patalla 4 -->
-       <div id="slider-direction-4" class="slider-direction slider-two">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="slider-content">
-                <!-- Schicht 1 . layer 1 -->
-                <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <h2 class="title1">Somos su mejor opción para proyectos arquitectónicos, institucionales o personales</h2>
-                </div>
-                <!-- Schicht 2 . layer 2 -->
-                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h1 class="title2">Planificación personalizada</h1>
-                </div>
-                <!-- Schicht 3 . layer 3 -->
-                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                  <a class="ready-btn right-btn page-scroll" href="#services">a nuestros Servicios</a>
-                  <a class="ready-btn page-scroll" href="#about">más Información</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Slider Area . Area final del Control deslizante-->
+			<div id="ensign-nivoslider" class="slides">
 
-  <!-- Start About area . Beginn des Bereichs Über uns -->
-  <div id="about" class="about-area area-padding">
-    <div class="container">
-      <!-- Die Zeile beginnt hier mit <div class="row"> und endet mit </div> . La fila empieza aqui con el <div class="row"> y termina con el </div>-->
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="section-headline text-center">
-            <h2>sobre architecturaEterna</h2>
-          </div>
-        </div>
-      </div>
-    <!-- Zeile für das erste Inhaltsbild . Fila para la primera imagen de contenido-->
-      <div class="row">
-        <!-- single-well start-->
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="well-left">
-            <div class="single-well">
-              <a href="#">
-								  <img src="img/about/imagen22.jpeg" alt="" width="500" height="300">
-								</a>
-            </div>
-          </div>
-        </div>
-        <!-- single-well end-->
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="well-middle">
-            <div class="single-well">
-              <a href="#">
-                <h4 class="sec-head"><b><i></i>Arquitecturas que dejan huellas</i></b></h4>
-              </a>
-              <p>
-                <b>Nuestra filosofía coorporativa:</b>
-                    „Atendemos a sus deseos con una meticulosa atención al detalle“
+				<img src="img/slider/imagen1.jpeg" alt="" title="#slider-direction-1" />
 
-					Este principio es la base de mi trabajo: Centrase en sus necesidades y convertir sus ideas en realidad.
-					Con más de 20 años de experiencia como arquitecto he seguido esta máxima, la cual combinala experiencia para lograr un enfoque de servicio único,
-					que se adapta con precisión a las necesidades individuales de cada uno de mis clientes y sus proyectos.
-              <br>
-              <br>
-              <b>Nuestra experiencia en los campos de la construcción y la arquitectura</b>
-              </br>
-              </p>
-              <ul>
-                <li>
-                  <i class="fa fa-check"></i> Viviendas unifamiliares
-                </li>
-                <li>
-                  <i class="fa fa-check"></i> Apartamentos en Edificios
-                </li>
-                <li>
-                  <i class="fa fa-check"></i> Planificaón y constrcción de edificios
-                </li>
-                <li>
-                  <i class="fa fa-check"></i> Arquitectura interior y exterior
-                </li>
-                <li>
-                  <i class="fa fa-check"></i> Restauración de espacios habitables y monumentos
-                </li>
-                <li>
-                  <i class="fa fa-check"></i> Asesoría de construcción
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- End col-->
-      </div>
-      <br>
-      
-    </div>
-  </div>
-  <!-- Ende des Bereichs Über uns . End About area -->
+				<img src="img/slider/centrocomercio.jpeg" alt="" title="#slider-direction-2" />
 
-  <!-- Start Service area -->
-  <div id="services" class="services-area area-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="section-headline services-head text-center">
-            <h2>Nuestros Servicios</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="services-contents">
-          <!-- Start Left services -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-											 <!--<i class="fa fa-code"></i>-->
-                       <img src="img/Services/disvivienda.jpg" alt="" > 
-										</a>
-                  <h4 class="text-center">Diseño residencial</h4>
-                  <p> 
-                    Diseñamos su hogar sus gustos, atendiendo cada detalle para lograr un espacio
-					ordenado y acogedor
-                  </p>
-                </div>
-              </div>
-              <!-- Ende des Bereichs Über uns . End about-details -->
-            </div>
-            </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
+				<img src="img/slider/comercio2.png" alt="" title="#slider-direction-3" />
+
+				<img src="img/slider/plan.jpg" alt="" title="#slider-direction-4" />
+
+			</div>
+
+			<!-- Bildschirm 1 / patalla 1 -->
+
+			<div id="slider-direction-1" class="slider-direction slider-one">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+							<div class="slider-content">
+
+								<!-- Schicht 1 . layer 1 -->
+
+								<div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s"
+
+									data-wow-delay=".1s">
+
+									<br>
+
+									<h2 class="title1">Bienvenidos a Bautekton</h2>
+
+								</div>
+
+								<!-- Schicht 2 . layer 2 -->
+
+								<div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+
+									<h1 class="title2"> Nuestra Misión: materializar sus deseos en proyectos
+
+										arquitectónicos.</h1>
+
+								</div>
+
+								<!-- Schicht 3 . layer 3 -->
+
+								<div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s"
+
+									data-wow-delay=".1s">
+
+									<br>
+
+									<a class="ready-btn right-btn page-scroll" href="#services">Nuestros
+
+										Servicios</a>
+
+									<a class="ready-btn page-scroll" href="#about">más Información</a>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- Bildschirm 2 . Patalla 2 -->
+
+			<div id="slider-direction-2" class="slider-direction slider-two">
+
+				<div class="container"> <!-- recipiente-->
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+							<div class="slider-content text-center">
+
+								<!-- Schicht 1 . layer 1 -->
+
+								<div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s"
+
+									data-wow-delay=".1s">
+
+									<h2 class="title1">Transformamos conceptos en realidades funcionales y estéticas
+
+									</h2>
+
+								</div>
+
+								<!-- Schicht 2 . layer 2 -->
+
+								<div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+
+									<h1 class="title2">Vivienda y diseño arquitectónico</h1>
+
+								</div>
+
+								<!-- Schicht 3 . layer 3 -->
+
+								<div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s"
+
+									data-wow-delay=".1s">
+
+									<a class="ready-btn right-btn page-scroll" href="#services">a nuestros
+
+										servicios</a>
+
+									<a class="ready-btn page-scroll" href="#about">más Información</a>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- Bildschirm 3 . patalla 3 -->
+
+			<div id="slider-direction-3" class="slider-direction slider-two">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+							<div class="slider-content">
+
+								<!-- Schicht 1 . layer 1 -->
+
+								<div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s"
+
+									data-wow-delay=".1s">
+
+									<h2 class="title1">En cada construcción: la mejor fusión de arte y tecnología
+
+									</h2>
+
+								</div>
+
+								<!-- Schicht 2 . layer 2 -->
+
+								<div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+
+									<h1 class="title2">Arquitectura comercial</h1>
+
+								</div>
+
+								<!-- Schicht 3 . layer 3 -->
+
+								<div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s"
+
+									data-wow-delay=".1s">
+
+									<a class="ready-btn right-btn page-scroll" href="#services">a nuestros
+
+										servicios</a>
+
+									<a class="ready-btn page-scroll" href="#about">más Información </a>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- Bildschirm 4 . patalla 4 -->
+
+			<div id="slider-direction-4" class="slider-direction slider-two">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+							<div class="slider-content">
+
+								<!-- Schicht 1 . layer 1 -->
+
+								<div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s"
+
+									data-wow-delay=".2s">
+
+									<h2 class="title1">Proyectos arquitectónicos en general</h2>
+
+								</div>
+
+								<!-- Schicht 2 . layer 2 -->
+
+								<div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+
+									<h1 class="title2">Propuesta personalizada</h1>
+
+								</div>
+
+								<!-- Schicht 3 . layer 3 -->
+
+								<div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s"
+
+									data-wow-delay=".2s">
+
+									<a class="ready-btn right-btn page-scroll" href="#services">Nuestros
+
+										Servicios</a>
+
+									<a class="ready-btn page-scroll" href="#about">más Información</a>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- End Slider Area . Area final del Control deslizante-->
+
+	<!-- Start About area . Beginn des Bereichs Über uns -->
+
+	<div id="about" class="about-area area-margencaja">
+
+		<div class="container">
+
+			<!-- Die Zeile beginnt hier mit <div class="row"> und endet mit </div> . La fila empieza aqui con el <div class="row"> y termina con el </div>-->
+
+			<div class="row">
+
+				<div class="col-md-12 col-sm-12 col-xs-12">
+
+					<div class="section-headline text-center">
+
+						<h2>Sobre BauTekton</h2>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- Zeile für das erste Inhaltsbild . Fila para la primera imagen de contenido-->
+
+			<div class="row">
+
+				<!-- single-well start-->
+
+				<div class="col-md-6 col-sm-6 col-xs-12">
+
+					<div class="well-left">
+
+						<div class="single-well">
+
+							<a href="#">
+
+								<img src="img/about/imagen22.jpeg" alt="" width="500" height="300">
+
+							</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<!-- single-well end-->
+
+				<div class="col-md-6 col-sm-6 col-xs-12">
+
+					<div class="well-middle">
+
+						<div class="single-well">
+
+							<a href="#">
+
+								<h4 class="sec-head"><b><i></i>Arquitecturas que dejan huellas</i></b></h4>
+
+							</a>
+
+							<p>
+
+								<b>Mi filosofía coorporativa:</b>
+
+								„Plasmar sus deseos con meticulosa atención al detalle y lograr transformar sus
+
+								ideas en construcciones tangibles“.
+
+								Este principio constituye la piedra angular de mi trayectoria: centrarme en sus
+
+								necesidades para convertir sus aspiraciones
+
+								en realidad.Con más de 25 años de experiencia en el ámbito de la arqutectura, he
+
+								hecho de esta máxima mi estandarte para
+
+								desarrollar un enfoque de servicio excepcional. Mi metodología se adapta con
+
+								precisión a las particularidades de cada cliente
+
+								y la naturaleza individual de sus proyectos.
+
+								En colaboración estratégica con socios contratistas de confianza, coordinamos y
+
+								ejecutamos cada obra garantizando la excelencia
+
+								de cada etapa de proceso.
+
+								<br>
+
+								<br>
+
+								<b>Nuestra experiencia en los campos de la construcción y la arquitectura</b>
+
+								</br>
+
+							</p>
+
+							<ul>
+
+								<li>
+
+									<i class="fa fa-check"></i> Viviendas unifamiliares
+
+								</li>
+
+								<li>
+
+									<i class="fa fa-check"></i> Apartamentos en Edificios
+
+								</li>
+
+								<li>
+
+									<i class="fa fa-check"></i> Planificaón y construcción de edificios
+
+								</li>
+
+								<li>
+
+									<i class="fa fa-check"></i> Arquitectura interior y exterior
+
+								</li>
+
+								<li>
+
+									<i class="fa fa-check"></i> Asesoría de construcción
+
+								</li>
+
+								<li>
+
+									<i class="fa fa-check"></i> Puesta en Valor
+
+								</li>
+
+							</ul>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<!-- End col-->
+
+			</div>
+
+			<br>
+
+		</div>
+
+	</div>
+
+	<!-- Ende des Bereichs Über uns . End About area -->
+
+	<!-- Start Service area -->
+
+	<div id="services" class="services-area area-margencaja">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-12 col-sm-12 col-xs-12">
+
+					<div class="section-headline services-head text-center">
+
+						<h2>Nuestros Servicios</h2>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="services-contents">
+
+					<!-- Start Left services -->
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+
+						<div class="about-move">
+
+							<div class="services-details">
+
+								<div class="single-services">
+
+									<a class="services-icon" href="#">
+
+										<!--<i class="fa fa-code"></i>-->
+
+										<img src="img/Services/disvivienda.jpg" alt="">
+
+									</a>
+
+									<h4 class="text-center">Arquitectura residencial</h4>
+
+									<p>
+
+										Diseñamos su hogar sus gustos, atendiendo cada detalle para lograr un
+
+										espacio
+
+										ordenado y acogedor.
+
+									</p>
+
+								</div>
+
+							</div>
+
+							<!-- Ende des Bereichs Über uns . End about-details -->
+
+						</div>
+
+					</div>
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+
+						<div class="about-move">
+
+							<div class="services-details">
+
+								<div class="single-services">
+
+									<a class="services-icon" href="#">
+
 										<!--	<i class="fa fa-camera-retro"></i>-->
-                    <img src="img/Services/disecomercial.jpg" alt="">
-										</a>
-                  <h4 class="text-center">Arquitectura comercial</h4>
-                  <p>
-                    No solo deseñamos la estructura espacial  
-                   .
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-											<!--<i class="fa fa-wordpress"></i>-->
-                      <img src="img/Services/imagen14.jpg" alt="">
-										</a>
-                  <h4 class="text-center">Diseño de interiores</h4>
-                  <p>
-                    Nuestro trabajo va más allá del diseño conceptual: nos ocupamos de la dirreción y supervición integral 
-					de toda obra de construcción o renovación necesaria para materializar su proyecto.
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <!-- End Service area -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="services-contents">
-          <!-- Start Left services -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-                    <img src="img/Services/renovierung.jpeg" alt="">
-										</a>
-                  <h4 class="text-center">Valor de renovación o conservación</h4>
-                  <p>
-                    Restauramos parcialmente con técnicas modernas, técnicas modernas,conservando la fachada histórica 
-					y combinándola armoniosamente con intereiores contemporáneos. Así, preservamos el pasado y forjamos el futuro.
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-                    <img src="img/Services/construccion.png" alt="">
-										</a>
-                  <h4 class="text-center">Diseño y ejecución</h4>
-                  <p>
-					No solo diseñamos la distribución de espacios, sino que tambiém supervisamos todas sus obras
-					de construcción vinculadas a su edificación y renovación 
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!-- end col-md-4 -->
-            <div class=" about-move">
-              <div class="services-details">
-                <div class="single-services">
-                  <a class="services-icon" href="#">
-                    <img src="img/Services/restauracion3.jpg" alt="">
-										</a>
-                  <h4 class="text-center">Restauración de monumentos</h4>
-                  <p>
-                    Wir restaurieren historische Gebäude unter Berücksichtigung des komplexen Prozesses, 
-                    der eine sorgfältige Kombination aus technischer Expertise, historischem Wissen und künstlerischer Sensibilität erfordert. 
-                  </p>
-                </div>
-              </div>
-              <!-- end about-details -->
-            </div>
-          </div>
-          <!-- End Service area -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Service area -->
-  <!-- Faq area start -->
-  <div class="faq-area area-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="section-headline text-center">
-            <h2>Häufige Fragen</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="faq-details">
-            <div class="panel-group" id="accordion">
-              <!-- Panel Default -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="check-title">
-											<a data-toggle="collapse" class="active" data-parent="#accordion" href="#check1">
-                                                <span class="acc-icons"></span>Welche Faktoren beeinflussen die Kosten eines jeden Projekts
-											</a>
-										</h4>
-                </div>
-                <div id="check1" class="panel-collapse collapse in">
-                  <div class="panel-body">
-                    <p>
-                      Die Kosten eines Projekt hägen von einer Viezhahl von Faktoren ab, je nach Größe und Komplexität des Projekts. Auch die Materialauswahl spielt eine Rolle, so der
-                      der Standort.Wenn Sie nur die Leistungen eines Architekten in Anspruch nehmen möchten, umfasst diese die Erstellung der Pläne, benötigen Sie zusätzlich die Leistungen eines Bauingenieurs, 
-                      müssen wir uns mit den Baugenehmigungen und örtlichen Bauvorschriften befassen.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!-- End Panel Default -->
-              <!-- Panel Default -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="check-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#check2">
-                                                <span class="acc-icons"></span> Welche Fachkräfte sind im Vertrag enthalten?
-											</a>
-										</h4>
-                </div>
-                <div id="check2" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <p>
-                      je nach Projekt. Wenn Sie ein ganz neues Haus oder es sich um ein komplettes architektonisches Entwurfs- und Bauprojekt handelt, arbeiten wir zusammen mit:
-                      Vermesser, Geotechnischer Ingenieur, Bauunternehmer und Subunternehmer wie Zimmermänner, Elektriker, Installateur (Sanitärtechnik),Heizungs-, Lüftungs- und Klimatechnik (HLK) Techniker
-                      Maurer,Dachdecker, Maler und Lackierer, Fliesenleger, Bodenleger,
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!-- End Panel Default -->
-              <!-- Panel Default -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="check-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#check3">
-                                                <span class="acc-icons"></span> Mit welchen Materialien arbeiten Sie?
-											</a>
-										</h4>
-                </div>
-                <div id="check3" class="panel-collapse collapse ">
-                  <div class="panel-body">
-                    <p>
-                      Wir verfügen über ein vielfältiges Materialauswahl, das wir entsprechend Ihren Anforderungen und Ihrem Budget stellen. 
-                      Die Materialien unterscheiden sich danach, ob es sich um hochwertige Materialien oder nachhaltig sein. Materialien, die ökologisch nachhaltig sind, können initial teurer sein, bieten aber oft langfristige Einsparungen bei Energie und Wartung.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!-- End Panel Default -->
-              <!-- Panel Default -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="check-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#check4">
-                                                <span class="acc-icons"></span>wie schützen Sie die Umwelt?
-											</a>
-										</h4>
-                </div>
-                <div id="check4" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <p>
-                      Ja, wir geben unseren Beitrag zum Umweltschutz indem wir nachhaltig Bauen, wir verwenden umwelfreundlicher Materialien, recycelte und wiederverwendbare
-                      Materialien wie Beton, Stahl oder Glas. Auch unsere nachhaltige Baustoffe können Materialen wie Bambus, Kork oder Holz nachhaltiger Forstwirtschaft.
-                      wir haben auch ein Ökologisches Desig und Planung.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!-- End Panel Default -->
-               <!-- Panel Default -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="check-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#check4">
-                                                <span class="acc-icons"></span>Verwenden Sie Solarkollektoren?
-											</a>
-										</h4>
-                </div>
-                <div id="check4" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <p>
-                      Ja, wir verwendet Solarenergie in Photovoltaikanlagen und für die Warmwasserbereitung und Heizungsunterstützung nutzen wir 
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <!-- End Panel Default -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="tab-menu">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-              <li class="active">
-                <a href="#p-view-1" role="tab" data-toggle="tab">Projekte</a>
-              </li>
-              <li>
-                <a href="#p-view-2" role="tab" data-toggle="tab">Planung</a>
-              </li>
-              <li>
-                <a href="#p-view-3" role="tab" data-toggle="tab">Kommunikation</a>
-              </li>
-              <li>
-                <a href="#p-view-4" role="tab" data-toggle="tab">AutoCad</a>
-              </li>
-               <li>
-                <!-- <a href="#p-view-5" role="tab" data-toggle="tab">Siguen</a> : si deseo que aparesca otro role, simplemente lo copio y sale en la parte de preguntas! -->
-              </li>
-            </ul>
-          </div>
-          <div class="tab-content">
-            <div class="tab-pane active" id="p-view-1">
-              <div class="tab-inner">
-                <div class="event-content head-team">
-                  <h4>Projekte
-                  </h4> 
-                  <br>
-                  <!--  Aqui vamos a colocar una imagen!-->
-                  <p class="text-center">
-                  <img src="img/Preguntas/imagen1.jpg" alt="" height="200"  >
-                </p>
-                  <p>
-                    wir werden von der Leidenschaft für Design und den kreativen Prozess angetrieben und betrachten Kreativität und Innovation als treibende Kräfte hinter unseren Designs. 
-                     
-                  </p>
-                  <p>
-                    Ständig gehen wir an die Grenzen und erforschen neue Ideen, Materialien und Technologien,um innovative und wirkungsvolle Innenraumlösungen zu liefern, die bei unseren Kunden einen bleibenden Eindruck hinterlassen. Unsere Kunden stehen im Mittelpunkt unseres Handelns
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane" id="p-view-2">
-              <div class="tab-inner">
-                <div class="event-content head-team">
-                  <h4>Planung</h4>
-                  <br>
-                  <!--  Aqui vamos a colocar una imagen!-->
-                  <p class="text-center">
-                  <img src="img/Preguntas/imagen2.jpg" alt="" >
-                </p>
-                  <p>
-                    Nach dem Erstgespräch mit dem Kunden und einer detaillierten Bedarfsanalyse führen wir ein Treffen mit allen Projektbeteiligten durch, um die Erwartungen des Kunden abzustimmen und die Zusammenarbeit zu koordinieren. 
-                    Dabei richten wir unsere Planung nach dem Projektumfang, dem Zeitrahmen sowie der Budgetvorgabe aus
-                  </p>
-                  <p>
-                    Wir präsentieren dem Kunden die ersten Entwurfskonzepte. In den ersten drei Gesprächen haben Sie die Möglichkeit, diese Konzepte zu bewerten und Änderungswünsche einzubringen. Dabei stellen wir Ihnen 3D-Pläne und Videos zur Verfügung und bieten Ihnen die Möglichkeit, 
-                    in Echtzeit mit uns zu kommunizieren, um Ihre Anpassungen unmittelbar zu berücksichtigen
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane" id="p-view-3">
-              <div class="tab-inner">
-                <div class="event-content head-team">
-                  <h4>Kommunikation in Echtzeit</h4>
-                  <br>
-                  <!--  Aqui vamos a colocar una imagen!-->
-                  <p class="text-center">
-                  <img src="img/Preguntas/kommunikation.webp" alt="" width="380" height="253" >
-                  <p>
-                    Echtzeitkommunikation ermöglicht uns den exakten Informations- und Datenaustausch mit allen umgesetzten Bauprojekten seiner Verzögerung. 
-                    Dies verbessert die Effizienz einer Zusammenartbeit und Koordination zwischen Teams, reduziert Missverständnisse, Fehlervermeidung und kontrolliert die Quailitätssicherung des Bauprojekts
-                    Unsere Projektleiter kommunizieren sich auch in Virtuelle während des Bauprozess und sow ermöglichen und visialiseren wir Änderung in Echtzeit zu erleben.
-                  </p>
-                  <p>
-                    Darüber hinaus optimiert es durch Echtzeitkommunikation die Bauzeit und spart Zeit und Kosten.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane" id="p-view-4">
-              <div class="tab-inner">
-                <div class="event-content head-team">
-                  <h4>AutoCad</h4><br>
-                   <!--  Aqui vamos a colocar una imagen!-->
-                   <p class="text-center">
-                      <img src="img/Preguntas/autocad (1).jpeg" alt="" >
-                  <p>
-                    AutoCAD 360: Diese cloud-basierte Plattform ermöglicht es uns, CAD-Zeichnungen in der Cloud zu speichern, zu teilen und zu bearbeiten. Unserer Projektleiter, Architekten können gleichzeitig auf die gleichen Dateien zugreifen und Änderungen in Echtzeit sehen. Wnn Sie als Kunde Kenntnisse im AutoCad haben,
-                    können Sie in der erste Woche auch in Echtzeit Ihre Projekt anzeigen lassen und mit uns in Verbindung sein per AutocadApp sein und uns mitteilen, ob das Projekt
-                    wie Ihre Vorstellung geht.
-                  </p>
-                  <p>
-                    AutoCAD Mobile App: Ermöglicht es Bauleitern und Ingenieuren, CAD-Zeichnungen direkt von mobilen Geräten aus zu betrachten und zu bearbeiten, was besonders nützlich ist, wenn sie sich auf der Baustelle befinden.
 
-                  Echtzeit-Updates auf der Baustelle: Durch die Nutzung mobiler Apps können Bauleiter und Arbeiter auf der Baustelle sofort über Änderungen und Aktualisierungen informiert werden.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!--<div class="tab-pane" id="p-view-5">
+										<img src="img/Services/disecomercial.jpg" alt="">
+
+									</a>
+
+									<h4 class="text-center">Arquitectura comercial</h4>
+
+									<p>
+
+										Nuestro enfoque combina diseño funcional, rentabilidad comercial y
+
+										modernidad en cada proyecto.
+
+									</p>
+
+								</div>
+
+							</div>
+
+							<!-- end about-details -->
+
+						</div>
+
+					</div>
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+
+						<!-- end col-md-4 -->
+
+						<div class=" about-move">
+
+							<div class="services-details">
+
+								<div class="single-services">
+
+									<a class="services-icon" href="#">
+
+										<!--<i class="fa fa-wordpress"></i>-->
+
+										<img src="img/Services/sala.jpg" alt="">
+
+									</a>
+
+									<h4 class="text-center">Diseño de interiores</h4>
+
+									<p>
+
+										Más allá del diseño conceptual dirigimos y supervisamos
+
+										toda la obra para materializar el proyecto en diseño de interiores.
+
+									</p>
+
+								</div>
+
+							</div>
+
+							<!-- end about-details -->
+
+						</div>
+
+					</div>
+
+					<!-- End Service area -->
+
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="services-contents">
+
+					<!-- Start Left services -->
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+
+						<!-- end col-md-4 -->
+
+						<div class=" about-move">
+
+							<div class="services-details">
+
+								<div class="single-services">
+
+									<a class="services-icon" href="#">
+
+										<img src="img/Services/renovierung.jpeg" alt="">
+
+									</a>
+
+									<h4 class="text-center">Remodelaciones</h4>
+
+									<p>
+
+										Ampliamos y remodelamos sus Edificaciones de acuerdo a la Normativa de
+
+										construccione,
+
+										proponiendo así confort y forjamos el futuro.
+
+									</p>
+
+								</div>
+
+							</div>
+
+							<!-- end about-details -->
+
+						</div>
+
+					</div>
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+
+						<!-- end col-md-4 -->
+
+						<div class=" about-move">
+
+							<div class="services-details">
+
+								<div class="single-services">
+
+									<a class="services-icon" href="#">
+
+										<img src="img/Services/construccion.png" alt="">
+
+									</a>
+
+									<h4 class="text-center">Diseño y ejecución</h4>
+
+									<p>
+
+										No solo diseñamos la distribución de espacios, sino que tambiém supervisamos
+
+										todas sus obras de construcción vinculadas a su proyecto.
+
+									</p>
+
+								</div>
+
+							</div>
+
+							<!-- end about-details -->
+
+						</div>
+
+					</div>
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+
+						<!-- end col-md-4 -->
+
+						<div class=" about-move">
+
+							<div class="services-details">
+
+								<div class="single-services">
+
+									<a class="services-icon" href="#">
+
+										<img src="img/Services/restauracion3.jpg" alt="">
+
+									</a>
+
+									<h4 class="text-center">Conservación de monumentos</h4>
+
+									<p>
+
+										Especializados en la restauración de edificios históricos, un proceso que
+
+										abordamos
+
+										con una combinación de experiencia técnica, conocimiento histórico y
+
+										sensibilidad artística.
+
+									</p>
+
+								</div>
+
+							</div>
+
+							<!-- end about-details -->
+
+						</div>
+
+					</div>
+
+					<!-- End Service area -->
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- End Service area -->
+
+	<!-- Faq area start -->
+
+	<div class="faq-area area-margencaja">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-12 col-sm-12 col-xs-12">
+
+					<div class="section-headline text-center">
+
+						<h2>Preguntas frecuentes</h2>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-md-6 col-sm-6 col-xs-12">
+
+					<div class="faq-details">
+
+						<div class="panel-group" id="accordion">
+
+							<!-- Panel Default -->
+
+							<div class="panel panel-default">
+
+								<div class="panel-heading">
+
+									<h4 class="check-title">
+
+										<a data-toggle="collapse" class="active" data-parent="#accordion"
+
+											href="#check1">
+
+											<span class="acc-icons"></span>¿Qué factores influyen en los costos de
+
+											cada proyecto?
+
+										</a>
+
+									</h4>
+
+								</div>
+
+								<div id="check1" class="panel-collapse collapse in">
+
+									<div class="panel-body">
+
+										<p>
+
+											El coste de un proyecto depende de muchos factores, según su tamaño y
+
+											complejidad.
+
+											La elección de los materiales también influye, al igual que la
+
+											ubicación.
+
+											Si solo desea contratar los servicios de un arquitecto, esto incluye la
+
+											elaboración de planos.
+
+											Esta es la etapa de Anteproyecto para luego proceder a la etapa de
+
+											Proyecto
+
+											para la obteción de la licencia de edificación.
+
+										</p>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<!-- End Panel Default -->
+
+							<!-- Panel Default -->
+
+							<div class="panel panel-default">
+
+								<div class="panel-heading">
+
+									<h4 class="check-title">
+
+										<a data-toggle="collapse" data-parent="#accordion" href="#check2">
+
+											<span class="acc-icons"></span> ¿Qué especialistas están incluidos en el
+
+											contrato?
+
+										</a>
+
+									</h4>
+
+								</div>
+
+								<div id="check2" class="panel-collapse collapse">
+
+									<div class="panel-body">
+
+										<p>
+
+											Dependiendo del proyecto. Ya sea que esté construyendo una casa nueva o
+
+											un proyecto completo de diseño arquitectónico o de construcción.
+
+										</p>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<!-- End Panel Default -->
+
+							<!-- Panel Default -->
+
+							<div class="panel panel-default">
+
+								<div class="panel-heading">
+
+									<h4 class="check-title">
+
+										<a data-toggle="collapse" data-parent="#accordion" href="#check3">
+
+											<span class="acc-icons"></span> ¿Con qué materiales trabaja?
+
+										</a>
+
+									</h4>
+
+								</div>
+
+								<div id="check3" class="panel-collapse collapse ">
+
+									<div class="panel-body">
+
+										<p>
+
+											Disponemos de una amplia selección de materiales que adaptamos a sus
+
+											necesidades y presupuesto.
+
+										</p>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<!-- End Panel Default -->
+
+							<!-- Panel Default -->
+
+							<div class="panel panel-default">
+
+								<div class="panel-heading">
+
+									<h4 class="check-title">
+
+										<a data-toggle="collapse" data-parent="#accordion" href="#check4">
+
+											<span class="acc-icons"></span> ¿Es posible proteger el medio ambiente a
+
+											través de la construcción?
+
+										</a>
+
+									</h4>
+
+								</div>
+
+								<div id="check4" class="panel-collapse collapse">
+
+									<div class="panel-body">
+
+										<p>
+
+											Absolutamente, Mi enfoque se basa en la arquitectura sostenible como una
+
+											responsabilidad compartida.
+
+											Según los intereses de cada proyecto, priorizamos el uso de materiales
+
+											de bajo impacto ambiental,
+
+											De acuerdo a sus intereses utilzamos materiales ecológicos, reciclados y
+
+											reutilizables como el acero, el vidrio y nuevas variantes de hormigón
+
+											sostenible
+
+											para garantizar que la belleza de la obra no comprometa el futuro de
+
+											nuestro entorno.
+
+										</p>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<!-- End Panel Default -->
+
+							<!-- Panel Default -->
+
+							<div class="panel panel-default">
+
+								<div class="panel-heading">
+
+									<h4 class="check-title">
+
+										<a data-toggle="collapse" data-parent="#accordion" href="#check4">
+
+											<span class="acc-icons"></span>¿Es conveniente utilizar paneles solares?
+
+										</a>
+
+									</h4>
+
+								</div>
+
+								<div id="check4" class="panel-collapse collapse">
+
+									<div class="panel-body">
+
+										<p>
+
+											Utilizar energía solar en sistemas fotovoltaticos puede ser un gran
+
+											apoyo
+
+											para calentar el agua o si en caso se desee instalar una calefacción.
+
+										</p>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<!-- End Panel Default -->
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="col-md-6 col-sm-6 col-xs-12">
+
+					<div class="tab-menu">
+
+						<!-- Nav tabs -->
+
+						<ul class="nav nav-tabs" role="tablist">
+
+							<li class="active">
+
+								<a href="#p-view-1" role="tab" data-toggle="tab">Proyectos</a>
+
+							</li>
+
+							<li>
+
+								<a href="#p-view-2" role="tab" data-toggle="tab">Planificación</a>
+
+							</li>
+
+							<li>
+
+								<a href="#p-view-3" role="tab" data-toggle="tab">Comunicación</a>
+
+							</li>
+
+							<li>
+
+								<!-- <a href="#p-view-5" role="tab" data-toggle="tab">Siguen</a> : si deseo que aparesca otro role, simplemente lo copio y sale en la parte de preguntas! -->
+
+							</li>
+
+						</ul>
+
+					</div>
+
+					<div class="tab-content">
+
+						<div class="tab-pane active" id="p-view-1">
+
+							<div class="tab-inner">
+
+								<div class="event-content head-team">
+
+									<h4>Proyectos
+
+									</h4>
+
+									<br>
+
+									<!--  Aqui vamos a colocar una imagen!-->
+
+									<p class="text-center">
+
+										<img src="img/Preguntas/imagen1.jpg" alt="" height="200">
+
+									</p>
+
+									<p>
+
+										Nos impulsa la pasión por el diseño y el proceso creativo, y consideramos la
+
+										creatividad y
+
+										la innovación como las fuerzas impulsoras detrás de nuestros diseños.
+
+									</p>
+
+									<p>
+
+										Trascendemos constantemente los límites y exploramos nuevas ideas,
+
+										materiales y tecnologías para
+
+										ofrecer soluciones de interior innovadoras e impactantes que dejen una
+
+										huella imborrable
+
+										en nuestros clientes porque nuestros clientes son el centro de todo lo que
+
+										hacemos.
+
+									</p>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="tab-pane" id="p-view-2">
+
+							<div class="tab-inner">
+
+								<div class="event-content head-team">
+
+									<h4>Planificación</h4>
+
+									<br>
+
+									<!--  Aqui vamos a colocar una imagen!-->
+
+									<p class="text-center">
+
+										<img src="img/Preguntas/imagen2.jpg" alt="">
+
+									</p>
+
+									<p>
+
+										El proceso comienza con un análisis cercano de sus requerimientos para
+
+										alinear expectativas
+
+										y coordinar a todos los involucrados de manera eficiente. Planificamos cada
+
+										fase con flexibilidad,
+
+										ajustándonos siempre al alcance, los plazos y el presupuesto acordados para
+
+										garantizar un resultado óptimo.
+
+										En colaboración con socios contratistas, coordinamos y ejecutamos cada
+
+										obra garantizando la excelencia en cada etapa del proceso.
+
+									</p>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="tab-pane" id="p-view-3">
+
+							<div class="tab-inner">
+
+								<div class="event-content head-team">
+
+									<h4>Comunicación en tiempo real</h4>
+
+									<br>
+
+									<!--  Aqui vamos a colocar una imagen!-->
+
+									<p class="text-center">
+
+										<img src="img/Preguntas/kommunikation.webp" alt="" width="380" height="253">
+
+									</p>
+
+									<p>
+
+										La comunicación en tiempo real nos permite intercambiar información y datos
+
+										con precisión en todos los proyectos de construcción en ejecución,
+
+										incluyendo sus retrasos. Esto mejora la eficiencia de la colaboración y la
+
+										coordinación entre equipos,
+
+										reduce malentendidos, previene errores y controla la calidad del proyecto.
+
+									</p>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!--<div class="tab-pane" id="p-view-5">
+
             <div class="tab-pane" id="p-view-5">
+
               <div class="tab-inner">
+
                 <div class="event-content head-team">
+
                   <h4>Siguen</h4>
+
                   <p>
+
                     voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas, praesentium architecto ducimus, doloribus fuga itaque omnis placeat.
+
                   </p>
+
                   <p>
+
                     voluptas, praesentium maxime cum fugiat,magnam ducimus adipisci voluptas, praesentium architecto ducimus, doloribus fuga itaque omnis.
+
                   </p>
+
                 </div>
+
               </div>
+
             </div>
+
           </div>-->
-          
-        </div>
-      </div>
-      <!-- end Row -->
-    </div>
-  </div>
-  <!-- End Faq Area -->
 
-  <!-- Start Wellcome Area -->
-  <div class="wellcome-area">
-    <div class="well-bg">
-      <div class="test-overly"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="wellcome-text">
-              <div class="well-text text-center">
-                <h2>Willkommen zur architecturaEterna</h2>
-                <p>
-                  Gerne beantworten wir alle Fragen. Schreiben Sie uns Ihre E-Mail und wir werden umgehend antworten
-                </p>
-                <div class="subs-feilds">
-                  <div class="suscribe-input">
-                    <input type="email" class="email form-control width-80" id="sus_email" placeholder="Email">
-                    <button type="submit" id="sus_submit" class="add-btn width-20">registrieren</button>
-                    <div id="msg_Submit" class="h3 text-center hidden"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Wellcome Area -->
+					</div>
 
-  <!-- Start team Area -->
-  <div id="team" class="our-team-area area-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="section-headline text-center">
-            <h2>Unseres Team</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="team-top">
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="single-team-member">
-              <div class="team-img">
-                <!--<a href="#"> !-->
-										<img src="img/team/Luis.jpg" alt="">
-									</a>
-                <div class="team-social-icon text-center">
-                  <ul>
-                    <li>
-                      <a href="https://de.linkedin.com/" target="_blank">
-													<i class="fa fa-linkedin"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="https://x.com/?lang=de" target="_blank">
-													<i class="fa fa-twitter"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="https://www.instagram.com/" target="_blank">
-													<i class="fa fa-instagram"></i>
-												</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="team-content text-center">
-                <h4>Jose Luis R. Avalos</h4>
-                <p>CEO und Architekt</p>
-              </div>
-            </div>
-          </div>
-          <!-- End column -->
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="single-team-member">
-              <div class="team-img">
-                <!--<a href="#">!-->
-										<img src="img/team/Eduardo (2).jpg" alt="">
-									</a>
-                <div class="team-social-icon text-center">
-                  <ul>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-facebook"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-twitter"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-instagram"></i>
-												</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="team-content text-center">
-                <h4>Eduardo R. Avalos</h4>
-                <p>Projektleiter und Bauingenieur</p>
-              </div>
-            </div>
-          </div>
-          <!-- End column -->
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="single-team-member">
-              <div class="team-img">
-                <a href="#">
-										<img src="img/team/Yovana Tamariz.jpg" alt="">
-									</a>
-                <div class="team-social-icon text-center">
-                  <ul>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-facebook"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-twitter"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-instagram"></i>
-												</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="team-content text-center">
-                <h4>Yovanna Tamariz</h4>
-                <p>Innenarchitektin</p>
-              </div>
-            </div>
-          </div>
-          <!-- End column -->
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="single-team-member">
-              <div class="team-img">
-                <a href="#">
-										<img src="img/team/Rafael Cano.jpg" alt="">
-									</a>
-                <div class="team-social-icon text-center">
-                  <ul>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-facebook"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-twitter"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-instagram"></i>
-												</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="team-content text-center">
-                <h4>Rafael Cano</h4>
-                <p>Bauingenieur und Planer</p>
-              </div>
-            </div>
-          </div>
-          <!-- End column -->
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="team-top">
-          <!-- Inicio de la Imagen de Patricio -->
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            
-          </div>
-          <!-- End column -->
-           <!-- fin de la Imagen de Patricio -->
-            
-          <!-- Inicio de la Imagen de Patricio -->
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="single-team-member">
-              <div class="team-img">
-                <a href="#">
-										<img src="img/team/Patricio.jpg" alt="">
-									</a>
-                <div class="team-social-icon text-center">
-                  <ul>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-facebook"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-twitter"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-instagram"></i>
-												</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="team-content text-center">
-                <h4>Patricio Suarez</h4>
-                <p>Architeck</p>
-              </div>
-            </div>
-          </div>
-          <!-- End column -->
-           <!-- fin de la Imagen de Patricio -->
-           
-           <!-- Inicio de la imagen de Alberto-->
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="single-team-member">
-              <div class="team-img">
-                <a href="#">
-										<img src="img/team/Alberto.jpg" alt="">
-									</a>
-                <div class="team-social-icon text-center">
-                  <ul>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-facebook"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-twitter"></i>
-												</a>
-                    </li>
-                    <li>
-                      <a href="#">
-													<i class="fa fa-instagram"></i>
-												</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="team-content text-center">
-                <h4>Alberto Rivera</h4>
-                <p>technischer Spezialist</p>
-              </div>
-            </div>
-          </div>
-          <!-- Fin de la Imagen de Alberto-->
-          <!-- End column -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Team Area -->
+				</div>
 
-  <!-- Start reviews Area -->
-  <div class="reviews-area hidden-xs">
-    <div class="work-us">
-      <div class="work-left-text">
-        <a href="#">
+				<!-- end Row -->
+
+			</div>
+
+		</div>
+
+		<!-- End Faq Area -->
+
+		<!-- Start Wellcome Area -->
+
+		<div class="wellcome-area">
+
+			<div class="well-bg">
+
+				<div class="test-overly"></div>
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+							<div class="wellcome-text">
+
+								<div class="well-text text-center">
+
+									<h2>Bienvenidos a BauteKton</h2>
+
+									<p>
+
+										Con gusto respondemos cualquier pregunta. Envíenos su correo electrónico y
+
+										le respondemos a la brevedad.
+
+									</p>
+
+									<div class="subs-feilds">
+
+										<div class="suscribe-input">
+
+											<input type="email" class="email form-control width-80" id="sus_email"
+
+												placeholder="Email">
+
+											<a th:href="@{/usuario/registrar}">
+
+												<button type="submit" id="sus_submit" class="add-btn width-20">Registro
+
+												</button>
+
+											</a>
+
+											<div id="msg_Submit" class="h3 text-center hidden"></div>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- End Wellcome Area -->
+
+		<!-- Start team Area -->
+
+		<div id="team" class="our-team-area area-padding">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-md-12 col-sm-12 col-xs-12">
+
+						<div class="section-headline text-center">
+
+							<h2>Director General</h2>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="team-top col-md-10 col-md-offset-1 col-sm-12">
+
+						<div class="row">
+
+							<!-- inicio de la primera persona -->
+
+							<div class="col-md-4 col-sm-6 col-xs-12">
+
+							</div>
+
+							<!-- fin de la primera persona -->
+
+							<!-- inicio de la segunda persona -->
+
+							<div class="col-md-4 col-sm-6 col-xs-12">
+
+								<div class="single-team-member">
+
+									<div class="team-img">
+
+										<a href="#">
+
+											<img src="img/team/Luis-Rev.jpeg" alt="">
+
+										</a>
+
+										<div class="team-social-icon text-center">
+
+											<ul>
+
+												<li>
+
+													<a href="https://www.linkedin.com/in/luis-r-25a41635/"
+
+														target="_blank">
+
+														<i class="fa fa-linkedin"></i>
+
+													</a>
+
+												</li>
+
+												<li>
+
+													<a href="https://www.instagram.com/der_architek/?hl=es"
+
+														target="_blank">
+
+														<i class="fa fa-instagram"></i>
+
+													</a>
+
+												</li>
+
+											</ul>
+
+										</div>
+
+									</div>
+
+									<div class="team-content text-center">
+
+										<h4>Jose Luis Revilla</h4>
+
+										<p>CEO y Arquitecto</p>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<!-- fin de la segunda persona -->
+
+							<!-- inicio de la tercera persona -->
+
+							<div class="col-md-4 col-sm-6 col-xs-12">
+
+							</div>
+
+							<!-- fin de la tercera persona -->
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<br>
+
+			</div>
+
+		</div>
+
+		<!-- End Team Area -->
+
+		<!-- Start reviews Area -->
+
+		<div class="reviews-area hidden-xs">
+
+			<div class="work-us">
+
+				<div class="work-left-text">
+
+					<a href="#">
+
 						<img src="img/comentario/comentario.jpg" alt="">
+
 					</a>
-      </div>
-      <div class="work-right-text text-center">
-        <h2>Wir sind Ihre beste Wahl</h2>
-        <h5>Sie haben Fragen zu unseren Leistungen? Sprechen Sie uns an? wir freuen uns auf Sie!</h5>
-        <a href="#contact" class="ready-btn">Ihr Kontakt zu uns</a>
-      </div>
-    </div>
-  </div>
-  <!-- End reviews Area -->
 
-  <!-- Start portfolio Area -->
-  <div id="portfolio" class="portfolio-area area-padding fix">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="section-headline text-center">
-            <h2>Unserer Portfolio</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <!-- Start Portfolio -page -->
-        <div class="awesome-project-1 fix">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="awesome-menu ">
-              <ul class="project-menu">
-                <li>
-                  <a href="#" class="active" data-filter="*">All</a>
-                </li>
-                <li>
-                  <a href="#" data-filter=".gebaeude">Gebäude Aufzug</a>
-                </li>
-                <li>
-                  <a href="#" data-filter=".wohnhaeuser">Wohnhäuser</a>
-                </li>
-                <li>
-                  <a href="#" data-filter=".renovierungen">Renovierungen</a>
-                </li>
-                <li>
-                  <a href="#" data-filter=".sicherheitskontrollstelle">Kommunale Arbeiten</a>
-                </li>
-                <li>
-                  <a href="#" data-filter=".varios">Verschiedene Projekte</a>
-                </li>
-                <li>
-                  <!--  <a href="#" data-filter=".otros">Otros</a>
+				</div>
+
+				<div class="work-right-text text-center">
+
+					<h2>Somos su mejor Opción</h2>
+
+					<h5>¿Tiene alguna pregunta sobre nuestros servicios? Contáctenos. ¡Esperamos tener noticias
+
+						suyas!</h5>
+
+					<a href="#contact" class="ready-btn">Contáctenos</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- End reviews Area -->
+
+		<!-- Start portfolio Area -->
+
+		<div id="portfolio" class="portfolio-area area-padding fix">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+						<div class="section-headline text-center">
+
+							<h2>Nuestro portafolio</h2>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<!-- Start Portfolio -page -->
+
+					<div class="awesome-project-1 fix">
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+							<div class="awesome-menu ">
+
+								<ul class="project-menu">
+
+									<li>
+
+										<a href="#" class="active" data-filter="*">Generales</a>
+
+									</li>
+
+									<li>
+
+										<a href="#" data-filter=".gebaeude">Ascensor del edificio</a>
+
+									</li>
+
+									<li>
+
+										<a href="#" data-filter=".wohnhaeuser">Casas residenciales</a>
+
+									</li>
+
+									<li>
+
+										<a href="#" data-filter=".renovierungen">Renovaciones</a>
+
+									</li>
+
+									<li>
+
+										<a href="#" data-filter=".sicherheitskontrollstelle">Obras municipales</a>
+
+									</li>
+
+									<li>
+
+										<a href="#" data-filter=".varios">Proyectos variados</a>
+
+									</li>
+
+									<li>
+
+										<!--  <a href="#" data-filter=".otros">Otros</a>
+
                 </li>-->
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="awesome-project-content">
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 gebaeude wohnhaeuser">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/aufzug.jpg" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/aufzug1.jpg">
-                      <h4>Gebäude</h4>
-                      <span>Bau eines Aufzugs in einer Schule</span>
-                    </a>
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/aufzug3.jpg"></a>
-                      <a class="venobox" data-gall="myGallery" href="img/portfolio/aufzug7.jpg"></a>
-                      <a class="venobox" data-gall="myGallery" href="img/portfolio/aufzug5.jpg"></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 wohnhaeuser">
-            <div class="single-awesome-project">
-              <div cla++ss="awesome-img">
-                <a href="#"><img src="img/portfolio/mhaus.jpeg" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/viviendas.jpg">
-                      <h4>Wohnhäuser</h4>
-                      <span>Bau Mehrfamilienhaus</span>
-                    </a>
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/edificio.jpg"></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 renovierungen">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/denkmal4.jpg" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/casonantes1.jpg">
-                      <h4>Renovierungen</h4>
-                      <span>Renovierung eines Denkmals</span>
-                    </a>
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/renovacion.jpg"></a>
-                        <a class="venobox" data-gall="myGallery" href="img/portfolio/casonarenovada.jpg"></a>
-                         <!-- <a class="venobox" data-gall="myGallery" href="img/portfolio/casona6.jpg"> </a>-->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 sicherheitskontrollstelle">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/municipal.png" alt=""></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/4.jpg">
-                      <h4>Gemeinde</h4>
-                      <span>Design und Bau Sicherheit kontrollstelle</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 development">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/schule1.jpg" alt="" /></a>
-                <div class="add-actions text-center text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/colegio.jpg">
-                      <h4>Berufschule</h4>
-                      <span>Entwurf und Bau einer Berufsschule</span>
-                    </a>
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/plan.jpg"></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-          <!-- single-awesome-project start -->
-          <div class="col-md-4 col-sm-4 col-xs-12 design photo">
-            <div class="single-awesome-project">
-              <div class="awesome-img">
-                <a href="#"><img src="img/portfolio/Büro3.jpg" alt="" /></a>
-                <div class="add-actions text-center">
-                  <div class="project-dec">
-                    <a class="venobox" data-gall="myGallery" href="img/portfolio/büro2 (1).jpg">
-                      <h4>Büro Räume</h4>
-                      <span>Innerarchitecktur</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- single-awesome-project end -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- awesome-portfolio end -->
-  <!-- start pricing area -->
-  <div id="pricing" class="pricing-area area-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="section-headline text-center">
-            <h2>Preisliste</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <div class="pri_table_list">
-            <h3>Häuser <br/> <span>€ zwischen 120000 bis € 200000 </span></h3>
-            <ol>
-              <li class="check">Standort: Vorort oder Peripherie</li>
-              <li class="check">Standort: in einer Großstadt</li>
-              <li class="check ">Abmessungen 200 m²</li>
-              <li class="check cross">Aufzug</li>
-              <li class="check">4-5 Schlafzimmer</li>
-              <li class="check cross">Gemeinschaftsräume</li>
-              <li class="check">Heißung</li>
-              <li class="check cross">Klimaanlage</li>
-              <li class="check">Heißes Wasser</li>
-              <li class="check ">Solarplatten</li>
-              <li class="check cross">Finanzierte Zahlung</li>
-            </ol>
-            <button>jetzt registrieren</button>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <div class="pri_table_list active">
-            <!--<span class="saleon">top sale</span-->
-            <h3>Gebäude <br/> <span> € zwischen 185000 bis € 300000 </span></h3>
-            <ol>
-              <li class="check">Standort: Vortort oder Peripherie</li>
-              <li class="check">Standort: in einer Großstadt</li>
-              <li class="check ">Dimension 200 m²</li>
-              <li class="check ">Aufzug</li>
-              <li class="check">4-5 Schlafzimmer</li>
-              <li class="check">Gemeinschaftsräume</li>
-              <li class="check">Heißung</li>
-              <li class="check">Klimaanlage</li>
-              <li class="check">Heißes Wasser</li>
-              <li class="check ">Solarplatten</li>
-              <li class="check cross">Finanzierte Zahlung</li>
-            </ol>
-            <button>Anmeldung</button>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <div class="pri_table_list">
-            <h3>Sonstige Dienstleistungen <br/> <span></span></h3>
-            <ol>
-              <li class="check">Technische Unterstützung: € 1200</li>
-              <li class="check">Planung</li>
-              <li class="check">Gebäudesanierung</li>
-              <li class="check">Teilweise Wertwiederherstellung</li>
-              <li class="check">Restaurierungen</li>
-              <li class="check">Zugangsbau</li>
-              <li class="check">Bau und Design von Sicherheitskabinen </li>
-              <li class="check">Innen- und Außenarchitektur</li>
-              <li class="check">Bauaufsicht</li>
-              <li class="check">Büroarchitektur</li>
-              <li class="check">Finanzierte Zahlung</li>
-            </ol>
-            <button>jetzt registrieren</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End pricing table area -->
-  <!-- Start Testimonials -->
-  <div class="testimonials-area">
-    <div class="testi-inner area-padding">
-      <div class="testi-overly"></div>
-      <div class="container ">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <!-- Start testimonials Start -->
-            <div class="testimonial-content text-center">
-              <a class="quate" href="#"><i class="fa fa-quote-right"></i></a>
-              <!-- start testimonial carousel -->
-              <div class="testimonial-carousel">
-                <div class="single-testi">
-                  <div class="testi-text">
-                    <p>
-                      Exzellenter Wohnungsdesign- und Bauservice. Sie haben sehr gut verstanden, was wir in unserem neuen Zuhause wollten. 
-                      Ich empfehle den guten Kundenservice und die verwendeten Materialien von sehr guter Qualität.
-                    </p>
-                    <h6>Artemio Calderon </h6>
-                  </div>
-                </div>
-                <!-- End single item -->
-                <div class="single-testi">
-                  <div class="testi-text">
-                    <p>
-                      Sie haben die Sicherheitsstation unserer Gemeinde in der vereinbarten Zeit und im Rahmen unseres Budgets renoviert. Das Endergebnis erfüllte alle unsere Erwartungen.
-                      <br>
-                    </p>
-                    <h6>Gemeinde Valencia-Sueca</h6>
-                  </div>
-                </div>
-                
-                <!-- End single item -->
-                <div class="single-testi">
-                  <div class="testi-text">
-                    <p>
-                      Ein großartiges Team von Architekten und Ingenieuren, sehr professionell, mit großem Umweltbewusstsein, Offenheit und Dialog, sehr besorgt über die Entwicklung der Arbeiten. Absolut empfehlenswert.
-                      <br>
-                    </p>
-                    <h6>Alvaro Robles</h6>
-                  </div>
-                </div>
-                <!-- End single item -->
-                <div class="single-testi">
-                  <div class="testi-text">
-                    <p>
-                      Vor vielen Jahren haben wir die Renovierung unserer Schule architecturaEterna anvertraut und natürlich haben sie uns mit der Planung und dem Bau des Aufzugs unserer Schule nicht enttäuscht. Er berücksichtigte den Platz, der uns für den Aufzug zur Verfügung stand, ohne dass die Schulräume beeinträchtigt wurden. 
-                      Wir können Ihr Team ohne Zweifel weiterempfehlen
-                    </p>
-                    <h6>Carmelita Schule</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End testimonials end -->
-          </div>
-          <!-- End Right Feature -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Testimonials -->
-  <!-- Start Blog Area -->
-  <div id="blog" class="blog-area">
-    <div class="blog-inner area-padding">
-      <div class="blog-overly"></div>
-      <div class="container ">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="section-headline text-center">
-              <h2>Unseres neuesten Projekt und Spaniens bekanntesten Bauwerken</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <!-- Start Left Blog -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="single-blog">
-              <div class="single-blog-img">
-                <a href="blog.html">
-										<img src="img/blog/aufzug5_1.jpg" alt="">
-									</a>
-              </div>
-              <div class="blog-meta">
-              
-                <span class="date-type">
-										<i class="fa fa-calendar"></i>2024-11 / 08:10:16
-									</span>
-              </div>
-              <div class="blog-text">
-                <h5>
-                    <a href="blog.html">Zuletzt abgeschlossenes Projekt: Aufzug an der Schule der Karmeliten</a>
-									</h5>
-                <p>
-                  In Zusammenarbeit mit unserem Partner, der Baufirma XXX, haben wir den Zugang zur Schule durch die Installation eines Aufzugs ermöglicht. 
-                  Im folgenden Abschnitt können Sie die Pläne in AutoCAD in 3D einsehen.
-                </p>
-              </div>
-              <span>
-									<a href="blog.html" class="ready-btn">Mehr Lesen</a>
-								</span>
-            </div>
-            <!-- Start single blog -->
-          </div>
-          <!-- End Left Blog-->
-          <!-- Start Left Blog -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="single-blog">
-              <div class="single-blog-img">
-                <a href="blog.html">
-										<img src="img/blog/guggenheim.png" alt="">
-									</a>
-              </div>
-              <div class="blog-meta">
-            
-                <span class="date-type">
-										<i class="fa fa-calendar"></i>2024-11 / 10:30:16
-									</span>
-              </div>
-              <div class="blog-text">
-                <h5>
-                 <a href="blog.html">Die bedeutendsten Baudenkmäler Spaniens</a>
-									</h5>
-                <p> 
-                  Das Guggenheim-Museum in Bilbao wurde gebaut, um die Stadt kulturell und wirtschaftlich zu revitalisieren. 
-                  Als Teil eines Stadterneuerungsprojekts sollte es Bilbao international als Kulturzentrum etablieren und den Tourismus fördern. 
 
-                </p>
-              </div>
-              <span>
-									<a href="blog.html" class="ready-btn">Mehr Lesen</a>
-								</span>
-            </div>
-            <!-- Start single blog -->
-          </div>
-          <!-- End Left Blog-->
-          <!-- Start Right Blog-->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="single-blog">
-              <div class="single-blog-img">
-                <a href="blog.html">
-										<img src="img/blog/MediaTC.jpg" alt="">
+								</ul>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="awesome-project-content">
+
+						<!-- single-awesome-project start -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12 gebaeude wohnhaeuser">
+
+							<div class="single-awesome-project">
+
+								<div class="awesome-img">
+
+									<a href="#"><img src="img/portfolio/aufzug.jpg" alt="" /></a>
+
+									<div class="add-actions text-center">
+
+										<div class="project-dec">
+
+											<a class="venobox" data-gall="myGallery" href="img/portfolio/imagen27.jpg">
+
+												<h4>Edificaciones</h4>
+
+												<span>Construcción de un ascensor en una escuela</span>
+
+											</a>
+
+											<a class="venobox" data-gall="myGallery"
+
+												href="img/portfolio/aufzug3.jpg"></a>
+
+											<a class="venobox" data-gall="myGallery"
+
+												href="img/portfolio/aufzug7.jpg"></a>
+
+											<a class="venobox" data-gall="myGallery"
+
+												href="img/portfolio/aufzug5.jpg"></a>
+
+											<a class="venobox" data-gall="myGallery"
+
+												href="img/portfolio/imagen30.jpg"></a>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- single-awesome-project end -->
+
+						<!-- single-awesome-project start -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12 wohnhaeuser">
+
+							<div class="single-awesome-project">
+
+								<div class="awesome-img">
+
+									<a href="#"><img src="img/portfolio/mhaus.jpeg" alt="" /></a>
+
+									<div class="add-actions text-center">
+
+										<div class="project-dec">
+
+											<a class="venobox" data-gall="myGallery" href="img/portfolio/viviendas.jpg">
+
+												<h4>Casas residenciales</h4>
+
+												<span>Construcción de apartamentos</span>
+
+											</a>
+
+											<a class="venobox" data-gall="myGallery"
+
+												href="img/portfolio/edificio.jpg"></a>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- single-awesome-project end -->
+
+						<!-- single-awesome-project start -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12 renovierungen">
+
+							<div class="single-awesome-project">
+
+								<div class="awesome-img">
+
+									<a href="#"><img src="img/portfolio/denkmal4.jpg" alt="" /></a>
+
+									<div class="add-actions text-center">
+
+										<div class="project-dec">
+
+											<a class="venobox" data-gall="myGallery"
+
+												href="img/portfolio/casonantes1.jpg">
+
+												<h4>Renovaciones</h4>
+
+												<span>Renovación de un monumento</span>
+
+											</a>
+
+											<a class="venobox" data-gall="myGallery"
+
+												href="img/portfolio/renovacion.jpg"></a>
+
+											<a class="venobox" data-gall="myGallery"
+
+												href="img/portfolio/escalera.jpeg"></a>
+
+											<!-- <a class="venobox" data-gall="myGallery" href="img/portfolio/casona6.jpg"> </a>-->
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- single-awesome-project end -->
+
+						<!-- single-awesome-project start -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12 sicherheitskontrollstelle">
+
+							<div class="single-awesome-project">
+
+								<div class="awesome-img">
+
+									<a href="#"><img src="img/portfolio/municipal.png" alt=""></a>
+
+									<div class="add-actions text-center">
+
+										<div class="project-dec">
+
+											<a class="venobox" data-gall="myGallery" href="img/portfolio/garita1.jpeg">
+
+												<h4>Distritos</h4>
+
+												<span>Diseño de una garita de control</span>
+
+											</a>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- single-awesome-project end -->
+
+						<!-- single-awesome-project start -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12 development">
+
+							<div class="single-awesome-project">
+
+								<div class="awesome-img">
+
+									<a href="#"><img src="img/portfolio/schule1.jpg" alt="" /></a>
+
+									<div class="add-actions text-center text-center">
+
+										<div class="project-dec">
+
+											<a class="venobox" data-gall="myGallery" href="img/portfolio/colegio.jpg">
+
+												<a class="venobox" data-gall="myGallery"
+
+													href="img/portfolio/flur.jpeg"></a>
+
+												<h4>Escuela vocacional</h4>
+
+												<span>renovación de una escuela vocacional</span>
+
+											</a>
+
+											<a class="venobox" data-gall="myGallery" href="img/portfolio/plan.jpg"></a>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- single-awesome-project end -->
+
+						<!-- single-awesome-project start -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12 design photo">
+
+							<div class="single-awesome-project">
+
+								<div class="awesome-img">
+
+									<a href="#"><img src="img/portfolio/Büro3.jpg" alt="" /></a>
+
+									<div class="add-actions text-center">
+
+										<div class="project-dec">
+
+											<a class="venobox" data-gall="myGallery" href="img/portfolio/büro2 (1).jpg">
+
+												<a class="venobox" data-gall="myGallery"
+
+													href="img/portfolio/arquitecto.jpeg">
+
+													<h4>Oficinas</h4>
+
+													<span>Arquitectura de interiores</span>
+
+												</a>
+
+											</a>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- single-awesome-project end -->
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- awesome-portfolio end -->
+
+		<!-- start pricing area -->
+
+		<div id="pricing" class="pricing-area area-padding">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-md-12 col-sm-12 col-xs-12">
+
+						<div class="section-headline text-center">
+
+							<h2>Lista de precios</h2>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-md-2"></div>
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+
+						<div class="pri_table_list active">
+
+							<!--<span class="saleon">top sale</span-->
+
+							<h3>Edificios <br /> <span> Precios de acuerdo al presupuesto </span></h3>
+
+							<ol>
+
+								<li class="check">Ubicación: suburbio o periferia</li>
+
+								<li class="check">Ubicación: en ciudad</li>
+
+								<li class="check ">Dimensión en m²</li>
+
+								<li class="check ">Ascensor</li>
+
+								<li class="check">4 o más habitaciones</li>
+
+								<li class="check">Salas</li>
+
+								<li class="check">Calefación</li>
+
+								<li class="check">Agua caliente</li>
+
+								<li class="check cross">Aire acondicionado</li>
+
+								<li class="check">Plantas solares </li>
+
+								<li class="check cross">Pago financiado </li>
+
+							</ol>
+
+							<button>Login</button>
+
+						</div>
+
+					</div>
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+
+						<div class="pri_table_list active">
+
+							<h3>Otros servicios <br> <br><span></span></h3>
+
+							<ol>
+
+								<li class="check">Apoyo técnico</li>
+
+								<li class="check">Planificación</li>
+
+								<li class="check">Renovación de edificios</li>
+
+								<li class="check">Restauración parcial del valor</li>
+
+								<li class="check">Restauraciones</li>
+
+								<li class="check">Construcción de acceso</li>
+
+								<li class="check">Construcción y diseño de cabinas de Garitas</li>
+
+								<li class="check">Arquitectura interior y exterior</li>
+
+								<li class="check">Supervisión de construcción</li>
+
+								<li class="check">Arquitectura de oficina</li>
+
+								<li class="check">Financiación</li>
+
+							</ol>
+
+							<button>Regístrese ahora</button>
+
+						</div>
+
+					</div>
+
+					<div class="col-md-2">
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- End pricing table area -->
+
+		<!-- Start Testimonials -->
+
+		<div class="testimonials-area">
+
+			<div class="testi-inner area-padding">
+
+				<div class="testi-overly"></div>
+
+				<div class="container ">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+							<!-- Start testimonials Start -->
+
+							<div class="testimonial-content text-center">
+
+								<a class="quate" href="#"><i class="fa fa-quote-right"></i></a>
+
+								<!-- start testimonial carousel -->
+
+								<div class="testimonial-carousel">
+
+									<div class="single-testi">
+
+										<div class="testi-text">
+
+											<p>
+
+												Excelente servicio de diseño y construcción de viviendas.
+
+												Entendieron perfectamente
+
+												lo que queríamos para nuestra nueva casa. Recomiendo ampliamente el
+
+												excelente
+
+												servicio al cliente y la altísima calidad de arquitectura y
+
+												construcción.
+
+											</p>
+
+											<h6>Artemio Calderon </h6>
+
+										</div>
+
+									</div>
+
+									<!-- End single item -->
+
+									<div class="single-testi">
+
+										<div class="testi-text">
+
+											<p>
+
+												diseño arquitectónico de la Garita de control de nuestro distrito
+
+												dentro del plazo acordado y dentro
+
+												de nuestro presupuesto. El resultado final cumplió con todas
+
+												nuestras expectativas.
+
+												<br>
+
+											</p>
+
+											<h6>Distrito de Lince</h6>
+
+										</div>
+
+									</div>
+
+									<!-- End single item -->
+
+									<div class="single-testi">
+
+										<div class="testi-text">
+
+											<p>
+
+												Un excelente arquitecto con subcontratistas, muy profesionales, con
+
+												gran conciencia ambiental, siempre dando la mejor asesoria al
+
+												cliente
+
+												y muy preocupado por el progreso de la obra. Mis mejores
+
+												recomendaciones.
+
+												<br>
+
+											</p>
+
+											<h6>Alvaro Robles</h6>
+
+										</div>
+
+									</div>
+
+									<!-- End single item -->
+
+									<div class="single-testi">
+
+										<div class="testi-text">
+
+											<p>
+
+												El arquitecto J. Luis Revilla trabaja para nosotros desde hace
+
+												muchos años, su experiencia laboral y la integridad de su trabajo ha
+
+												hecho que
+
+												nuestros proyectos sean realizados por él. La calidad de su trabajo
+
+												lo ha demostrado otra vez en el diseño arquitectonico y
+
+												asesoramiento de
+
+												construcción del Ascensor en nuestro colegio, teniendo en cuenta el
+
+												espacio disponible para la construcción del Ascensor sin comprometer
+
+												las
+
+												instalaciones del colegio. Sin dudarlo recomendamos su trabajo.
+
+											</p>
+
+											<h6>Colegio Carmelitas</h6>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<!-- End testimonials end -->
+
+						</div>
+
+						<!-- End Right Feature -->
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- End Testimonials -->
+
+		<!-- Start Blog Area ------------------------------------------------------------->
+
+		<div id="blog" class="blog-area">
+
+			<div class="blog-inner area-padding">
+
+				<div class="blog-overly"></div>
+
+				<div class="container ">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+							<div class="section-headline text-center">
+
+								<h2>Planos y proyectos con AutoCAD</h2>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<!-- Start Left Blog -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12">
+
+							<div class="single-blog">
+
+								<div class="single-blog-img">
+
+									<a th:href="@{/autocad/revit3D}">
+
+										<img src="img/autocad/3d_revit_domestika.jpg" alt="">
+
 									</a>
-              </div>
-              <div class="blog-meta">
-                <span class="comments-type">
+
+								</div>
+
+								<div class="blog-meta">
+
+									<span class="date-type">
+
+										<i class="fa fa-calendar"></i>2025-11 / 08:10:16
+
+									</span>
+
+								</div>
+
+								<div class="blog-text">
+
+									<h5>
+
+										<a th:href="@{/autocad/revit3D}"> Plano 3D con revit Architecture</a>
+
+									</h5>
+
+									<p>
+
+										Planos de construcción de una vivienda unifamiliar de dos plantas
+
+										con jardín y garaje.La vivienda se realizó con parámetros constructivos
+
+										y se diseñó con planos 3D en AutoCAD y Revit
+
+										Diseño 3D en AutoCAD y Revit para reformar y ampliar de espacios
+
+										interiores de un edificio residencial
+
+										Diseño 3D en AutoCAD y Revit para reformar y ampliar de espacios
+
+										interiores de un edificio residencial.
+
+									</p>
+
+								</div>
+
+								<div class="blog-text">
+
+									<span>
+
+										<a th:href="@{/autocad/revit3D}" class="ready-btn">Leer más</a>
+
+									</span>
+
+								</div>
+
+							</div>
+
+							<!-- Start single blog -->
+
+						</div>
+
+						<!-- End Left Blog-->
+
+						<!-- Start Left Blog -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12">
+
+							<div class="single-blog">
+
+								<div class="single-blog-img">
+
+									<a th:href="@{/autocad/autocad3D}">
+
+										<img src="img/autocad/3d_revit_building.PNG" alt="">
+
+									</a>
+
+								</div>
+
+								<div class="blog-meta">
+
+									<span class="date-type">
+
+										<i class="fa fa-calendar"></i>2025-11 / 10:30:16
+
+									</span>
+
+								</div>
+
+								<div class="blog-text">
+
+									<h5>
+
+										<a th:href="@{/autocad/autocad3D}">Edificio Recidencial, plano 3D
+
+											AutoCad</a>
+
+									</h5>
+
+									<p>
+
+										Diseño de un edificio residencial en planos 3D con AutoCAD. El
+
+										edificio cuenta con 30 apartamentos,
+
+										cada uno con tres o cuatro dormitorios y dos baños.cada uno con tres o
+
+										cuatro dormitorios y dos baños.
+
+										Diseño 3D en AutoCAD y Revit para reformar y ampliar de espacios
+
+										interiores de un edificio residencial
+
+										Diseño 3D en AutoCAD y Revit para reformar y ampliar de espacios
+
+										interiores de un edificio residencial.
+
+									</p>
+
+								</div>
+
+								<div class="blog-text">
+
+									<span>
+
+										<a th:href="@{/autocad/autocad3D}" class="ready-btn">Leer más</a>
+
+									</span>
+
+								</div>
+
+							</div>
+
+							<!-- Start single blog -->
+
+						</div>
+
+						<!-- End Left Blog-->
+
+						<!-- Start Right Blog-->
+
+						<div class="col-md-4 col-sm-4 col-xs-12">
+
+							<div class="single-blog">
+
+								<div class="single-blog-img">
+
+									<a th:href="@{/autocad/revitInt}">
+
+										<img src="img/autocad/revit003.jpg" width=698 and height="364">
+
+									</a>
+
+								</div>
+
+								<div class="blog-meta">
+
+									<span class="comments-type">
+
 										<i class="fa fa-comment-o"></i>
-										
+
 									</span>
-                <span class="date-type">
+
+									<span class="date-type">
+
 										<i class="fa fa-calendar"></i>2016-11 / 11:10:16
+
 									</span>
-              </div>
-              <div class="blog-text">
-                <h5>
-                                        <a href="blog.html">Nachhaltigkeit im Bauwesen in Spanien</a>
+
+								</div>
+
+								<div class="blog-text">
+
+									<h5>
+
+										<a th:href="@{/autocad/revitInt}">Arquitectura de Interiores con Revit</a>
+
 									</h5>
-                <p>
-                  Die Nachhaltigkeit im spanischen hat Bauwesen erheblich an Bedeutung gewonnen. Viele Bauprojekte fokussieren sich auf energieeffiziente Technologien und umweltfreundliche Materialien, um den ökologischen Fußabdruck zu minimieren
-                </p>
-              </div>
-              <span>
-									<a href="blog.html" class="ready-btn">Mehr Lesen</a>
+
+									<p>
+
+										Diseño 3D en AutoCAD y Revit para reformar y ampliar de espacios
+
+										interiores de un edificio residencial
+
+										Diseño 3D en AutoCAD y Revit para reformar y ampliar de espacios
+
+										interiores de un edificio residencial
+
+										Diseño 3D en AutoCAD y Revit para reformar y ampliar de espacios
+
+										interiores de un edificio residencial
+
+										Diseño 3D en AutoCAD y Revit para reformar y ampliar de espacios
+
+										interiores de un edificio residencial.
+
+									</p>
+
+								</div>
+
+								<div class="blog-text">
+
+									<span>
+
+										<a th:href="@{/autocad/revitInt}" class="ready-btn">Leer más</a>
+
+									</span>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- End Right Blog-->
+
+					</div>
+
+					<br>
+
+					<div class="row">
+
+						<!-- Start Left Blog -->
+
+						<!-- Start single blog -->
+
+					</div>
+
+					<!-- End Left Blog-->
+
+				</div>
+
+				<!-- End Blog -->
+
+			</div>
+
+		</div>
+
+		<!-- Start Blog Area --------------------------------------------------------------------->
+
+		<div id="blog" class="blog-area">
+
+			<div class="blog-inner area-padding">
+
+				<div class="blog-overly"></div>
+
+				<div class="container ">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+							<div class="section-headline text-center">
+
+								<h2>Nuestro último Proyecto y algunas Edificaciones de Peru y España</h2>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<!-- Start Left Blog -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12">
+
+							<div class="single-blog">
+
+								<div class="single-blog-img">
+
+									<a th:href="@{/blog/carmelitas}">
+
+										<img src="img/blog/aufzug5_1.jpg" alt="">
+
+									</a>
+
+								</div>
+
+								<div class="blog-meta">
+
+									<span class="date-type">
+
+										<i class="fa fa-calendar"></i>2024-10 / 08:10:16
+
+									</span>
+
+								</div>
+
+								<div class="blog-text">
+
+									<h5>
+
+										<a th:href="@{/blog/carmelitas}">Proyecto completo más reciente: Ascensor
+
+											en el
+
+											Colegio
+
+											Carmelitas</a>
+
+									</h5>
+
+									<p>
+
+										En colaboración con la empresa contratista de construcción hemos facilitado
+
+										el acceso a la escuela
+
+										mediante la instalación de un Ascensor.
+
+										En la siguiente sección, puede ver los planos en 3D en AutoCAD.
+
+									</p>
+
+								</div>
+
+								<span>
+
+									<a th:href="@{/blog/carmelitas}" class="ready-btn">Leer más</a>
+
 								</span>
-            </div>
-          </div>
-          <!-- End Right Blog-->
-        </div>
-        <br>
-        <div class="row">
-          <!-- Start Left Blog -->
-         
-            <!-- Start single blog -->
-          </div>
-          <!-- End Left Blog-->
-          
-  </div>
-    <!-- Start Blog Area -->
-    <div id="blog" class="blog-area">
-      <div class="blog-inner area-padding">
-        <div class="blog-overly"></div>
-        <div class="container ">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="section-headline text-center">
-                <h2>Planos y proyectos con AutoCAD</h2>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <!-- Start Left Blog -->
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="single-blog">
-                <div class="single-blog-img">
-                  <a href="blogAutoCAD.html">
-                      <img src="img/autocad/3d_revit_domestika.jpg" alt="">
-                    </a>
-                </div>
-                <div class="blog-meta">
-                
-                  <span class="date-type">
-                      <i class="fa fa-calendar"></i>2024-11 / 08:10:16
-                    </span>
-                </div>
-                <div class="blog-text">
-                  <h5>
-                      <a href="blogAutoCAD.html">Plano 3D con revit Architecture</a>
-                    </h5>
-                  <p>
-                    Bau eines Einfamilienhauses mit zwei Etagen, Garten und Garage. Der Bau wurde mit Bauparametern realisert und mit 3D-Plänen in AutoCAD und Revit entworfen
-                  </p>
-                </div>
-                <span>
-                    <a href="blogAutoCAD.html" class="ready-btn">Mehr Lesen</a>
-                  </span>
-              </div>
-              <!-- Start single blog -->
-            </div>
-            <!-- End Left Blog-->
-            <!-- Start Left Blog -->
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="single-blog">
-                <div class="single-blog-img">
-                  <a href="blogAutoCAD.html">
-                      <img src="img/autocad/3d_revit_building.PNG" alt="">
-                    </a>
-                </div>
-                <div class="blog-meta">
-              
-                  <span class="date-type">
-                      <i class="fa fa-calendar"></i>2024-11 / 10:30:16
-                    </span>
-                </div>
-                <div class="blog-text">
-                  <h5>
-                   <a href="blogAutoCAD.html">Edificio Recidencial, plano 3D AutoCad</a>
-                    </h5>
-                  <p> 
-                    Design eines Wohngebäudes in 3D-Plänen mit AutoCAD. Das Wohngebäude hat 30 Wohnungen mit jeweils drei oder vier Schlafzimmern und zwei Bädern. Gebaut in Sueca, Spanien.
-                   
-                  </p>
-                </div>
-                <span>
-                    <a href="blogAutoCAD.html" class="ready-btn">Mehr Lesen</a>
-                  </span>
-              </div>
-              <!-- Start single blog -->
-            </div>
-            <!-- End Left Blog-->
-            <!-- Start Right Blog-->
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="single-blog">
-                <div class="single-blog-img">
-                  <a href="blogAutoCAD.html">
-                      <img src="img/autocad/revit003.jpg" width=698 and height="364">
-                    </a>
-                </div>
-                <div class="blog-meta">
-                  <span class="comments-type">
-                      <i class="fa fa-comment-o"></i>
-                      
-                    </span>
-                  <span class="date-type">
-                      <i class="fa fa-calendar"></i>2016-11 / 11:10:16
-                    </span>
-                </div>
-                <div class="blog-text">
-                  <h5>
-                                          <a href="blogAutoCAD.html">Arquitectura de Interiores con Revit</a>
-                    </h5>
-                  <p>
-                    Desig in 3D-AutoCAD-Planung für die Renovierung und Erweiterung von Innenräumen in einem Wohnhaus
-                  </p>
-                </div>
-                <span>
-                  <br></br>
-                    <a href="blogAutoCAD.html" class="ready-btn">Mehr Lesen</a>
-                  </span>
-              </div>
-            </div>
-            <!-- End Right Blog-->
-          </div>
-          <br>
-          <div class="row">
-            <!-- Start Left Blog -->
-           
-              <!-- Start single blog -->
-            </div>
-            <!-- End Left Blog-->
-            
-    </div>
-  <!-- End Blog -->
-  <!-- Start Suscrive Area -->
-  <div class="suscribe-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
-          <div class="suscribe-text text-center">
-            <h3>Willkommen zur architecturaEterna Company</h3>
-            <a class="sus-btn" href="#">über unsere Angeboten</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Suscrive Area -->
-  <!-- Start contact Area -->
-  <div id="contact" class="contact-area">
-    <div class="contact-inner area-padding">
-      <div class="contact-overly"></div>
-      <div class="container ">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="section-headline text-center">
-              <h2>Kontaktieren Sie uns</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <!-- Start contact icon column -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="contact-icon text-center">
-              <div class="single-icon">
-                <i class="fa fa-mobile"></i>
-                <p>
-                  Telf.: +1 5589 55488 55<br>
-                  <span>Montag-Freitag (8:00 Uhr - 18:00 Uhr)</span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Start contact icon column -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="contact-icon text-center">
-              <div class="single-icon">
-                <i class="fa fa-envelope-o"></i>
-                <p>
-                  Email: info@architecturaEterna.de<br>
-                  <span>Web: www.architecturaEterna.de</span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Start contact icon column -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="contact-icon text-center">
-              <div class="single-icon">
-                <i class="fa fa-map-marker"></i>
-                <p>
-                  Standort: A108 Adam Street<br>
-                  <span>NY 535022, USA</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
 
-          <!-- Start Google Map -->
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <!-- Start Map -->
-            <div class="mapouter"><div class="gmap_canvas"><iframe width="500" height="350" id="gmap_canvas" src="https://maps.google.com/maps?q=636+5th+Ave%2C+New+York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.analarmclock.com"></a><br><a href="https://www.onclock.net"></a><br><style>.mapouter{position: relative;text-align: right;height: 350px;width: 500px;}</style><a href="https://www.ongooglemaps.com">embedding maps in website</a><style>.gmap_canvas{overflow: hidden;background: none !important;height: 350px;width: 500px;}</style></div></div>
-            <!-- End Map -->
-          </div>
-          <!-- End Google Map -->
+							</div>
 
-          <!-- Start  contact -->
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="form contact-form">
-              <div id="sendmessage">Ihre Nachricht wurde gesendet. Vielen Dank!</div>
-              <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Ihr Vorname und Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Betreff" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Bitte teilen Sie uns Ihr Anliegen mit" placeholder="Bitte teilen Sie uns Ihr Anliegen mit"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit">Nachricht senden</button></div>
-              </form>
-            </div>
-          </div>
-          <!-- End Left contact -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Contact Area -->
+							<!-- Start single blog -->
 
-  <!-- Start Footer bottom Area -->
-  <footer>
-    <div class="footer-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="footer-content">
-              <div class="footer-head">
-                <div class="footer-logo">
-                  <h2><span>architectura</span>Eterna</h2>
-                </div>
+						</div>
 
-                <p>Sie finden uns in diesen sozialen Medien
-                <div class="footer-icons">
-                  <ul>
-                    <li>
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end single footer -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="footer-content">
-              <div class="footer-head">
-                <h4><b>Impressum</b></h4>
-                <p>
-                  
-                <div class="footer-contacts">
-                  <p><span>Inhaber:</span> Jose Luis R. Avalos und Eduardo R. Avalos</p>
-                  <p><span>Adresse:</span> Musterstrasse 1, 12345 Spanien</p>
-                  <p><span>Tel:</span> +49 (0) 123 456789</p>
-                  <p><span>Arbeitszeit:</span>8:00 - 18:00 Uhr</p>
-                </p>
-              </div>
-              </div>
-            </div>
-          </div>
-          <!-- end single footer -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="footer-content">
-              <div class="footer-head">
-                <h6><br><b>Datenschutzerklärung</br></b></h6>
-                <p>Erfassung von Daten
-Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:
-Browsertyp und Browserversion.Verwendetes Betriebssystem
-Referrer URL
-Hostname des zugreifenden Rechners
-Diese Daten sind nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.
-Kontaktformular
-Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
-Auf unserer Website können Analyse-Tools und andere Technologien eingesetzt werden, um die Nutzung unserer Website statistisch zu erfassen und auszuwerten.
-Rechte des Nutzers: Sie haben das Recht, jederzeit unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen.
-                </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-area-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="copyright text-center">
-              <p>
-                <!--&copy; Copyright <strong>architecturaEterna</strong>. Alle Rechte vorbehalten-->
-              </p>
-            </div>
-            <div class="credits">
-              <!--
+						<!-- End Left Blog-->
+
+						<!-- Start Left Blog -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12">
+
+							<div class="single-blog">
+
+								<div class="single-blog-img">
+
+									<a th:href="@{/blog/monumentoEs}">
+
+										<img src="img/blog/guggenheim.png" alt="">
+
+									</a>
+
+								</div>
+
+								<div class="blog-meta">
+
+									<span class="date-type">
+
+										<i class="fa fa-calendar"></i>2024-11 / 10:30:16
+
+									</span>
+
+								</div>
+
+								<div class="blog-text">
+
+									<h5>
+
+										<a th:href="@{/blog/monumentoEs}">Uno de los monumentos más importantes de
+
+											España</a>
+
+									</h5>
+
+									<p>
+
+										El Museo Guggenheim de Bilbao se construyó para revitalizar cultural y
+
+										económicamente
+
+										en la ciudad que pretendía convertir Bilbao en un centro cultural internacional
+
+										para
+
+										promover el turismo.
+
+									</p>
+
+								</div>
+
+								<span>
+
+									<a th:href="@{/blog/monumentoEs}" class="ready-btn">Leer más</a>
+
+								</span>
+
+							</div>
+
+							<!-- Start single blog -->
+
+						</div>
+
+						<!-- End Left Blog-->
+
+						<!-- Start Right Blog-->
+
+						<div class="col-md-4 col-sm-4 col-xs-12">
+
+							<div class="single-blog">
+
+								<div class="single-blog-img">
+
+									<a th:href="@{/blog/colonial}">
+
+										<img src="img/blog/balcon.jpeg" alt="">
+
+									</a>
+
+								</div>
+
+								<div class="blog-meta">
+
+									<span class="comments-type">
+
+										<i class="fa fa-comment-o"></i>
+
+									</span>
+
+									<span class="date-type">
+
+										<i class="fa fa-calendar"></i>2025-11 / 11:10:16
+
+									</span>
+
+								</div>
+
+								<div class="blog-text">
+
+									<h5>
+
+										<a th:href="@{/blog/colonial}">Centro de la Lima Colonial, Perú</a>
+
+									</h5>
+
+									<p>
+
+										Conocido como el antiguo corazón colonial de la "Ciudad de los Reyes" destaca
+
+										por su arquitectira barroca
+
+										como iglesias monumentales o casonas con balcones, rica de herencia cultural de
+
+										los siglos XVI al XVII.
+
+									</p>
+
+								</div>
+
+								<span>
+
+									<a th:href="@{/blog/colonial}" class="ready-btn">Leer más</a>
+
+								</span>
+
+							</div>
+
+						</div>
+
+						<!-- End Right Blog-->
+
+					</div>
+
+					<br>
+
+					<div class="row">
+
+						<!-- Start Left Blog -->
+
+						<!-- Start single blog -->
+
+					</div>
+
+					<!-- End Left Blog-->
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- Start Suscrive Area -->
+
+		<div class="suscribe-area">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
+
+						<div class="suscribe-text text-center">
+
+							<h3>Bienvenidos a Bautekton</h3>
+
+							<a class="sus-btn" href="#">Sobre nuestras ofertas</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- End Suscrive Area -->
+
+		<!-- Start contact Area -->
+
+		<div id="contact" class="contact-area">
+
+			<div class="contact-inner area-padding">
+
+				<div class="contact-overly"></div>
+
+				<div class="container ">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+							<div class="section-headline text-center">
+
+								<h2>Contáctenos</h2>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<!-- Start contact icon column -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12">
+
+							<div class="contact-icon text-center">
+
+								<div class="single-icon">
+
+									<i class="fa fa-mobile"></i>
+
+									<p>
+
+										Telf.: +1 5589 55488 55<br>
+
+										<span>Lunes - Viernes (8:00 am - 7:00 pm)</span>
+
+									</p>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- Start contact icon column -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12">
+
+							<div class="contact-icon text-center">
+
+								<div class="single-icon">
+
+									<i class="fa fa-envelope-o"></i>
+
+									<p>
+
+										Correo: info@bautekton.com<br>
+
+										<span>Web: www.bautekton.com</span>
+
+									</p>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<!-- Start contact icon column -->
+
+						<div class="col-md-4 col-sm-4 col-xs-12">
+
+							<div class="contact-icon text-center">
+
+								<div class="single-icon">
+
+									<i class="fa fa-map-marker"></i>
+
+									<p>
+
+										Ubicación: Teofilo Castillo 419<br>
+
+										<span>Lima - 13, Perú</span>
+
+									</p>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<!-- Start Google Map -->
+
+						<div class="col-md-6 col-sm-6 col-xs-12">
+
+							<!-- Start Map -->
+
+							<div class="mapouter">
+
+								<div class="gmap_canvas">
+
+									<iframe
+
+										src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3246.2430180681017!2d-77.01314812581062!3d-12.07185344236658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c89d60f5c619%3A0x8c6a18c0b0818edf!2sCa.%20Te%C3%B3filo%20Castillo%20419%2C%20La%20Victoria%2015018%2C%20Peru!5e1!3m2!1sde!2sde!4v1759581872313!5m2!1sde!2sde"
+
+										width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+
+										referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+									<a href="https://www.analarmclock.com">
+
+									</a><br><a href="https://www.onclock.net"></a><br>
+
+									<style>
+
+										.mapouter {
+
+											position: relative;
+
+											text-align: right;
+
+											height: 350px;
+
+											width: 500px;
+
+										}
+
+									</style>
+
+									<a href="https://www.ongooglemaps.com">embedding maps in
+
+										website</a>
+
+									<style>
+
+										.gmap_canvas {
+
+											overflow: hidden;
+
+											background: none !important;
+
+											height: 350px;
+
+											width: 500px;
+
+										}
+
+									</style>
+
+								</div>
+
+							</div>
+
+							<!-- End Map -->
+
+						</div>
+
+						<!-- End Google Map -->
+
+						<!-- Start  contact -->
+
+						<div class="col-md-6 col-sm-6 col-xs-12">
+
+							<div class="form contact-form">
+
+								<div id="sendmessage">Muchas gracias, su mensaje ha sido enviado
+
+								</div>
+
+								<div id="errormessage"></div>
+
+								<form action="" method="post" role="form" class="contactForm">
+
+									<div class="form-group">
+
+										<input type="text" name="name" class="form-control" id="name" placeholder="Ingrese s
+
+												u nombre y apellido" data-rule="minlen:4" data-msg="Please enter at least 4 chars" autocomplete="name" />
+
+										<div class="validation"></div>
+
+									</div>
+
+									<div class="form-group">
+
+										<input type="email" class="form-control" name="email" id="email"
+
+											placeholder="Correo electrónico" data-rule="email"
+
+											data-msg="Please enter a valid email" autocomplete="email" />
+
+										<div class="validation"></div>
+
+									</div>
+
+									<div class="form-group">
+
+										<input type="text" class="form-control" name="subject" id="subject"
+
+											placeholder="Betreff" data-rule="minlen:4"
+
+											data-msg="Please enter at least 8 chars of subject"
+
+											autocomplete="subject" />
+
+										<div class="validation"></div>
+
+									</div>
+
+									<div class="form-group">
+
+										<textarea class="form-control" name="message" rows="5" data-rule="required"
+
+											data-msg="Por favor, comuníquenos su asunto."
+
+											placeholder="Bitte teilen Sie uns Ihr Anliegen mit"></textarea>
+
+										<div class="validation"></div>
+
+									</div>
+
+									<div class="text-center"><button type="submit">Enviar
+
+											Mensaje</button></div>
+
+								</form>
+
+							</div>
+
+						</div>
+
+						<!-- End Left contact -->
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- End Contact Area -->
+
+	</div>
+
+	<!-- Start Footer bottom Area -->
+
+	<footer>
+
+		<div class="footer-area">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+
+						<div class="footer-content">
+
+							<div class="footer-head">
+
+								<div class="footer-logo">
+
+									<h2><span>Baute</span>Kton</h2>
+
+								</div>
+
+								<p>Usted nos encuentra en las siguientes redes sociales:</p>
+
+								<div class="footer-icons">
+
+									<ul>
+
+										<li>
+
+											<a href="#"><i class="fa fa-facebook"></i></a>
+
+										</li>
+
+										<li>
+
+											<a href="#"><i class="fa fa-linkedin"></i></a>
+
+										</li>
+
+									</ul>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<!-- end single footer -->
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+
+						<div class="footer-content">
+
+							<div class="footer-head">
+
+								<h4><b>Impreso</b></h4>
+
+								<div class="footer-contacts">
+
+									<p><span>Propietario:</span> Jose Luis Revilla C.</p>
+
+									<p><span>Dirección:</span> Teofilo Castillo 419, Lima - 13, Perú</p>
+
+									<p><span>Telf:</span> +51 983 783 808</p>
+
+									<p><span>Horario laboral:</span>8:00 am - 7:00 pm</p>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- end single footer -->
+
+			<div class="col-md-4 col-sm-4 col-xs-12">
+
+				<div class="footer-content">
+
+					<div class="footer-head">
+
+						<h6><br><b>Política de Privacidad</br></b></h6>
+
+						<p>Recopilación de datos conforme a la ley vigente.
+
+						</p>
+
+						<!--Aqui se coloca el enlace Real-->
+
+						<div style="margin-top: 10px;">
+
+							<a th:href="@{/politica-privacidad}" target="_blank"
+
+								style="color: #3ec1d5; font-weight: bold; text-decoration: underline;">
+
+								<i class="fa fa-external-link"></i> Leer política completa aquí
+
+							</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+		<div class="footer-area-bottom">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-md-12 col-sm-12 col-xs-12">
+
+						<div class="copyright text-center">
+
+							<p>
+
+								<!--© Copyright <strong>architecturaEterna</strong>. Alle Rechte vorbehalten-->
+
+							</p>
+
+						</div>
+
+						<div class="credits">
+
+							<!--
+
                 All the links in the footer should remain intact.
+
                 You can delete the links only if you purchased the pro version.
+
                 Licensing information: https://bootstrapmade.com/license/
+
                 Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
+
               -->
-              <!--Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> 
+
+							<!--Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> 
+
               Re-distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a>-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+						</div>
 
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/venobox/venobox.min.js"></script>
-  <script src="lib/knob/jquery.knob.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/parallax/parallax.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
-  <script src="lib/appear/jquery.appear.js"></script>
-  <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+					</div>
 
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+				</div>
 
-  <script src="js/main.js"></script>
+			</div>
+
+		</div>
+
+	</footer>
+
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+	<!-- JavaScript Libraries -->
+
+	<script th:src="@{/lib/jquery/jquery.min.js}"></script>
+
+	<script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+
+	<script th:src="@{/lib/owlcarousel/owl.carousel.min.js}"></script>
+
+	<script th:src="@{/lib/venobox/venobox.min.js}"></script>
+
+	<script th:src="@{/lib/knob/jquery.knob.js}"></script>
+
+	<script th:src="@{/lib/wow/wow.min.js}"></script>
+
+	<script th:src="@{/lib/parallax/parallax.js}"></script>
+
+	<script th:src="@{/lib/easing/easing.min.js}"></script>
+
+	<script th:src="@{/lib/nivo-slider/js/jquery.nivo.slider.js}" type="text/javascript"></script>
+
+	<script th:src="@{/lib/appear/jquery.appear.js}"></script>
+
+	<script th:src="@{/lib/isotope/isotope.pkgd.min.js}"></script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+
+	<!-- Contact Form JavaScript File -->
+
+	<script th:src="@{/contactform/contactform.js}"></script>
+
+	<script th:src="@{/js/main.js}"></script>
+
+	
+
+	
+<script th:inline="javascript">
+    (function () {
+        // Mostrar/ocultar contraseña
+        var btnMostrarClave = document.getElementById('btnMostrarClave');
+        var inputClave = document.getElementById('login_pass2');
+        var iconoClave = document.getElementById('iconoClave');
+
+        if (btnMostrarClave && inputClave) {
+            btnMostrarClave.addEventListener('click', function () {
+                var visible = inputClave.type === 'text';
+                inputClave.type = visible ? 'password' : 'text';
+                if (iconoClave) {
+                    iconoClave.className = visible ? 'fa fa-eye' : 'fa fa-eye-slash';
+                }
+            });
+        }
+
+        // Si Spring devuelve error o solicita autenticación, abrir el modal automáticamente.
+        $(document).ready(function () {
+            var abrirLogin = /*[[${param.error != null or param.login != null}]]*/ false;
+            if (abrirLogin) {
+                $('#login-modal2').modal('show');
+            }
+
+            $('#login-modal2').on('shown.bs.modal', function () {
+                $('#login_email2').focus();
+            });
+        });
+    })();
+</script>
+
+<section id="seccion-modal-privacidad">
+
+		<div class="modal fade" id="modalProteccionDatos" tabindex="-1" role="dialog" aria-labelledby="tituloproteccion"
+
+			aria-hidden="true">
+
+			<div class="modal-dialog" role="document">
+
+				<div class="modal-content">
+
+					<div class="modal-header">
+
+						<h4 class="modal-title" id="tituloproteccion" style="display: inline-block; font-weight: bold;">
+
+							Protección de Datos - BauTekton</h4>
+
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+							<span class="fa fa-times" aria-hidden="true"></span>
+
+						</button>
+
+					</div>
+
+					<div class="modal-body">
+
+						<p>En <b>BauTekton</b> protegemos sus datos personales conforme a la ley vigente. Utilizamos su
+
+							información de manera segura únicamente para gestionar sus solicitudes de proyectos y
+
+							contacto.</p>
+
+						<p>Puede leer el documento legal completo en nuestra
+
+							<a th:href="@{/politica-privacidad}" target="_blank"
+
+								style="color: #3ec1d5; font-weight: bold; text-decoration: underline;">
+
+								Política de Privacidad Completa
+
+							</a>.
+
+							</p>
+
+							<hr>
+
+							<div class="checkbox" style="margin-top: 15px; padding-left: 20px;">
+
+								<label style="font-weight: bold; cursor: pointer;">
+
+									<input type="checkbox" id="chkAceptarTerminos" onchange="alternarBotonAceptar()">
+
+									He leído y acepto expresamente los términos de protección de datos.
+
+								</label>
+
+							</div>
+
+					</div>
+
+					<div class="modal-footer">
+
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+						<button type="button" class="btn btn-primary" id="btnAceptarTerminos" data-dismiss="modal"
+
+							style="background-color: #3ec1d5; border-color: #3ec1d5;" disabled>Aceptar términos</button>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<script>
+
+		function alternarBotonAceptar() {
+
+			// Detectamos el estado del cuadradito
+
+			var checkbox = document.getElementById("chkAceptarTerminos");
+
+			// Detectamos el botón de aceptar
+
+			var boton = document.getElementById("btnAceptarTerminos");
+
+			// Si el cuadradito está marcado, se desbloquea el botón. Si se desmarca, se vuelve a bloquear.
+
+			boton.disabled = !checkbox.checked;
+
+		}
+
+	</script>
+
+	<!-- =======================================================
+
+	        SCRIPT PARA DETECTAR ABANDONO DE PÁGINA
+
+	    ======================================================= -->
+
+	<script>
+
+		//1. Variable para rastrear si el usuario ha escrito algo
+
+		let formularioModificado = false;
+
+		//2. Detectar cuando el usuario escribe en cualquier input o formulario de la pagina
+
+		document.addEventListener('change', function(evento) {
+
+			//Si el usuario escribe en un input, select o textarea, se activa la alerta
+
+			if(evento.target.tagName==='INPUT' || evento.target.tagName ==='TEXTAREA' || evento.target.tagName === 'SELECT') {
+
+				formularioModificado = true;
+
+			}
+
+		});
+
+		//3. Capturar el intento de cerrar la pestaña, recargar (F5 o irse de la pagina
+
+		window.addEventListener('beforeunload', function (e) {
+
+			//Si el usuario modifico datos y no ha enviado el formualrio...
+
+			if(formularioModificado){
+
+				//cancelar el evento para que el navegador miestre su alerta nativa
+
+				e.preventDefault();
+
+			//los navegadores modernos por seguridad muestran su proipio tecto estandar,
+
+			//pero es obligatorio retornar un string o asignar el returnValue para que se active
+
+			e.returnValue ='¿Está seguro de que quiere salir? Los cambios no se guardarán.';
+
+			return e.returnValue;
+
+			}
+
+		});
+
+		/*4. Si el usuario Si hace clic en el boton de enviar o registrarse, se desactiva la alerta 
+
+		busca el ID o clase de los formularios. Esto cubre cualquier envio de formulario normal*/
+
+		document.querySelectorAll('form').forEach(form => {
+
+			form.addEventListener('submit', function(){
+
+			formularioModificado = false; //Se permite la salida limpia porque esta guardando
+
+		});
+
+		});
+
+	</script>
+
 </body>
 
 </html>

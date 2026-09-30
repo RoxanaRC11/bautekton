@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="sp">
+
+<head>
+	<meta charset="utf-8">
+	<title>Bautekton</title>
+	<meta content="width=divice-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="Keyword">
+	<meta content="" name="description">
+
+	<!-- Favicons -->
+	<link href="img/slider/logo.png" rel="icon">
+	<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
+		rel="stylesheet">
+
+	<!-- Bootstrap CSS File -->
+	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Libraries CSS Files -->
+	<link href="lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
+	<link href="lib/owlcarousel/owl.carousel.css" rel="stylesheet">
+	<link href="lib/owlcarousel/owl.transitions.css" rel="stylesheet">
+	<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="lib/animate/animate.min.css" rel="stylesheet">
+	<link href="lib/venobox/venobox.css" rel="stylesheet">
+
+	<!-- Nivo Slider Theme -->
+	<link href="css/nivo-slider-theme.css" rel="stylesheet">
+
+	<!--Main Stylesheet File-->
+	<link href="css/style.css" rel="stylesheet">
+
+	<!--Responsive Stylesheet File-->
+	<link href="css/responsive.css" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+
+	<div id="preloader"></div>
+	<header>
+		<!--header-area start -->
+		<div id="sticker" class="header-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+
+						<!--Navigation-->
+						<nav class="navbar navbar-default">
+							<!--Brand and toggle get for better mobile display-->
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+									data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<!-- Brand/Marke -->
+								<a class="navbar-brand page-scroll sticky-logo" href="index.html">
+									<h1><span>BauTek</span>ton</h1>
+									<!-- Uncomment below if you prefer to use an image logo. Logo verwenden -->
+									<!-- <img src="img/logo.png" alt="" title=""> -->
+								</a>
+
+							</div>
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
+								id="navbar-example">
+								<ul class="active">
+									<a class="page-scroll" href="./indexhtml#home">Página Inicial</a>
+
+									<li class="active">
+										<a class="page-scroll" href="./indexhtml#home">Sobre Nosotros</a>
+									</li>
+									<li class="active">
+										<a class="page-scroll" href="./indexhtml#home">Servicios</a>
+									</li>
+									<li class="active">
+										<a class="page-scroll" href="./indexhtml#home">Equipo</a>
+									</li>
+									<li class="active">
+										<a class="page-scroll" href="./indexhtml#home">Portafolio</a>
+									</li>
+									<li class="active">
+										<a class="page-scroll" href="./indexhtml#home">Contácto</a>
+									</li>
+									<li class="active">
+										<a class="page-scroll" href="./indexhtml#home">Protección de Datos</a>
+									</li>
+								</ul>
+							</div>
+							<!-- navbar-collapse. Barra de navegacion -->
+						</nav>
+						<!-- END: Navigation -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- header-area end -->
+	</header>
+	<!-- header end -->
+	<!--Imagen Encabezado-->
+	<div class="header-bg page-area">
+		<div classs="home-overly"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="slider-content text-center">
+						<div class="header-bottom">
+							<div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
+								<h1 class="title2">News</h1>
+							</div>
+							<div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
+								<h2 class="title3">Arquitectura BauTekton</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--Fin de la Imagen Encabezado-->
+	<div id="contact" class="contact-area">
+		<div class="contact-inner area-padding">
+			<div class="contact-overly"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="section-headline text-center">
+							<h3><b>Formulario de Proyectos</b></h3>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xm-12">
+						<div class="section-headline text-center">
+							<h3>---------------</h3>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!--Start contact-->
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="form contact-form">
+							<div id="sendmessage">Login del Proyecto</div>
+							<div id="errormessage"></div>
+							<form th:action="@{/proyecto/registrarbd}" method="post" th:object="${proyecto}">
+								<div class="card shadow-sm">
+									<div class="card-body">
+										<h4 class=""text-center mb-4>Formulario Proyectos</h4>
+										
+										<!--Fila 1-->
+										<div class="form-row">
+											<div class="form-group col-md-3">
+												<label for="id_proyecto">ID Proyecto</label>
+												<imput type="number" class="form-control" th:field="*{id_proyecto}" aria-placeholder="Ej: 1001" min="1" />
+											</div>
+											
+											<div class="form-group col-md-5">
+												<label for="fechaInicio">Fecha de Inicio</label>
+												<input type="date" class="form-control" th:field="*{fechaInicio}"
+												placeholder="aaa-mm-dd" minlength="3" required />
+											</div>
+											<div th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
+											
+											<div class="form-group col-md-4">
+												<label for="fechaFin">Fecha Final</label>
+												<input type="date" class="form-control" th:field="*{fechaFin}">
+											</div>
+											</div>
+										</div>
+										
+										<!--Fila 2-->	
+										<div class="form-row">
+											<div class="form-group col-md-4">
+												<label for="titulo"> Titulo</label>
+												<input type="texto" class="form-control" th:field="*{titulo}">
+											</div>
+											<div th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>
+											
+										<div class="form-group col-md-4">
+												<label for="tipoProyecto">Tipo de Proyecto</label>
+												<input type="text" class="form-control" th:field="*{tipoProyecto}"
+												placerholder="Vivienda / Departamentos" required />	
+										</div>
+										<div th:if="${#fields.hasErrors('tipoProyecto')" th:errors="*{tipoProyecto}"></div>
+										
+										<div class="form-row">
+											<div class="form-group col-md-4">
+												<label for="estado">Estado</label>
+												<input type="text" class="form-control" th:field="*{estado}"
+												placeholder="Ej: habilitado / bloqueado" required />
+											</div>
+										<div th:if="${#fields.hasErrors('estado')" th:errors="*{estado}"></div>
+										</div>
+										</div>
+											
+										</div>
+									</div>
+								</div>
+								
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	
+	</div>
+</body>
+
+
+</html>

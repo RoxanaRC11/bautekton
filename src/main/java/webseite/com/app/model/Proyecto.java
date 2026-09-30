@@ -3,8 +3,6 @@ package webseite.com.app.model;
 import java.sql.Date;
 import java.util.List;
 
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,178 +10,166 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="proyecto")
+@Table(name = "proyecto")
 public class Proyecto {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id_proyecto;
-	//private Integer id_cliente;
-	private Date fechaInicio;
-	private Date fechaFin;
-	private String Descripcion;
-	private String estado;
-	private String imagenprincipal;
-	private String tipoProyecto;
-	private String titulo;
-	private String ubicacion;
-	
-	@OneToOne
-	@JoinColumn(name ="id_orden")
-	private Orden orden;
-	
-	/*Un proyecto puede tener varias ordenes (OnetoMany). El mappedBy apunta al campo "proyecto" en la clase Orden
-	@OneToMany(mappedBy = "proyecto") 
-	private List<Orden> orden;*/
-	
-	@OneToMany(mappedBy = "proyecto")
-	private List<Detalleorden> detalleorden;
-	
-	@ManyToOne
-	@JoinColumn(name="id_cliente")
-	private Clientes cliente;
-	
-	@OneToMany(mappedBy = "proyecto") //un proyecto puede tener muchas galerias
-	private List<Galeria> galeria; 
-	
-	public Proyecto() {
-		
-	}
 
-	public Proyecto(Integer id_proyecto, Date fechaInicio, Date fechaFin, String descripcion, String estado,
-			String imagenprincipal, String tipoProyecto, String titulo, String ubicacion, Orden orden,
-			List<Detalleorden> detalleorden, Clientes cliente, List<Galeria> galeria) {
-		super();
-		this.id_proyecto = id_proyecto;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
-		Descripcion = descripcion;
-		this.estado = estado;
-		this.imagenprincipal = imagenprincipal;
-		this.tipoProyecto = tipoProyecto;
-		this.titulo = titulo;
-		this.ubicacion = ubicacion;
-		this.orden = orden;
-		this.detalleorden = detalleorden;
-		this.cliente = cliente;
-		this.galeria = galeria;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_proyecto;
 
-	public Integer getId_proyecto() {
-		return id_proyecto;
-	}
+    private Date fechaInicio;
+    private Date fechaFin;
+    private String descripcion;
+    private String estado;
+    private String imagenprincipal;
+    private String tipoProyecto;
+    private String titulo;
+    private String ubicacion;
+    private int _condicion;
 
-	public void setId_proyecto(Integer id_proyecto) {
-		this.id_proyecto = id_proyecto;
-	}
+    @OneToMany(mappedBy = "proyecto")
+    private List<Orden> ordenes;
 
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Clientes cliente;
 
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
+    @OneToMany(mappedBy = "proyecto")
+    private List<Galeria> galerias;
 
-	public Date getFechaFin() {
-		return fechaFin;
-	}
+    public Proyecto() {
+    }
 
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
-	}
+    public Proyecto(Integer id_proyecto, Date fechaInicio, Date fechaFin, String descripcion, String estado,
+            String imagenprincipal, String tipoProyecto, String titulo, String ubicacion, int _condicion,
+            List<Orden> ordenes, Clientes cliente, List<Galeria> galerias) {
+        this.id_proyecto = id_proyecto;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.descripcion = descripcion;
+        this.estado = estado;
+        this.imagenprincipal = imagenprincipal;
+        this.tipoProyecto = tipoProyecto;
+        this.titulo = titulo;
+        this.ubicacion = ubicacion;
+        this._condicion = _condicion;
+        this.ordenes = ordenes;
+        this.cliente = cliente;
+        this.galerias = galerias;
+    }
 
-	public String getDescripcion() {
-		return Descripcion;
-	}
+    public Integer getId_proyecto() {
+        return id_proyecto;
+    }
 
-	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
-	}
+    public void setId_proyecto(Integer id_proyecto) {
+        this.id_proyecto = id_proyecto;
+    }
 
-	public String getEstado() {
-		return estado;
-	}
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
 
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
 
-	public String getImagenprincipal() {
-		return imagenprincipal;
-	}
+    public Date getFechaFin() {
+        return fechaFin;
+    }
 
-	public void setImagenprincipal(String imagenprincipal) {
-		this.imagenprincipal = imagenprincipal;
-	}
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
 
-	public String getTipoProyecto() {
-		return tipoProyecto;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public void setTipoProyecto(String tipoProyecto) {
-		this.tipoProyecto = tipoProyecto;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public String getTitulo() {
-		return titulo;
-	}
+    public String getEstado() {
+        return estado;
+    }
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
-	public String getUbicacion() {
-		return ubicacion;
-	}
+    public String getImagenprincipal() {
+        return imagenprincipal;
+    }
 
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion = ubicacion;
-	}
+    public void setImagenprincipal(String imagenprincipal) {
+        this.imagenprincipal = imagenprincipal;
+    }
 
-	public Orden getOrden() {
-		return orden;
-	}
+    public String getTipoProyecto() {
+        return tipoProyecto;
+    }
 
-	public void setOrden(Orden orden) {
-		this.orden = orden;
-	}
+    public void setTipoProyecto(String tipoProyecto) {
+        this.tipoProyecto = tipoProyecto;
+    }
 
-	public List<Detalleorden> getDetalleorden() {
-		return detalleorden;
-	}
+    public String getTitulo() {
+        return titulo;
+    }
 
-	public void setDetalleorden(List<Detalleorden> detalleorden) {
-		this.detalleorden = detalleorden;
-	}
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
-	public Clientes getCliente() {
-		return cliente;
-	}
+    public String getUbicacion() {
+        return ubicacion;
+    }
 
-	public void setCliente(Clientes cliente) {
-		this.cliente = cliente;
-	}
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
 
-	public List<Galeria> getGaleria() {
-		return galeria;
-	}
+    public int get_condicion() {
+        return _condicion;
+    }
 
-	public void setGaleria(List<Galeria> galeria) {
-		this.galeria = galeria;
-	}
+    public void set_condicion(int _condicion) {
+        this._condicion = _condicion;
+    }
 
-	@Override
-	public String toString() {
-		return "Proyecto [id_proyecto=" + id_proyecto + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin
-				+ ", Descripcion=" + Descripcion + ", estado=" + estado + ", imagenprincipal=" + imagenprincipal
-				+ ", tipoProyecto=" + tipoProyecto + ", titulo=" + titulo + ", ubicacion=" + ubicacion + ", orden="
-				+ orden + ", detalleorden=" + detalleorden + ", cliente=" + cliente + ", galeria=" + galeria + "]";
-	}
+    public List<Orden> getOrdenes() {
+        return ordenes;
+    }
 
-	
-	
+    public void setOrdenes(List<Orden> ordenes) {
+        this.ordenes = ordenes;
+    }
+
+    public Clientes getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Clientes cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<Galeria> getGalerias() {
+        return galerias;
+    }
+
+    public void setGalerias(List<Galeria> galerias) {
+        this.galerias = galerias;
+    }
+
+    @Override
+    public String toString() {
+        return "Proyecto [id_proyecto=" + id_proyecto + ", fechaInicio=" + fechaInicio
+                + ", fechaFin=" + fechaFin + ", descripcion=" + descripcion + ", estado=" + estado
+                + ", imagenprincipal=" + imagenprincipal + ", tipoProyecto=" + tipoProyecto + ", titulo=" + titulo
+                + ", ubicacion=" + ubicacion + ", _condicion=" + _condicion + "]";
+    }
 }

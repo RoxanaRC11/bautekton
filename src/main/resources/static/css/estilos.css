@@ -1,0 +1,19 @@
+/*====================================================
+                LOGIN OR REGISTER
+======================================================*/
+
+#login-modal .modal-dialogo {
+  margin-top: 170px;
+  width: 500px;
+}
+.modal-content {
+  /*background-color: #ececec;*/
+  border: 3px solid #2196f3;
+  border-radius: 0px;
+  outline: 0;
+}
+.modal-header {
+  min-height: 16.43px;
+  padding: 15px 15px 15px 15px;
+  border-bottom: 0px;
+}

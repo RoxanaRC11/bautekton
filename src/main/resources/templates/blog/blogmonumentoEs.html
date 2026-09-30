@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>BauteKton - Blog Monumento arquitectónico en España</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link th:href="@{/img/slider/logo.png}" rel="icon">
+    <link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link th:href="@{/lib/nivo-slider/css/nivo-slider.css}" rel="stylesheet">
+    <link th:href="@{/lib/owlcarousel/owl.carousel.css}" rel="stylesheet">
+    <link th:href="@{/lib/owlcarousel/owl.transitions.css}" rel="stylesheet">
+    <link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/venobox/venobox.css}" rel="stylesheet">
+
+    <!-- Nivo Slider Theme -->
+    <link th:href="@{/css/nivo-slider-theme.css}" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+
+    <!-- Responsive Stylesheet File -->
+    <link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+    <style>
+        /* ============================================ */
+        /* ESTILOS MEJORADOS                            */
+        /* ============================================ */
+
+        .blog-title {
+            color: #007bff;
+            font-size: 26px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+            margin: 25px auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        .blog-image:hover {
+            transform: scale(1.02);
+        }
+
+        .blog-image-small {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            display: block;
+            margin: 15px 0 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+            float: right;
+        }
+        @media (max-width: 768px) {
+            .blog-image-small {
+                float: none;
+                margin: 20px auto;
+                max-width: 100%;
+            }
+        }
+
+        .blog-blockquote {
+            margin: 25px 0;
+            padding: 20px 30px;
+            background: #f0f7ff;
+            border-left: 5px solid #007bff;
+            border-radius: 8px;
+            font-style: italic;
+            font-size: 17px;
+            color: #333;
+        }
+        .blog-blockquote i {
+            color: #007bff;
+        }
+
+        .blog-subtitulo {
+            text-align: center;
+            color: #555;
+            margin: 1rem 0;
+        }
+
+        .clearfix {
+            clear: both;
+            display: block;
+        }
+
+        .btn-comentar {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+            letter-spacing: 0.5px;
+        }
+        .btn-comentar:hover {
+            background: linear-gradient(135deg, #0056b3, #003d80);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 123, 255, 0.5);
+        }
+        .btn-comentar i {
+            margin-right: 8px;
+        }
+
+        .comment-respond textarea,
+        .comment-respond input[type="text"],
+        .comment-respond input[type="email"] {
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            padding: 10px 15px;
+            transition: border-color 0.3s ease;
+            width: 100%;
+        }
+        .comment-respond textarea:focus,
+        .comment-respond input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+        .comment-respond textarea {
+            resize: vertical;
+        }
+
+        .comments-content-wrap p {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #007bff;
+            margin-top: 10px;
+        }
+        .post-time {
+            font-size: 12px;
+            color: #888;
+            margin-left: 10px;
+        }
+        .avatar-img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 20px;
+            }
+            .btn-comentar {
+                padding: 10px 25px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+
+    <!-- ============================================ -->
+    <!-- HEADER                                       -->
+    <!-- ============================================ -->
+    <header>
+        <div id="sticker" class="header-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <nav class="navbar navbar-default">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand page-scroll sticky-logo" th:href="@{/principal}">
+                                    <h1><span>Baute</span>Kton</h1>
+                                </a>
+                            </div>
+                            <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active"><a class="page-scroll" th:href="@{/principal}">Página Principal</a></li>
+                                    <li><a class="page-scroll" th:href="@{/principal}">Sobre nosotros</a></li>
+                                    <li><a class="page-scroll" th:href="@{/principal}">Servicios</a></li>
+                                    <li><a class="page-scroll" th:href="@{/principal}">Equipo</a></li>
+                                    <li><a class="page-scroll" th:href="@{/principal}">Portafolio</a></li>
+                                    <li><a class="page-scroll" th:href="@{/principal}">Contacto</a></li>
+                                    <li><a class="page-scroll" th:href="@{/principal}">Login</a></li>
+                                    <li><a class="page-scroll" th:href="@{/blog}">Blog</a></li>
+                                    <li><a class="page-scroll" th:href="@{/principal}">Impreso</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- BANNER DEL BLOG                              -->
+    <!-- ============================================ -->
+    <div class="header-bg page-area">
+        <div class="home-overly"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="slider-content text-center">
+                        <div class="header-bottom">
+                            <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
+                                <h1 class="title2"><b>Monumentos arquitectónicos de España</b></h1>
+                            </div>
+                            <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
+                                <h2 class="title3">Página de Blog profesional</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- BLOG CONTENT                                 -->
+    <!-- ============================================ -->
+    <div class="blog-page area-padding">
+        <div class="container">
+            <div class="row">
+
+                <!-- SIDEBAR IZQUIERDA -->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="page-head-blog">
+
+                        <div class="single-blog-page">
+                            <form action="#">
+                                <div class="search-option">
+                                    <input type="text" placeholder="Buscar...">
+                                    <button class="button" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="single-blog-page">
+                            <div class="left-blog">
+                                <h4><b>Último Aporte</b></h4>
+                                <div class="recent-post">
+
+                                    <div class="recent-single-post">
+                                        <div class="post-img">
+                                            <a th:href="@{/blog/carmelitas}">
+                                                <img th:src="@{/img/blog/aufzug5.jpg}" alt="Ascensor Colegio Carmelitas" height="120" width="120">
+                                            </a>
+                                        </div>
+                                        <div class="pst-content">
+                                            <p><a th:href="@{/blog/carmelitas}">Construcción de un Ascensor en el Colegio Carmelitas</a></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="recent-single-post">
+                                        <div class="post-img">
+                                            <a th:href="@{/blog/monumentoEs}">
+                                                <img th:src="@{/img/blog/ciudad_ciencia.jpg}" alt="Monumento arquitectónico español" height="120" width="120">
+                                            </a>
+                                        </div>
+                                        <div class="pst-content">
+                                            <p><a th:href="@{/blog/monumentoEs}">Monumentos arquitectónicos en España</a></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="recent-single-post">
+                                        <div class="post-img">
+                                            <a th:href="@{/blog/colonial}">
+                                                <img th:src="@{/img/blog/balcon.jpeg}" alt="Balcones coloniales en Perú" height="120" width="120">
+                                            </a>
+                                        </div>
+                                        <div class="pst-content">
+                                            <p><a th:href="@{/blog/colonial}">Estilo de Balcones Coloniales</a></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="single-blog-page">
+                            <div class="left-blog">
+                                <h4><b>Artículos por exponer</b></h4>
+                                <ul>
+                                    <!-- <li><a th:href="@{/blog/carmelitas}"><b>Articulos por tratar</b></a></li>-->
+                                    <li><a th:href="@{/blog/monumentoEs}"><b>Arquitectura vanguardista en España</b></a></li>
+                                    <li><a th:href="@{/blog/monumentoEs}"><b>AI en la Arquitectura</b></a></li>
+                                    <li><a th:href="@{/blog/monumentoEs}"><b>Construcción ecológica</b></a></li>
+                                    <li><a th:href="@{/blog/monumentoEs}"><b>Paneles solares</b></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CONTENIDO PRINCIPAL -->
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+
+                            <article class="blog-post-wrapper">
+
+                                <div class="post-information">
+                                    <h4 class="blog-title">Museo de Guggenheim en Bilbao</h4>
+                                </div>
+
+                                <!-- Imagen principal -->
+                                <div class="post-thumbnail">
+                                    <img th:src="@{/img/blog/GH2.jpg}" alt="Museo Guggenheim" class="blog-image">
+                                </div>
+
+                                <div class="post-information">
+
+                                    <div class="entry-meta">
+                                        <span class="author-meta"><i class="fa fa-user"></i> <a href="#">J.L.R</a></span>
+                                        <span><i class="fa fa-clock-o"></i> Abril 2026</span>
+                                        <span><i class="fa fa-tags"></i></span>
+                                        <span><i class="fa fa-comments-o"></i> <a href="#">Comentarios</a></span>
+                                    </div>
+
+                                    <!-- =========================================== -->
+                                    <!-- ✅ ENTRY-CONTENT CORREGIDO                  -->
+                                    <!-- =========================================== -->
+                                    <div class="entry-content">
+
+                                        <p>
+                                            El Museo Guggenheim Bilbao es una obra maestra de la arquitectura del siglo XX,
+                                            diseñada por el arquitecto estadounidense Frank Gehry.
+                                            La construcción de este impresionante Museo se llevó a cabo entre octubre de 1993
+                                            y octubre de 1997, y abrió sus puertas al público en octubre de 1997.
+                                        </p>
+
+                                        <h5><i class="fa fa-ruler-combined"></i> <b>Diseño y Planificación</b></h5>
+
+                                        <p>
+                                            El Museo Guggenheim Bilbao se logró por medio de la colaboración entre las
+                                            administraciones vascas (Gobierno Vasco, Diputación Foral de Bizkaia y
+                                            Ayuntamiento de Bilbao) y la Solomon R. Guggenheim Foundation.
+                                            Para su construcción se creó la sociedad Inmobiliaria Museo de Arte Moderno
+                                            y Contemporáneo de Bilbao, que encargó la obra a un contratista general.
+                                            El arquitecto Frank Gehry fue seleccionado en 1991 mediante un concurso
+                                            restringido en el cual participaron importantes y renombrados arquitectos.
+                                        </p>
+
+                                        <!-- IMAGEN 1 -->
+                                        <img th:src="@{/img/blog/pasaje.jpg}"
+                                             alt="Pasaje del Museo Guggenheim Bilbao"
+                                             class="blog-image">
+
+                                        <p class="blog-subtitulo">
+											<h5><i class="fa fa-hammer"></i> <b>✨ Impacto y Legado</b></h5>
+                                        </p>
+
+                                        <p>
+                                            El Museo Guggenheim Bilbao fue el catalizador de la regeneración urbana
+                                            de la ciudad, al transformar una zona industrial en un destino cultural
+                                            de primer nivel. Su éxito impulsó el turismo y la economía local, y su
+                                            diseño cambió la concepción de los museos: dejaron de ser simples
+                                            contenedores de arte para convertirse en iconos arquitectónicos en sí mismos.
+                                        </p>
+
+                                        <!-- IMAGEN 2 -->
+                                        <img th:src="@{/img/blog/guggenheim.png}"
+                                             alt="Guggenheim delantera"
+                                             class="blog-image-small">
+
+                                        <blockquote class="blog-blockquote">
+                                            <i class="fa fa-quote-left"></i>
+                                            El edificio es un icono del deconstructivismo y destaca por su diseño
+                                            escultórico, que rompe con las formas tradicionales de los museos.
+                                            <i class="fa fa-quote-right"></i>
+                                        </blockquote>
+
+                                        <div class="clearfix"></div>
+
+                                        <h5><i class="fa fa-hammer"></i> <b>✨ Qué resalta de su arquitectura?</b></h5>
+
+                                        <p>
+                                            Formas escultóricas y titanio: su silueta combina volúmenes curvos y
+                                            orgánicos que recuerdan a un barco o una flor metálica, y su exterior
+                                            está recubierto por unas 33.000 planchas de titanio de solo 0,38 mm
+                                            que reflejan la luz y cambian de tono según el clima.
+                                        </p>
+
+                                        <!-- IMAGEN 3 -->
+                                        <img th:src="@{/img/blog/gugge.jpg}"
+                                             alt="Vista del Guggenheim"
+                                             class="blog-image">
+
+                                        <h5><i class="fa fa-leaf"></i> <b>Innovación técnica</b></h5>
+
+                                        <p>
+                                            Para materializar la complejidad matemática de las curvas de Gehry, el
+                                            equipo usó el software de diseño aeroespacial CATIA, que permitió
+                                            traducir sus ideas a la estructura con gran precisión y minimizar el
+                                            desperdicio de material.
+                                        </p>
+
+                                        <!-- IMAGEN 4 -->
+                                        <img th:src="@{/img/blog/GH.jpg}"
+                                             alt="Detalle final del Guggenheim"
+                                             class="blog-image">
+
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                    <!-- ✅ FIN ENTRY-CONTENT CORREGIDO -->
+
+                                </div>
+                            </article>
+							<!-- ✅ BOTÓN VOLVER A LA PÁGINA PRINCIPAL -->
+							<div style="text-align:center; margin: 30px 0;">
+							    <a th:href="@{/principal}" class="btn-comentar">
+							        <i class="fa fa-arrow-left"></i> Volver a la página principal
+							    </a>
+							</div>
+                            <div class="clear"></div>
+
+                            <!-- COMENTARIOS -->
+                            <div class="single-post-comments">
+                                <div class="comments-area">
+                                    <div class="comments-heading">
+                                        <h3>
+                                            <i class="fa fa-comments"></i> Comentarios
+                                            (<span th:text="${listaComentarios != null ? #lists.size(listaComentarios) : 0}">0</span>)
+                                        </h3>
+                                    </div>
+                                    <div class="comments-list">
+                                        <ul>
+
+                                            <li th:each="comentario : ${listaComentarios}">
+                                                <div class="comments-details">
+                                                    <div class="comments-list-img">
+                                                        <img th:src="@{/img/blog/b02.jpg}" alt="avatar" class="avatar-img">
+                                                    </div>
+                                                    <div class="comments-content-wrap">
+                                                        <span>
+                                                            <b style="font-size:16px;"
+                                                               th:text="${comentario.nombre} + ' ' + ${comentario.apellido}">Usuario</b>
+                                                            <span class="post-time">
+                                                                <i class="fa fa-clock-o"></i>
+                                                                <span th:text="${comentario.fechaCreacion}">2026-05-06</span>
+                                                            </span>
+                                                        </span>
+                                                        <p th:text="${comentario.textoComentario}">Texto del comentario</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li th:if="${listaComentarios == null or #lists.isEmpty(listaComentarios)}">
+                                                <div class="comments-details">
+                                                    <div class="comments-content-wrap">
+                                                        <p style="text-align:center; color:#888; font-style:italic; padding:30px 0; font-size:16px;">
+                                                            <i class="fa fa-comment-o" style="font-size:24px; display:block; margin-bottom:10px;"></i>
+                                                            No hay comentarios aún. ¡Sé el primero en comentar!
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="comment-respond">
+                                    <h3 class="comment-reply-title" style="font-weight:600; color:#333;">
+                                        <i class="fa fa-pencil-square-o"></i> Por favor déjenos una respuesta
+                                    </h3>
+                                    <span class="email-notes" style="color:#888; font-size:14px;">
+                                        Su correo electrónico no será publicado. Los campos obligatorios están marcados. *
+                                    </span>
+
+                                    <form th:action="@{/blog/comentario/guardar}" method="post" style="margin-top:20px;">
+
+                                        <input type="hidden" th:if="${_csrf != null}"
+                                               th:name="${_csrf.parameterName}"
+                                               th:value="${_csrf.token}" />
+
+                                        <div class="row">
+
+                                            <input type="hidden" name="redirectRuta" th:value="@{/blog/carmelitas}" />
+
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                <label for="nombre" style="font-weight:600;">Nombre *</label>
+                                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese su nombre" required />
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                <label for="apellido" style="font-weight:600;">Apellido *</label>
+                                                <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Ingrese su apellido" required />
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                <label for="email" style="font-weight:600;">Correo electrónico</label>
+                                                <input type="email" id="email" name="email" class="form-control" placeholder="correo@ejemplo.com" />
+                                            </div>
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12 comment-form-comment" style="margin-top:15px;">
+                                                <label for="textoComentario" style="font-weight:600;">Comentario *</label>
+                                                <textarea id="textoComentario" name="textoComentario" cols="30" rows="5" class="form-control" placeholder="Escriba su comentario aquí..." required></textarea>
+
+                                                <div th:if="${param.success}" class="alert alert-success mt-3" style="border-radius:8px;">
+                                                    <i class="fa fa-check-circle"></i> ¡Comentario publicado exitosamente!
+                                                </div>
+
+                                                <div th:if="${param.error}" class="alert alert-danger mt-3" style="border-radius:8px;">
+                                                    <i class="fa fa-exclamation-circle"></i> Error al publicar el comentario. Intente nuevamente.
+                                                </div>
+
+                                                <div style="text-align:center; margin-top:20px;">
+                                                    <button type="submit" class="btn-comentar">
+                                                        <i class="fa fa-comment"></i> Postear Comentario
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <div class="footer-logo">
+                                    <h2><span>Baute</span>Kton</h2>
+                                </div>
+                                <p>¿Diseñamos su proyecto? Contáctenos. Síganos en nuestras redes sociales:</p>
+                                <div class="footer-icons">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <h4><b>Información</b></h4>
+                                <p>Usted nos puede contactar:</p>
+                                <div class="footer-contacts">
+                                    <p><span>Tel:</span> +123 456 789</p>
+                                    <p><span>Correo:</span> contact@example.com</p>
+                                    <p><span>Horario laboral:</span> 8:00 am - 7:00 pm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <p><strong>Protección de datos</strong></p>
+                                <p>Se encuentra incluida en la página de Política de Privacidad de Datos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-area-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="copyright text-center">
+                            <p><strong>Bautekton</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JAVASCRIPT LIBRARIES -->
+    <script th:src="@{/lib/jquery/jquery.min.js}"></script>
+    <script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/lib/owlcarousel/owl.carousel.min.js}"></script>
+    <script th:src="@{/lib/venobox/venobox.min.js}"></script>
+    <script th:src="@{/lib/knob/jquery.knob.js}"></script>
+    <script th:src="@{/lib/wow/wow.min.js}"></script>
+    <script th:src="@{/lib/parallax/parallax.js}"></script>
+    <script th:src="@{/lib/easing/easing.min.js}"></script>
+    <script th:src="@{/lib/nivo-slider/js/jquery.nivo.slider.js}" type="text/javascript"></script>
+    <script th:src="@{/lib/appear/jquery.appear.js}"></script>
+    <script th:src="@{/lib/isotope/isotope.pkgd.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

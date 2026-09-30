@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${Titulo}">Listado de Clientes</title>
+  <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container" style="padding-top:30px">
+  <div class="clearfix">
+    <h2 class="pull-left" th:text="${Titulo}">Listado de Clientes</h2>
+    <a class="btn btn-primary pull-right" th:href="@{/clientes/nuevo}">Nuevo cliente</a>
+  </div>
+  <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+  <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+  <div th:if="${errorMsg}" class="alert alert-danger" th:text="${errorMsg}"></div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead><tr><th>ID</th><th>Cliente</th><th>DNI</th><th>Email</th><th>Teléfono</th><th>Tipo</th><th>Estado</th><th>Acciones</th></tr></thead>
+      <tbody>
+      <tr th:each="c : ${listado}">
+        <td th:text="${c.id_cliente}"></td>
+        <td th:text="${c.nombres + ' ' + c.apellidos}"></td>
+        <td th:text="${c.DNI}"></td>
+        <td th:text="${c.email}"></td>
+        <td th:text="${c.telefono}"></td>
+        <td th:text="${c.tipo_cliente}"></td>
+        <td th:text="${c.estado}"></td>
+        <td>
+          <a class="btn btn-xs btn-info" th:href="@{/clientes/ver/{id}(id=${c.id_cliente})}">Ver</a>
+          <a class="btn btn-xs btn-warning" th:href="@{/clientes/editar/{id}(id=${c.id_cliente})}">Editar</a>
+          <form th:action="@{/clientes/eliminar/{id}(id=${c.id_cliente})}" method="post" style="display:inline">
+            <button class="btn btn-xs btn-danger" type="submit" onclick="return confirm('¿Eliminar cliente?')">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      <tr th:if="${#lists.isEmpty(listado)}"><td colspan="8" class="text-center">No hay clientes registrados.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <a class="btn btn-default" th:href="@{/proyecto/listar}">Volver</a>
+</div>
+</body>
+</html>

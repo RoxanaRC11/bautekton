@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -15,6 +16,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="orden")
 public class Orden {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id_orden;
@@ -24,14 +26,19 @@ public class Orden {
 	private Date fechaInicio;
 	private Date fechaEntrega;
 	private String tipoOrden;
+	private int _condicion;
 	
 	/*Sie se asume que una Orden siempre pertenece a un Proyecto y un Proyecto tiene una Orden, esto es OnetoOne. Pero si el Proyecto es el propietario: Orden debe ser al lado 
-	 inverso, no propietario. En el codigo: @OnetoOne(mappedBy ="orden") private Proyecto proyecto; (Esto esta correcto en el codigo, asumiendo que el campo en Proyexto se llama orden)*/
+	 inverso, no propietario. En el codigo: @OnetoOne(mappedBy ="orden") private Proyecto proyecto; (Esto esta correcto en el codigo, asumiendo que el campo en Proyecto se llama orden)*/
 	
+	// Relacion 1: Con Proyecto (Muchos a Uno)
+	// Aqui no debe llevar mappedBy porque "orden" tiene la FK "id_proyecto"
+	@ManyToOne
 	@JoinColumn(name = "id_proyecto")
-	@OneToOne(mappedBy = "orden")
 	private Proyecto proyecto;
 	
+	// Relacion 2: Con Detalleorden  (Uno a Muchos)
+	// Esto esta Bien: Aqui si va mappedBy porque Detalleorden es quien tiene la FK hacia Orden
 	@OneToMany(mappedBy = "orden")// significa que en este campo una orden puede tener varias detalle de orden
 	private List<Detalleorden> detallesorden;
 	
@@ -42,7 +49,7 @@ public class Orden {
 
 
 	public Orden(Integer id_orden, String descripcion, String estado, Date fechaInicio, Date fechaEntrega,
-			String tipoOrden, Proyecto proyecto, List<Detalleorden> detallesorden) {
+			String tipoOrden, int _condicion, Proyecto proyecto, List<Detalleorden> detallesorden) {
 		super();
 		this.id_orden = id_orden;
 		this.descripcion = descripcion;
@@ -50,6 +57,7 @@ public class Orden {
 		this.fechaInicio = fechaInicio;
 		this.fechaEntrega = fechaEntrega;
 		this.tipoOrden = tipoOrden;
+		this._condicion = _condicion;
 		this.proyecto = proyecto;
 		this.detallesorden = detallesorden;
 	}
@@ -115,6 +123,16 @@ public class Orden {
 	}
 
 
+	public int get_condicion() {
+		return _condicion;
+	}
+
+
+	public void set_condicion(int _condicion) {
+		this._condicion = _condicion;
+	}
+
+
 	public Proyecto getProyecto() {
 		return proyecto;
 	}
@@ -138,9 +156,8 @@ public class Orden {
 	@Override
 	public String toString() {
 		return "Orden [id_orden=" + id_orden + ", descripcion=" + descripcion + ", estado=" + estado + ", fechaInicio="
-				+ fechaInicio + ", fechaEntrega=" + fechaEntrega + ", tipoOrden=" + tipoOrden + ", proyecto=" + proyecto
-				+ ", detallesorden=" + detallesorden + "]";
+				+ fechaInicio + ", fechaEntrega=" + fechaEntrega + ", tipoOrden=" + tipoOrden + ", _condicion="
+				+ _condicion + ", proyecto=" + proyecto + ", detallesorden=" + detallesorden + "]";
 	}
-
 	
 }

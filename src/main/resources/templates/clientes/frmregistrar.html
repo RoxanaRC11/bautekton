@@ -1,0 +1,655 @@
+<doctype html>
+	<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Bautekton Registrar</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="" name="keywords">
+		<meta content="" name="description">
+
+		<!-- Favicons -->
+		<link href="../img/slider/logo.png" rel="icon">
+		<link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+
+		<!-- Google Fonts -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
+			rel="stylesheet">
+
+		<!-- Bootstrap CSS File -->
+		<link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Libraries CSS Files -->
+		<link href="../lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
+		<link href="../lib/owlcarousel/owl.carousel.css" rel="stylesheet">
+		<link href="../lib/owlcarousel/owl.transitions.css" rel="stylesheet">
+		<link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="../lib/animate/animate.min.css" rel="stylesheet">
+		<link href="../lib/venobox/venobox.css" rel="stylesheet">
+
+		<!-- Nivo Slider Theme -->
+		<link href="../css/nivo-slider-theme.css" rel="stylesheet">
+
+		<!-- Main Stylesheet File -->
+		<link href="../css/style.css" rel="stylesheet">
+
+		<!-- Responsive Stylesheet File -->
+		<link href="../css/responsive.css" rel="stylesheet">
+
+		<!-- =======================================================
+    Theme Name: eBusiness
+    Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+	</head>
+
+	<body data-spy="scroll" data-target="#navbar-example">
+
+		<div id="preloader"></div>
+		<!-- header-inicio -->
+		<header>
+			<!-- header-area start -->
+			<div id="sticker" class="header-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+
+							<!-- Navigation -->
+							<nav class="navbar navbar-default">
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+										data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+									<!-- Brand/Marke -->
+									<a class="navbar-brand page-scroll sticky-logo" href="index.html">
+										<h1><span>BauTe</span>kton</h1>
+										<!-- Uncomment below if you prefer to use an image logo. Logo verwenden -->
+										<!-- <img src="img/logo.png" alt="" title=""> -->
+									</a>
+								</div>
+								<!-- Collect the nav links, forms, and other content for toggling -->
+								<div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
+									id="navbar-example">
+									<ul class="nav navbar-nav navbar-right">
+										<li class="active">
+											<a class="page-scroll" href="#home">Pagina Principal</a>
+										</li>
+										<li>
+											<a class="page-scroll" href="#about">Sobre nosotros</a>
+										</li>
+										<li>
+											<a class="page-scroll" href="#services">Servicios</a>
+										</li>
+										<li>
+											<a class="page-scroll" href="#team">Equipo</a>
+										</li>
+										<li>
+											<a class="page-scroll" href="#portfolio">Portafolio</a>
+										</li>
+										<li>
+											<a class="page-scroll" href="#contact">Contacto</a>
+										</li>
+										<li>
+											<a href="#" class="log-top" data-toggle="modal"
+												data-target="#login-modal">Login</a>
+										</li>>
+										<li>
+											<a class="page-scroll" href="#contact">Protección de Datos</a>
+										</li>
+									</ul>
+								</div>
+								<!-- navbar-collapse. Barra de navegacion -->
+							</nav>
+							<!-- END: Navigation -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- header-area end -->
+		</header>
+		<!-- header end -->
+
+		<!--====================================================
+                    LOGIN OR REGISTER
+======================================================-->
+		<section id="login">
+			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+				aria-hidden="true" style="display: none;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" align="center"> <!-- ausrichten -->
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span class="fa fa-times" aria-hidden="true"></span>
+							</button>
+						</div>
+						<div id="div-forms">
+							<form id="login-form">
+								<h3 class="text-center">Acceso</h3>
+								<div class="modal-body">
+									<label for="username">Nombre del Cliente</label>
+									<input id="login_username" class="form-control" type="text"
+										placeholder="Fügen Sie Ihre Benutzername " required>
+									<label for="username">Contraseña</label>
+									<input id="login_password" class="form-control" type="password"
+										placeholder="Fügen Sie Ihr Password" required>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox"> Recuerde
+										</label>
+									</div>
+								</div>
+								<div class="modal-footer text-center">
+									<div>
+										<button type="submit" class="btn btn-general btn-white">Login</button>
+									</div>
+									<div>
+										<button id="login_register_btn" type="button"
+											class="btn btn-link">Registrarse</button>
+									</div>
+								</div>
+							</form>
+							<form id="register-form" style="display:none;">
+								<h3 class="text-center">Registrarse</h3>
+								<div class="modal-body">
+									<label for="username">Nombre de usuario</label>
+									<input id="register_username" class="form-control" type="text"
+										placeholder="Enter username" required>
+									<label for="register_email">E-mailId</label>
+									<input id="register_email" class="form-control" type="text"
+										placeholder="Enter eMail" required>
+									<label for="register_password">Contraseña</label>
+									<input id="register_password" class="form-control" type="password"
+										placeholder="Password" required>
+								</div>
+								<div class="modal-footer">
+									<div>
+										<button type="submit" class="btn btn-general btn-white">Registrarse</button>
+									</div>
+									<div>
+										<button id="register_login_btn" type="button" class="btn btn-link">LogIn</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Start Slider Area. Inicio de las vias positivas o pantallas. Beginn positiver Pfade oder Bildschirme -->
+		<div id="home" class="slider-area">
+			<div class="bend niceties preview-2">
+				<div id="ensign-nivoslider" class="slides">
+					<img src="../img/slider/imagen1.jpeg" alt="" title="#slider-direction-1" />
+					<img src="../img/slider/imagen01.jpeg" alt="" title="#slider-direction-2" />
+					<img src="../img/slider/imagen9.jpeg" alt="" title="#slider-direction-3" />
+					<img src="../img/slider/imagen10.jpeg" alt="" title="#slider-direction-4" />
+				</div>
+
+				<!-- Bildschirm 1 / patalla 1 -->
+				<div id="slider-direction-1" class="slider-direction slider-one">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="slider-content">
+									<!-- Schicht 1 . layer 1 -->
+									<div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s"
+										data-wow-delay=".2s">
+										<br>
+										<h2 class="title1">Bienvenidos a Bautekton</h2>
+									</div>
+									<!-- Schicht 2 . layer 2 -->
+									<div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+										<h1 class="title2">Nuestra Misión: Materializar su visión en realidades</h1>
+									</div>
+									<!-- Schicht 3 . layer 3 -->
+									<div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s"
+										data-wow-delay=".2s">
+										<br>
+										<a class="ready-btn right-btn page-scroll" href="#services">Nuestros
+											Servicios</a>
+										<a class="ready-btn page-scroll" href="#about">más Información</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Bildschirm 2 . Patalla 2 -->
+				<div id="slider-direction-2" class="slider-direction slider-two">
+					<div class="container"> <!-- recipiente-->
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="slider-content text-center">
+									<!-- Schicht 1 . layer 1 -->
+									<div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s"
+										data-wow-delay=".2s">
+										<h2 class="title1">Transformamos conceptos en realidades funcionales y estéticas
+										</h2>
+									</div>
+									<!-- Schicht 2 . layer 2 -->
+									<div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+										<h1 class="title2">Vivienda y diseño arquitectónico</h1>
+									</div>
+									<!-- Schicht 3 . layer 3 -->
+									<div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s"
+										data-wow-delay=".2s">
+										<a class="ready-btn right-btn page-scroll" href="#services">Nuestros
+											servicios</a>
+										<a class="ready-btn page-scroll" href="#about">más Información</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Bildschirm 3 . patalla 3 -->
+				<div id="slider-direction-3" class="slider-direction slider-two">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="slider-content">
+									<!-- Schicht 1 . layer 1 -->
+									<div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s"
+										data-wow-delay=".2s">
+										<h2 class="title1">En cada construcción: la mejor fusión de arte y tecnología
+										</h2>
+									</div>
+									<!-- Schicht 2 . layer 2 -->
+									<div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+										<h1 class="title2">Arquitectura comercial</h1>
+									</div>
+									<!-- Schicht 3 . layer 3 -->
+									<div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s"
+										data-wow-delay=".2s">
+										<a class="ready-btn right-btn page-scroll" href="#services">Nuestros
+											servicios</a>
+										<a class="ready-btn page-scroll" href="#about">más Información </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Bildschirm 4 . patalla 4 -->
+				<div id="slider-direction-4" class="slider-direction slider-two">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="slider-content">
+									<!-- Schicht 1 . layer 1 -->
+									<div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s"
+										data-wow-delay=".2s">
+										<h2 class="title1">Somos su mejor opción para proyectos arquitectónicos o institucionales </h2>
+									</div>
+									<!-- Schicht 2 . layer 2 -->
+									<div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+										<h1 class="title2">Planificación personalizada</h1>
+									</div>
+									<!-- Schicht 3 . layer 3 -->
+									<div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s"
+										data-wow-delay=".2s">
+										<a class="ready-btn right-btn page-scroll" href="#services">Nuestros
+											Servicios</a>
+										<a class="ready-btn page-scroll" href="#about">más Información</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Slider Area . Area final del Control deslizante-->
+
+		<!-- Start About area . Beginn des Bereichs Über uns -->
+		<div id="about" class="about-area area-padding">
+			<div class="container">
+				<!-- Die Zeile beginnt hier mit <div class="row"> und endet mit </div> . La fila empieza aqui con el <div class="row"> y termina con el </div>-->
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="section-headline text-center">
+							<h2>Formulario de registro del Cliente</h2>
+						</div>
+					</div>
+				</div>
+				<!-- Zeile für das erste Inhaltsbild . Fila para la primera imagen de contenido-->
+				<div class="row">
+					<form id="clientes-form" class="form" action="/clientes/guardar" method="post">
+						<input type="hidden" id="id_cliente" name="id_cliente">
+
+												        <div class="row">
+												          <div class="col-md-6">
+												            <div class="form-group">
+												              <label for="nombres">Nombres <span class="text-danger">*</span></label>
+												              <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Ingrese nombres"
+												                     maxlength="100" required>
+												            </div>
+												          </div>
+
+												          <div class="col-md-6">
+												            <div class="form-group">
+												              <label for="apellidos">Apellidos <span class="text-danger">*</span></label>
+												              <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese apellidos"
+												                     maxlength="100" required>
+												            </div>
+												          </div>
+												        </div>
+
+												        <div class="row">
+												          <div class="col-md-4">
+												            <div class="form-group">
+												              <label for="DNI">DNI <span class="text-danger">*</span></label>
+												              <input type="text" class="form-control" id="DNI" name="DNI" placeholder="8 dígitos"
+												                     pattern="\\d{8}" maxlength="8" required>
+												              <p class="help-block">Solo números, 8 dígitos.</p>
+												            </div>
+												          </div>
+
+												          <div class="col-md-4">
+												            <div class="form-group">
+												              <label for="telefono">Teléfono</label>
+												              <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ej. 999888777"
+												                     pattern="\\d{6,15}" maxlength="15">
+												              <p class="help-block">Solo números, 6 a 15 dígitos.</p>
+												            </div>
+												          </div>
+
+												          <div class="col-md-4">
+												            <div class="form-group">
+												              <label for="email">Email</label>
+												              <input type="email" class="form-control" id="email" name="email" placeholder="correo@dominio.com"
+												                     maxlength="120">
+												            </div>
+												          </div>
+												        </div>
+
+												        <div class="form-group">
+												          <label for="direccion">Dirección</label>
+												          <textarea class="form-control" id="direccion" name="direccion" rows="2" maxlength="250"
+												                    placeholder="Calle/Avenida, número, referencia"></textarea>
+												        </div>
+
+												        <div class="row">
+												          <div class="col-md-6">
+												            <div class="form-group">
+												              <label for="tipo_cliente">Tipo de cliente <span class="text-danger">*</span></label>
+												              <select class="form-control" id="tipo_cliente" name="tipo_cliente" required>
+												                <option value="" disabled selected>Seleccione...</option>
+												                <option value="NATURAL">Natural</option>
+												                <option value="JURIDICO">Jurídico</option>
+												                <option value="VIP">VIP</option>
+												                <option value="PROVEEDOR">Proveedor</option>
+												              </select>
+												            </div>
+												          </div>
+
+												          <div class="col-md-6">
+												            <div class="form-group">
+												              <label for="estado">Estado <span class="text-danger">*</span></label>
+												              <select class="form-control" id="estado" name="estado" required>
+												                <option value="" disabled selected>Seleccione...</option>
+												                <option value="ACTIVO">Activo</option>
+												                <option value="INACTIVO">Inactivo</option>
+												              </select>
+												            </div>
+												          </div>
+												        </div>
+
+												        <hr>
+
+												        <div class="text-right">
+												          <button type="reset" class="btn btn-default">
+												            <i class="fa fa-eraser"></i> Limpiar
+												          </button>
+												          <button type="submit" class="btn btn-primary">
+												            <i class="fa fa-save"></i> Guardar
+												          </button>
+												        </div>
+					</form>
+				</div>
+				<br>
+
+			</div>
+		</div>
+		<!-- Ende des Bereichs Über uns . End About area -->
+
+		<!-- Start contact Area -->
+		<div id="contact" class="contact-area">
+			<div class="contact-inner area-padding">
+				<div class="contact-overly"></div>
+				<div class="container ">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="section-headline text-center">
+								<h2>Contáctenos</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<!-- Start contact icon column -->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="contact-icon text-center">
+								<div class="single-icon">
+									<i class="fa fa-mobile"></i>
+									<p>
+										Telefono.: +1 5589 55488 55<br>
+										<span>Lunes a Viernes (8:00 am - 7:30 pm)</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- Start contact icon column -->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="contact-icon text-center">
+								<div class="single-icon">
+									<i class="fa fa-envelope-o"></i>
+									<p>
+										Email: info@bautekton.com<br>
+										<span>Web: www.bautekton.com</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- Start contact icon column -->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="contact-icon text-center">
+								<div class="single-icon">
+									<i class="fa fa-map-marker"></i>
+									<p>
+										Ubicación: Teofilo Castillo 419<br>
+										<span>Lima 13, Peru</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<!-- Start Google Map -->
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<!-- Start Map -->
+							<div class="mapouter">
+								<div class="gmap_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d25969.948286143834!2d-77.0285979700213!3d-12.071810718030367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sTeofilo%20Castillo%20419%20Urbanizacion%20Apolo%20lima%2013%20Peru!5e1!3m2!1sde!2sde!4v1769975111421!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><a
+										href="https://www.analarmclock.com"></a><br><a
+										href="https://www.onclock.net"></a><br>
+									<style>
+										.mapouter {
+											position: relative;
+											text-align: right;
+											height: 350px;
+											width: 500px;
+										}
+									</style><a href="https://www.ongooglemaps.com">embedding maps in
+										website</a>
+									<style>
+										.gmap_canvas {
+											overflow: hidden;
+											background: none !important;
+											height: 350px;
+											width: 500px;
+										}
+									</style>
+								</div>
+							</div>
+							<!-- End Map -->
+						</div>
+						<!-- End Google Map -->
+
+						<!-- Start  contact -->
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<div class="form contact-form">
+								<div id="sendmessage">Muchas Gracias! su mensaje ha sido enviado. 
+								</div>
+								<div id="errormessage"></div>
+								<form action="" method="post" role="form" class="contactForm">
+									<div class="form-group">
+										<input type="text" name="name" class="form-control" id="name"
+											placeholder="Ihr Vorname und Name" data-rule="minlen:4"
+											data-msg="Please enter at least 4 chars" />
+										<div class="validation"></div>
+									</div>
+									<div class="form-group">
+										<input type="email" class="form-control" name="email" id="email"
+											placeholder="Email" data-rule="email"
+											data-msg="Please enter a valid email" />
+										<div class="validation"></div>
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" name="subject" id="subject"
+											placeholder="Betreff" data-rule="minlen:4"
+											data-msg="Please enter at least 8 chars of subject" />
+										<div class="validation"></div>
+									</div>
+									<div class="form-group">
+										<textarea class="form-control" name="message" rows="5" data-rule="required"
+											data-msg="Bitte teilen Sie uns Ihr Anliegen mit"
+											placeholder="Bitte teilen Sie uns Ihr Anliegen mit"></textarea>
+										<div class="validation"></div>
+									</div>
+									<div class="text-center"><button type="submit">Enviar mensaje</button></div>
+								</form>
+							</div>
+						</div>
+						<!-- End Left contact -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Contact Area -->
+
+		<!-- Start Footer bottom Area -->
+		<footer>
+			<div class="footer-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="footer-content">
+								<div class="footer-head">
+									<div class="footer-logo">
+										<h2><span>Baute</span>kton</h2>
+									</div>
+
+									<p>Usted nos encuentra en las siguientes medios sociales
+									<div class="footer-icons">
+										<ul>
+											<li>
+												<a href="#"><i class="fa fa-facebook"></i></a>
+											</li>
+											<li>
+												<a href="#"><i class="fa fa-linkedin"></i></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end single footer -->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="footer-content">
+								<div class="footer-head">
+									<h4><b>Impreso</b></h4>
+									<p>
+
+									<div class="footer-contacts">
+										<p><span>Gerente:</span> Jose Luis Revilla Cárdenas</p>
+										<p><span>Dirección:</span>Teofilo Castillo 419, Lima 13 Perú</p>
+										<p><span>Tel:</span> +49 (0) 123 456789</p>
+										<p><span>Horario:</span>8:00 am - 7:30 pm</p>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end single footer -->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="footer-content">
+								<div class="footer-head">
+									<h6><br><b>Protección de Datsos</br></b></h6>
+									<p>Escribir el stroll de proteccion
+										Debemos crear un formulario como checkbox para que se ponga la ley Arco peruana y protejer de denuncias la pagina
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="footer-area-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="copyright text-center">
+								<p>
+									<!--&copy; Copyright <strong>architecturaEterna</strong>. Alle Rechte vorbehalten-->
+								</p>
+							</div>
+							<div class="credits">
+								<!--
+                All the links in the footer should remain intact.
+                You can delete the links only if you purchased the pro version.
+                Licensing information: https://bootstrapmade.com/license/
+                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
+              -->
+								<!--Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> 
+              Re-distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a>-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+		<!-- JavaScript Libraries -->
+		<script src="../lib/jquery/jquery.min.js"></script>
+		<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+		<script src="../lib/venobox/venobox.min.js"></script>
+		<script src="../lib/knob/jquery.knob.js"></script>
+		<script src="../lib/wow/wow.min.js"></script>
+		<script src="../lib/parallax/parallax.js"></script>
+		<script src="../lib/easing/easing.min.js"></script>
+		<script src="../lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
+		<script src="../lib/appear/jquery.appear.js"></script>
+		<script src="../lib/isotope/isotope.pkgd.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+
+		<!-- Contact Form JavaScript File -->
+		<script src="contactform/contactform.js"></script>
+
+		<script src="../js/main.js"></script>
+	</body>
+
+	</html>

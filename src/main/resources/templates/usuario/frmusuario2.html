@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<title>Bautekton-Registrar de Usuario</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicons -->
+	<link href="../img/slider/logo.png" rel="icon">
+	<link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
+		rel="stylesheet">
+
+	<!-- Bootstrap CSS File -->
+	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Libraries CSS Files -->
+	<link href="../lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
+	<link href="../lib/owlcarousel/owl.carousel.css" rel="stylesheet">
+	<link href="../lib/owlcarousel/owl.transitions.css" rel="stylesheet">
+	<link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../lib/animate/animate.min.css" rel="stylesheet">
+	<link href="../lib/venobox/venobox.css" rel="stylesheet">
+
+	<!-- Nivo Slider Theme -->
+	<link href="../css/nivo-slider-theme.css" rel="stylesheet">
+
+	<!-- Main Stylesheet File -->
+	<link href="../css/style.css" rel="stylesheet">
+
+	<!-- Responsive Stylesheet File -->
+	<link href="../css/responsive.css" rel="stylesheet">
+
+	<!-- =======================================================
+    Theme Name: eBusiness
+    Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+	<div id="preloader"></div>
+	<header>
+		<!-- header-area start -->
+		<div id="sticker" class="header-area">
+		</div>
+	</header>
+	<!-- header end -->
+	<!-- Start Bottom Header -->
+	<div class="header-bg page-area">
+		<div calss="home-overly"></div>
+		<div class="container">
+		</div>
+	</div>
+	<!-- END Header -->
+	<div class="blog-page area-padding">
+		<div class="container">
+			<div class="row">
+				<div class="colg-lg-4 colg-md-4 col-sm col-xs-12">
+					<div class="page-head-blog">
+						<div class="single-blo-page">
+							<!-- search option start -->
+							<form action="#">
+								<div class="search-option">
+									<input type="text" placeholder="Buscar..">
+									<button class="button" type="submit">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</form>
+							<!-- search option end -->
+						</div>
+						<div class="single-blog-page">
+							<!-- recent start -->
+							<h4>Última Contribución</h4>
+							<div class="recent-post">
+								<!-- start single post -->
+								<div class="post-img">
+									<a href="#">
+										<img src="../img/blog/aufzug5.jpg" alt="">
+									</a>
+								</div>
+								<div class="pst-content">
+									<p><a href="#"> Construcción de un Ascensor en el Colegio Carmelitas</a></p>
+								</div>
+							</div>
+							<!-- End single post -->
+							<!-- start single post -->
+							<div class="recent-single-post">
+								<div class="post-img">
+									<a href="#">
+										<img src="../img/blog/ciudad_ciencia.jpg" alt="">
+									</a>
+								</div>
+								<div class="pst-content">
+									<p><a href="#">Tecnologia y Diseño en la arquiectura Española</a></p>
+								</div>
+							</div>
+							<!-- End single post -->
+							<!-- start single post -->
+							<div class="recent-single-post">
+								<div class="post-img">
+									<a href="#">
+										<img src="../img/blog/KI.webp" alt="">
+									</a>
+								</div>
+								<div class="pst-content">
+									<p><a href="#">Integracion de la AI en la Industria de la Construcción</a></p>
+								</div>
+							</div>
+							<!-- End single post -->
+							<!-- start single post -->
+							<div class="recent-single-post">
+								<div class="post-img">
+									<a href="#">
+										<img src="../img/blog/MediaTC.jpg" alt="">
+									</a>
+								</div>
+								<div class="pst-content">
+									<p><a href="#">Los edificios más sostenibles de España sostenibles</a></p>
+								</div>
+							</div>
+							<!--recent end-->
+						</div>
+					</div>
+					<!-- recent end -->
+				</div>
+				<div class="single-blog-page">
+					<div class="left-tags blog-tags">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End left sidebar -->
+		<!-- Start single blog -->
+		<div class="col-md-8 col-sm-8 col-xs-12">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<!-- single-blog start -->
+					<article class="blog-post-wrapper"></article>
+					<div class="clear"></div>
+					<div class="single-post-comments">
+						<div class="comment-respond">
+							<h3 class="comment-reply-title"><b>Registrar al Usuario</b></h3>
+							<h3 th:text="${servicioInsertar}"></h3>
+							<h3 th:text="${titulo}"></h3>
+							<span class="email-notes">Por favor introduzca sus Datos Completos</span>
+							<form action="#">
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<p>Codigo del Usuario</p>
+										<input type="text" th:value="${miusuario.getId_usuario()}" />
+										<!--aqui tengo problemas con el getter ya que no aparece en el controller-->
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<p>Nombre</p>
+										<input type="text" th:value="${miusuario.getNombre()}" />
+										<!--aqui tengo problemas con el getter ya que no aparece en el controller-->
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<p>Contraseña</p>
+										<input type="text" th:value="${miusuario.getContrasena()}" />
+										<!--aqui ver como resolver-->
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<p>Email</p>
+										<input type="text" th:value="${miusuario.getContrasena()}" />
+										<!--aqui ver como resolver-->
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<p>Fecha de Registro</p>
+										<input type="text" th:value="${miusuario.getfechaRegistro()}" />
+										<!--aqui ver como resolver-->
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<p>Fecha de Actualizacion</p>
+										<input type="text" th:value="${miusuario.getfechaActualizacion()}" />
+										<!--aqui ver como resolver-->
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<p>Estado del Usuario</p>
+										<input type="text" th:value="${miusuario.getEstado()}" />
+										<!--aqui ver como resolver-->
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<p>Tipo de Cliente</p>
+										<input type="text" th:value="${miusuario.getCliente()}" />
+										<!--aqui ver como resolver-->
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<input type="submit" value="Registrar" />
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+									</div>
+									<div class="colg-lg-4 col-md-4 col-sm-4 col-xs-12">
+										<input type="reset" value="Cancelar" />
+									</div>
+								</div>
+
+						</div>
+						</form>
+					</div>
+				</div>
+				<!--single blog end-->
+			</div>
+		</div>
+	</div>
+
+	</div>
+
+</body>
+
+</html>

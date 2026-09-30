@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title th:text="${Titulo}">Formulario Usuario</title>
+  <link rel="stylesheet" th:href="@{/lib/bootstrap/css/bootstrap.min.css}">
+</head>
+
+<body class="container mt-4">
+
+  <h3 th:text="${Titulo}">Formulario Usuario</h3>
+
+  <div class="mb-3">
+    <a class="btn btn-secondary" th:href="@{/usuario/listar}">Volver al listado</a>
+  </div>
+
+  <!-- IMPORTANTE: el action cambia según crear/editar -->
+  <form th:object="${usuario}"
+        th:action="${accion == 'actualizar'} ? @{/usuario/actualizar/{id}(id=${usuario.id_usuario})} : @{/usuario/guardar}"
+        method="post">
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+
+        <!-- ID (en edición se muestra readonly, en nuevo opcional) -->
+        <div class="form-group">
+          <label for="id_usuario">ID Usuario</label>
+          <input type="number" class="form-control"
+                 th:field="*{id_usuario}"
+                 th:readonly="${accion == 'actualizar'}"
+                 placeholder="Ej: 1001" min="1" required>
+          <small class="text-muted" th:if="${accion == 'actualizar'}">El ID no se modifica.</small>
+          <div class="text-danger" th:if="${#fields.hasErrors('id_usuario')}" th:errors="*{id_usuario}"></div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" th:field="*{nombre}"
+                   placeholder="Ingrese el nombre" minlength="3" required>
+            <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="estado">Estado</label>
+            <input type="text" class="form-control" th:field="*{estado}"
+                   placeholder="Ej: habilitado / bloqueado" required>
+            <div class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" th:field="*{email}"
+                   placeholder="correo@dominio.com" required>
+            <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="contrasena">Contraseña</label>
+            <input type="password" class="form-control" th:field="*{contrasena}"
+                   placeholder="••••••••" minlength="4" required>
+            <div class="text-danger" th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="_condicion">Condición</label>
+            <select class="form-control" id="_condicion" th:field="*{_condicion}" required>
+              <option value="-1">-- Seleccionar --</option>
+              <option value="1">Activo</option>
+              <option value="0">Inactivo</option>
+              <option value="2">Pendiente</option>
+            </select>
+            <div class="text-danger" th:if="${#fields.hasErrors('_condicion')}" th:errors="*{_condicion}"></div>
+          </div>
+
+          <!-- Fechas (ocultas o readonly) -->
+          <div class="form-group col-md-4">
+            <label for="fechaRegistro">Fecha Registro</label>
+            <input type="date" class="form-control"
+                   th:field="*{fechaRegistro}" readonly>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="fechaActualizacion">Fecha Actualización</label>
+            <input type="date" class="form-control"
+                   th:field="*{fechaActualizacion}" readonly>
+          </div>
+        </div>
+
+        <div class="text-center mt-3">
+          <button type="submit" class="btn btn-primary px-4"
+                  th:text="${accion == 'actualizar'} ? 'Actualizar Usuario' : 'Registrar Usuario'">
+            Guardar
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+
+  <script th:src="@{/lib/jquery/jquery.min.js}"></script>
+  <script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

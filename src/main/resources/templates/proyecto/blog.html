@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="utf-8">
   <title>architecturaEterna</title>
@@ -8,32 +9,32 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/slider/logo.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-  <!--<link href="img/apple-touch-icon.png" rel="apple-touch-icon"-->
+  <link th:href="@{/img/slider/logo.png}" rel="icon">
+  <link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
+  <!--<link href="@{/img/apple-touch-icon.png" rel="apple-touch-icon"-->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.carousel.css" rel="stylesheet">
-  <link href="lib/owlcarousel/owl.transitions.css" rel="stylesheet">
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/venobox/venobox.css" rel="stylesheet">
+  <link th:href="@{/lib/nivo-slider/css/nivo-slider.css}" rel="stylesheet">
+  <link th:href="@{/lib/owlcarousel/owl.carousel.css}" rel="stylesheet">
+  <link th:href="@{/lib/owlcarousel/owl.transitions.css}" rel="stylesheet">
+  <link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+  <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
+  <link th:href="@{/lib/venobox/venobox.css}" rel="stylesheet">
 
   <!-- Nivo Slider Theme -->
-  <link href="css/nivo-slider-theme.css" rel="stylesheet">
+  <link th:href="@{/css/nivo-slider-theme.css}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
   <!-- Responsive Stylesheet File -->
-  <link href="css/responsive.css" rel="stylesheet">
+  <link th:href="@{/css/responsive.css}" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: eBusiness
@@ -45,7 +46,6 @@
 
 <body data-spy="scroll" data-target="#navbar-example">
 
-  <div id="preloader"></div>
 
   <header>
     <!-- header-area start -->
@@ -65,7 +65,7 @@
 										<span class="icon-bar"></span>
 									</button>
                 <!-- Brand . Marca -->
-                <a class="navbar-brand page-scroll sticky-logo" href="index.html">
+                <a class="navbar-brand page-scroll sticky-logo" th:href="@{/principal}">
                   <h1><span>architectura</span>Eterna</h1>
                   <!-- Uncomment below if you prefer to use an image logo -->
                   <!-- <img src="img/logo.png" alt="" title=""> -->

@@ -1,5 +1,6 @@
 package webseite.com.app.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,36 @@ public class ClientesImpl implements ClientesService {
 	public void delete(Integer id) {
 		clienteRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Clientes>listar() {
+		// JPA busca todos los registros de forma interna y segura sin riesgo de inyección SQL
+		return clienteRepository.findAll();
+	}
+
+	@Override
+	public Optional<Clientes> encontrarCliente(int Codigo) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public Optional<Clientes> encontrarClientes(String Email) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public Optional<Clientes> buscarClientes(String Apellido) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public Optional<Clientes> listarPorCondicion(int _condicion) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
 	}
 
 }

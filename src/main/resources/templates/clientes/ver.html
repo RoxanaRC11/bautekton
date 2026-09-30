@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Detalle de Cliente</title><link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet"></head>
+<body><div class="container" style="padding-top:30px">
+<h2 th:text="${Titulo}">Detalle de Cliente</h2>
+<table class="table table-bordered">
+<tr><th>ID</th><td th:text="${clientes.id_cliente}"></td></tr>
+<tr><th>Nombres</th><td th:text="${clientes.nombres}"></td></tr>
+<tr><th>Apellidos</th><td th:text="${clientes.apellidos}"></td></tr>
+<tr><th>DNI</th><td th:text="${clientes.DNI}"></td></tr>
+<tr><th>Email</th><td th:text="${clientes.email}"></td></tr>
+<tr><th>Teléfono</th><td th:text="${clientes.telefono}"></td></tr>
+<tr><th>Dirección</th><td th:text="${clientes.direccion}"></td></tr>
+<tr><th>Tipo</th><td th:text="${clientes.tipo_cliente}"></td></tr>
+<tr><th>Estado</th><td th:text="${clientes.estado}"></td></tr>
+</table>
+<a class="btn btn-primary" th:href="@{/clientes/editar/{id}(id=${clientes.id_cliente})}">Editar</a>
+<a class="btn btn-default" th:href="@{/clientes/listar}">Volver</a>
+</div></body></html>

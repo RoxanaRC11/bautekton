@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title th:text="${Titulo}">Listado de Órdenes</title><link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet"></head>
+<body><div class="container" style="padding-top:30px">
+<div class="clearfix"><h2 class="pull-left" th:text="${Titulo}">Listado de Órdenes</h2><a class="btn btn-primary pull-right" th:href="@{/orden/registrar}">Nueva orden</a></div>
+<div th:if="${success}" class="alert alert-success" th:text="${success}"></div><div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+<div class="table-responsive"><table class="table table-bordered table-striped table-hover"><thead><tr><th>ID</th><th>Descripción</th><th>Estado</th><th>Inicio</th><th>Entrega</th><th>Tipo</th><th>Condición</th><th>Acciones</th></tr></thead><tbody>
+<tr th:each="o : ${ordenes}"><td th:text="${o.id_orden}"></td><td th:text="${o.descripcion}"></td><td th:text="${o.estado}"></td><td th:text="${o.fechaInicio}"></td><td th:text="${o.fechaEntrega}"></td><td th:text="${o.tipoOrden}"></td><td th:text="${o._condicion}"></td><td><a class="btn btn-xs btn-warning" th:href="@{/orden/editar/{id}(id=${o.id_orden})}">Editar</a> <form th:action="@{/orden/eliminar/{id}(id=${o.id_orden})}" method="post" style="display:inline"><button class="btn btn-xs btn-danger" type="submit" onclick="return confirm('¿Eliminar orden?')">Eliminar</button></form></td></tr>
+<tr th:if="${#lists.isEmpty(ordenes)}"><td colspan="8" class="text-center">No hay órdenes registradas.</td></tr>
+</tbody></table></div><a class="btn btn-default" th:href="@{/proyecto/listar}">Volver</a></div></body></html>

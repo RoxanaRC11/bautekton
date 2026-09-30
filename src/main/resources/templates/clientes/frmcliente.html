@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<meta charset="utf-8">
+	<title>Bautekton</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicons -->
+	<link t:href="@{/img/slider/logo.png}" rel="icon">
+	<link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
+	<!--<link href="img/apple-touch-icon.png" rel="apple-touch-icon"-->
+
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
+		rel="stylesheet">
+
+	<!-- Bootstrap CSS File -->
+	<link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Libraries CSS Files -->
+	<link th:href="@{/lib/nivo-slider/css/nivo-slider.css}" rel="stylesheet">
+	<link th:href="@{/lib/owlcarousel/owl.carousel.css}" rel="stylesheet">
+	<link th:href="@{/lib/owlcarousel/owl.transitions.css}" rel="stylesheet">
+	<link th:href="@{/lib/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
+	<link th:href="@{/lib/venobox/venobox.css}" rel="stylesheet">
+
+	<!-- Nivo Slider Theme -->
+	<link th:href="@{/css/nivo-slider-theme.css}" rel="stylesheet">
+
+	<!-- Main Stylesheet File -->
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+
+	<!-- Responsive Stylesheet File -->
+	<link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+
+	<!-- INICIO MODIFICACIÓN: estilos exclusivos del formulario de clientes -->
+	<style>
+		/* Estos estilos están limitados al formulario de clientes para no afectar el resto de la plantilla. */
+		.cliente-section-subtitle {
+			margin: 8px 0 30px;
+			color: #6c757d;
+			font-size: 15px;
+		}
+
+		.cliente-title-divider {
+			width: 86px;
+			height: 3px;
+			margin: 12px auto 0;
+			border-radius: 3px;
+			background: #3ec1d5;
+		}
+
+		.cliente-form-wrapper {
+			width: 100%;
+			max-width: 1120px;
+			margin: 0 auto;
+		}
+
+		/* Compatibilidad con Bootstrap 3 y con los estilos de contact-form de la plantilla. */
+		.cliente-form,
+		.cliente-form form,
+		.cliente-form .cliente-card {
+			width: 100%;
+		}
+
+		.cliente-form.contact-form {
+			float: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.cliente-card {
+			margin-bottom: 35px;
+			overflow: hidden;
+			background: #ffffff;
+			border: 1px solid #e1e7ec;
+			border-radius: 10px;
+			box-shadow: 0 8px 28px rgba(31, 45, 61, 0.10);
+		}
+
+		.cliente-card-header {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			padding: 22px 28px;
+			background: #f7fafc;
+			border-bottom: 1px solid #e7edf2;
+		}
+
+		.cliente-card-icon {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			width: 46px;
+			height: 46px;
+			margin-right: 15px;
+			color: #ffffff;
+			font-size: 20px;
+			background: #3ec1d5;
+			border-radius: 50%;
+		}
+
+		.cliente-card-header h4 {
+			margin: 0 0 4px;
+			color: #34495e;
+			font-size: 20px;
+			font-weight: 700;
+		}
+
+		.cliente-card-header p {
+			margin: 0;
+			color: #7b8794;
+			font-size: 13px;
+		}
+
+		.cliente-card-body {
+			padding: 28px 28px 8px;
+		}
+
+		.cliente-form .row {
+			margin-right: -10px;
+			margin-left: -10px;
+		}
+
+		.cliente-form .form-group {
+			padding-right: 10px;
+			padding-left: 10px;
+			margin-bottom: 22px;
+		}
+
+		.cliente-form label {
+			display: block;
+			margin-bottom: 7px;
+			color: #2f3d4a;
+			font-size: 13px;
+			font-weight: 700;
+		}
+
+		.cliente-form .form-control,
+		.cliente-form select,
+		.cliente-form .otro-tipo-input {
+			width: 100%;
+			height: 42px;
+			padding: 9px 12px;
+			color: #495057;
+			background-color: #ffffff;
+			border: 1px solid #ccd4dc;
+			border-radius: 5px;
+			box-shadow: none;
+			-webkit-transition: border-color .2s ease, box-shadow .2s ease;
+			transition: border-color .2s ease, box-shadow .2s ease;
+		}
+
+		.cliente-form .form-control:focus,
+		.cliente-form select:focus,
+		.cliente-form .otro-tipo-input:focus {
+			outline: 0;
+			border-color: #3ec1d5;
+			box-shadow: 0 0 0 3px rgba(62, 193, 213, 0.14);
+		}
+
+		.cliente-form .form-control::-webkit-input-placeholder,
+		.cliente-form .otro-tipo-input::-webkit-input-placeholder {
+			color: #a2abb4;
+		}
+
+		.cliente-form .form-control:-ms-input-placeholder,
+		.cliente-form .otro-tipo-input:-ms-input-placeholder {
+			color: #a2abb4;
+		}
+
+		.cliente-form .form-control::placeholder,
+		.cliente-form .otro-tipo-input::placeholder {
+			color: #a2abb4;
+		}
+
+		.cliente-form .help-block,
+		.cliente-form .form-text {
+			display: block;
+			margin-top: 6px;
+			color: #7d8994;
+			font-size: 11px;
+			line-height: 1.45;
+		}
+
+		.cliente-error {
+			display: block;
+			margin-top: 5px;
+			color: #d9534f;
+			font-size: 12px;
+		}
+
+		#otroCampo {
+			margin-top: 8px;
+		}
+
+		.cliente-actions {
+			padding: 20px 28px 26px;
+			text-align: center;
+			background: #fbfcfd;
+			border-top: 1px solid #edf1f4;
+		}
+
+		.btn-cliente {
+			min-width: 190px;
+			padding: 11px 22px;
+			font-size: 13px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: .25px;
+			border-radius: 24px;
+			-webkit-transition: all .2s ease;
+			transition: all .2s ease;
+		}
+
+		.btn-cliente + .btn-cliente {
+			margin-left: 10px;
+		}
+
+		.btn-cliente i {
+			margin-right: 7px;
+		}
+
+		.btn-limpiar-cliente {
+			color: #53616f;
+			background: #ffffff;
+			border: 1px solid #bfc8d1;
+		}
+
+		.btn-limpiar-cliente:hover,
+		.btn-limpiar-cliente:focus {
+			color: #34495e;
+			background: #f0f3f5;
+			border-color: #9ca8b3;
+		}
+
+		.btn-registrar-cliente {
+			color: #ffffff;
+			background: #3ec1d5;
+			border: 1px solid #3ec1d5;
+		}
+
+		.btn-registrar-cliente:hover,
+		.btn-registrar-cliente:focus {
+			color: #ffffff;
+			background: #2faabd;
+			border-color: #2faabd;
+			box-shadow: 0 5px 14px rgba(62, 193, 213, 0.28);
+		}
+
+		@media (max-width: 767px) {
+			.cliente-card-header,
+			.cliente-card-body,
+			.cliente-actions {
+				padding-right: 18px;
+				padding-left: 18px;
+			}
+
+			.btn-cliente {
+				display: block;
+				width: 100%;
+				min-width: 0;
+			}
+
+			.btn-cliente + .btn-cliente {
+				margin-top: 10px;
+				margin-left: 0;
+			}
+		}
+	</style>
+	<!-- FIN MODIFICACIÓN: estilos exclusivos del formulario de clientes -->
+
+	<!-- =======================================================
+    Theme Name: eBusiness
+    Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+
+	<div id="preloader"></div>
+
+	<header>
+		<!-- header-area start -->
+		<div id="sticker" class="header-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+
+						<!-- Navigation -->
+						<nav class="navbar navbar-default">
+							<!-- Brand and toggle get grouped for better mobile display. La marca y la alternancia se agrupan para una mejor visualizacion -->
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+									data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<!-- Brand . Marca -->
+								<a class="navbar-brand page-scroll sticky-logo" href="index.html">
+									<h1><span>Baut</span>Ekton</h1>
+									<!-- Uncomment below if you prefer to use an image logo -->
+									<img th:src="@{/img/logo.png}" alt="" title=""> 
+								</a>
+							</div>
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1"
+								id="navbar-example">
+								<ul class="nav navbar-nav navbar-right">
+									<li class="active">
+										<a class="page-scroll" th:href="@{/principal#home}">Página Principal</a>
+									</li>
+									<li>
+										<a class="page-scroll" th:href="@{/principal#about}">Sobre nosotros</a>
+									</li>
+									<li>
+										<a class="page-scroll" th:href="@{/principal#services}">Servicios</a>
+									</li>
+									<li>
+										<a class="page-scroll" th:href="@{/principal#team}">Equipo</a>
+									</li>
+									<li>
+										<a class="page-scroll" th:href="@{/principal#portfolio}">Portafolio</a>
+									</li>
+									<!--<li>
+										<a class="page-scroll" href="#blog">Chat</a>
+									</li>-->
+									<li>
+										<a class="page-scroll" th:href="@{/principal#contact}">Contácto</a>
+									</li>
+									<li>
+										<a class="page-scroll" href="#contact">Login</a>
+									</li>
+									<li>
+										<a class="page-scroll" th:href="@{/principal#contact}">Blog</a>
+									</li>
+									<li>
+										<a class="page-scroll" th:href="@{/principal#contact}">Impreso</a>
+									</li>
+								</ul>
+							</div>
+							<!-- navbar-collapse Barra de navegacion -->
+						</nav>
+						<!-- END: Navigation -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- header-area end -->
+	</header>
+	<!-- header end -->
+
+	<!--Imagen encabezado -->
+	<div class="header-bg page-area">
+		<div class="home-overly"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="slider-content text-center">
+						<div class="header-bottom">
+							<div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
+								<h1 class="title2">News</h1>
+							</div>
+							<div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
+								<h2 class="title3">Arquitectura BauTekton</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fin de Imagen Encabezado-->
+	<div id="contact" class="contact-area">
+		<div class="contact-inner area-padding">
+			<div class="contact-overly"></div>
+			<div class="container">
+				<!-- INICIO MODIFICACIÓN: presentación y distribución del formulario de clientes -->
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="section-headline text-center">
+							<h3><b>Gestión de Clientes</b></h3>
+							<div class="cliente-title-divider"></div>
+							<p class="cliente-section-subtitle">Registro y administración de la información del cliente</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Bootstrap 3: el formulario ocupa 12 columnas y cada fila interna suma 12 columnas. -->
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="cliente-form-wrapper">
+							<div class="form contact-form cliente-form">
+							<div id="sendmessage">Login Cliente</div>
+							<div id="errormessage"></div>
+
+							<form id="formCliente" th:action="${accion == 'actualizar'} ? @{/clientes/actualizar/{id}(id=${clientes.id_cliente})} : @{/clientes/guardar}" method="post"
+									th:object="${clientes}" autocomplete="off">
+								<!-- <div class="cliente-card"> -->
+									<div class="cliente-card-header">
+										<div class="cliente-card-icon">
+											<i class="fa fa-users" aria-hidden="true"></i>
+										</div>
+										<div>
+											<h4>Datos del cliente</h4>
+											<p>Complete los campos para registrar un nuevo cliente.</p>
+										</div>
+									</div>
+
+									<div class="cliente-card-body">
+										<!-- Fila 1 -->
+										<div class="row">
+											<div class="form-group col-md-3 col-sm-4 col-xs-12">
+												<label for="id_cliente">Código de Cliente</label>
+												<input type="number" class="form-control" th:field="*{id_cliente}"
+													placeholder="Ej: 1001" min="1" />
+											</div>
+
+											<div class="form-group col-md-5 col-sm-8 col-xs-12">
+												<label for="nombres">Nombres</label>
+												<input type="text" class="form-control" th:field="*{nombres}"
+													placeholder="Ingrese los nombres del cliente" minlength="3" required />
+												<div class="cliente-error" th:if="${#fields.hasErrors('nombres')}"
+													th:errors="*{nombres}"></div>
+											</div>
+
+											<div class="form-group col-md-4 col-sm-12 col-xs-12">
+												<label for="apellidos">Apellidos</label>
+												<input type="text" class="form-control" th:field="*{apellidos}"
+													placeholder="Ingrese los apellidos" required />
+												<div class="cliente-error" th:if="${#fields.hasErrors('apellidos')}"
+													th:errors="*{apellidos}"></div>
+											</div>
+										</div>
+
+										<!-- Fila 2 -->
+										<div class="row">
+											<div class="form-group col-md-8 col-sm-8 col-xs-12">
+												<label for="direccion">Dirección</label>
+												<input type="text" class="form-control" th:field="*{direccion}"
+													placeholder="Ingrese la dirección completa" required />
+												<div class="cliente-error" th:if="${#fields.hasErrors('direccion')}"
+													th:errors="*{direccion}"></div>
+											</div>
+
+											<div class="form-group col-md-4 col-sm-4 col-xs-12">
+												<label for="DNI">DNI</label>
+												<input type="number" class="form-control" th:field="*{DNI}"
+													placeholder="Ej: 01234565" min="1" />
+												<div class="cliente-error" th:if="${#fields.hasErrors('DNI')}"
+													th:errors="*{DNI}"></div>
+											</div>
+										</div>
+
+										<!-- Fila 3 -->
+										<div class="row">
+											<div class="form-group col-md-4 col-sm-6 col-xs-12">
+												<label for="email">E-Mail</label>
+												<input type="email" class="form-control" th:field="*{email}"
+													placeholder="correo@ejemplo.com" required />
+												<div class="cliente-error" th:if="${#fields.hasErrors('email')}"
+													th:errors="*{email}"></div>
+											</div>
+
+											<div class="form-group col-md-4 col-sm-6 col-xs-12">
+												<label for="estado">Estado</label>
+												<input type="text" class="form-control" th:field="*{estado}"
+													placeholder="Ej: habilitado/bloqueado" required />
+												<div class="cliente-error" th:if="${#fields.hasErrors('estado')}"
+													th:errors="*{estado}"></div>
+											</div>
+
+											<div class="form-group col-md-4 col-sm-12 col-xs-12">
+												<label for="tipo_cliente">Tipo de Cliente</label>
+												<select id="tipo_cliente" th:field="*{tipo_cliente}" class="form-control" required>
+													<option value="">--Seleccione una opción--</option>
+													<option value="particular">Particular / Vivienda</option>
+													<option value="colegio">Colegio / Institución educativa</option>
+													<option value="empresa_oficinas">Empresa / Oficinas</option>
+													<option value="local_comercial">Local comercial / Tienda / Restaurante</option>
+													<option value="inmobiliaria">Promotor / Inmobiliara</option>
+													<option value="hotel_hostal">Hotel / Hostal</option>
+													<option value="Industria / Almacén">Industria / Almacén</option>
+													<option value="salud_clinica">Clínica / Consultorio médico</option>
+													<option value="publico">Insititución pública / Municipalidad</option>
+													<option value="ong">ONG / Fundación / Asociación</option>
+													<option value="otro">Otro</option>
+												</select>
+												<div id="otroCampo" style="display: none;">
+													<input type="text" class="otro-tipo-input" name="tipoClienteOtro"
+														placeholder="Escriba el tipo de cliente" />
+												</div>
+												<div class="cliente-error" th:if="${#fields.hasErrors('tipo_cliente')}"
+													th:errors="*{tipo_cliente}"></div>
+											</div>
+										</div>
+
+										<!-- Fila 4 -->
+										<div class="row">
+											<div class="form-group col-md-6 col-sm-6 col-xs-12">
+												<label for="telefono">Teléfono</label>
+												<input type="number" class="form-control" th:field="*{telefono}"
+													placeholder="Ejemplo: 0621 123654" min="1" />
+												<div class="cliente-error" th:if="${#fields.hasErrors('telefono')}"
+													th:errors="*{telefono}"></div>
+											</div>
+
+											<div class="form-group col-md-6 col-sm-6 col-xs-12">
+												<label for="_condicion">Condición</label>
+												<select class="form-control" id="_condicion" th:field="*{_condicion}" required>
+													<option value="-1">-- Seleccionar --</option>
+													<option value="1">Activo</option>
+													<option value="0">Inactivo</option>
+													<option value="2">Pendiente</option>
+												</select>
+												<small class="form-text text-muted">
+													Valores sugeridos: 1=Activo, 0=Inactivo, 2=Pendiente
+												</small>
+												<div class="cliente-error" th:if="${#fields.hasErrors('_condicion')}"
+													th:errors="*{_condicion}"></div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Botones ubicados en la parte inferior -->
+									<div class="cliente-actions">
+										<button type="button" id="btnLimpiarCliente"
+											class="btn btn-cliente btn-limpiar-cliente">
+											<i class="fa fa-eraser" aria-hidden="true"></i>Limpiar
+										</button>
+										<button type="submit" class="btn btn-cliente btn-registrar-cliente">
+											<i class="fa fa-save" aria-hidden="true"></i>Registrar Cliente
+										</button>
+									</div>
+								<!-- </div> aqui era para la tarjeta--> 
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- FIN MODIFICACIÓN: presentación y distribución del formulario de clientes -->
+			</div>
+		</div>
+	</div>
+	<!-- End Contact Area -->
+		<div class="clearfix"></div>
+
+		<!--Start Footer bottom Area-->
+		<footer>
+			<div class="footer-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="footer-content">
+								<div class="footer-head">
+									<div class="footer-logo">
+										<h2><span>BauT</span>ekton</h2>
+									</div>
+									<p>Nos puede encontrar en las siguientes Redes Sociales</p>
+									<div class="footer-icons">
+										<ul>
+											<li>
+												<a href="#"><i class="fa fa-linkedin"></i></a>
+											</li>
+											<li>
+												<a href="#"><i class="fa fa-instagram"></i></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end single footer-->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="footer-content">
+								<div class="footer-head">
+									<h4><b>Información</b></h4>
+									<p>Nos puede contactar:</p>
+									<div class="footer-contacts">
+										<p><span>Mobil: +51 983 783 808</span></p>
+										<p><span>E-mail: infos@bautekton.com</span></p>
+										<p><span>Horario laborable:</span> 8:00 am a 7:30 pm</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end single footer-->
+						<div class="col-md-4 col-sm-4 col-xs-12">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-area-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-md-12 col-xs-12">
+							<div class="copyright text-center">
+								<p>
+									<strong>Bautekton</strong>
+								</p>
+							</div>
+							<div class="credits">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+
+	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+	<!-- JavaScript Libraries -->
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="../lib/venobox/venobox.min.js"></script>
+	<script src="../lib/knob/jquery.knob.js"></script>
+	<script src="../lib/wow/wow.min.js"></script>
+	<script src="../lib/parallax/parallax.js"></script>
+	<script src="../lib/easing/easing.min.js"></script>
+	<script src="../lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
+	<script src="../lib/appear/jquery.appear.js"></script>
+	<script src="../lib/isotope/isotope.pkgd.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+
+	<!-- Contact Form JavaScript File -->
+	<script src="contactform/contactform.js"></script>
+
+	<script src="../js/main.js"></script>
+
+	<!-- INICIO MODIFICACIÓN: comportamiento de los botones Limpiar y Tipo de Cliente -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			'use strict';
+
+			var formularioCliente = document.getElementById('formCliente');
+			var botonLimpiar = document.getElementById('btnLimpiarCliente');
+			var tipoCliente = document.getElementById('tipo_cliente');
+			var otroCampo = document.getElementById('otroCampo');
+
+			function mostrarOcultarOtroTipo() {
+				if (!tipoCliente || !otroCampo) return;
+
+				var esOtro = tipoCliente.value === 'otro';
+				otroCampo.style.display = esOtro ? 'block' : 'none';
+
+				var campoOtro = otroCampo.querySelector('input');
+				if (campoOtro) {
+					campoOtro.required = esOtro;
+					if (!esOtro) campoOtro.value = '';
+				}
+			}
+
+			if (tipoCliente) {
+				tipoCliente.addEventListener('change', mostrarOcultarOtroTipo);
+				mostrarOcultarOtroTipo();
+			}
+
+			if (botonLimpiar && formularioCliente) {
+				botonLimpiar.addEventListener('click', function () {
+					formularioCliente.reset();
+
+					var controles = formularioCliente.querySelectorAll('input:not([type="hidden"]), select, textarea');
+					Array.prototype.forEach.call(controles, function (control) {
+						if (control.tagName === 'SELECT') {
+							control.selectedIndex = 0;
+						} else {
+							control.value = '';
+						}
+						control.classList.remove('error', 'is-invalid');
+					});
+
+					var errores = formularioCliente.querySelectorAll('.cliente-error');
+					Array.prototype.forEach.call(errores, function (error) {
+						error.textContent = '';
+						error.style.display = 'none';
+					});
+
+					mostrarOcultarOtroTipo();
+
+					var primerCampo = formularioCliente.querySelector('input:not([type="hidden"])');
+					if (primerCampo) primerCampo.focus();
+				});
+			}
+		});
+	</script>
+	<!-- FIN MODIFICACIÓN: comportamiento de los botones Limpiar y Tipo de Cliente -->
+	<script>
+		/**
+		 * Script para la gestión de formularios de Login y Registro
+		 * Corregido y optimizado para Spring Boot / API REST
+		 */
+		(function () {
+			"use strict";
+
+			// Elementos del DOM
+			const loginForm = document.getElementById('login-form2');
+			const registerForm = document.getElementById('register-form2');
+			const toRegisterBtn = document.getElementById('login_register_btn2');
+			const toLoginBtn = document.getElementById('register_login_btn2');
+			const modal = document.getElementById('login-modal2');
+
+			// Campos del registro
+			const regUsername = document.getElementById('register_username2');
+			const regEmail = document.getElementById('register_email2');
+			const regPass = document.getElementById('register_password2');
+
+			// --- FUNCIONES DE NAVEGACIÓN ---
+
+			function showLogin() {
+				if (!loginForm || !registerForm) return;
+				registerForm.style.display = 'none';
+				loginForm.style.display = 'block';
+				const first = loginForm.querySelector('input');
+				if (first) first.focus();
+			}
+
+			function showRegister() {
+				if (!loginForm || !registerForm) return;
+				limpiarFormulario();
+				loginForm.style.display = 'none';
+				registerForm.style.display = 'block';
+				const first = registerForm.querySelector('input');
+				if (first) first.focus();
+			}
+
+			function limpiarFormulario() {
+				if (!registerForm) return;
+				registerForm.reset();
+				const caja = registerForm.querySelector('.flash-area');
+				if (caja) caja.remove();
+			}
+
+			// --- GESTIÓN DE MENSAJES ---
+
+			function mensajePersonalizado(form, msg, type) {
+				let caja = form.querySelector('.flash-area');
+				if (!caja) {
+					caja = document.createElement('div');
+					caja.className = 'flash-area alert';
+					caja.style.margin = '15px';
+					// Intentamos colocarlo antes del cuerpo del modal o al inicio del form
+					const target = form.querySelector('.modal-body') || form;
+					target.prepend(caja);
+				}
+				caja.className = `flash-area alert ${type === 'error' ? 'alert-danger' : 'alert-success'}`;
+				caja.innerHTML = msg;
+			}
+
+			// --- EVENTOS ---
+
+			if (toRegisterBtn) {
+				toRegisterBtn.addEventListener('click', function (e) {
+					e.preventDefault();
+					showRegister();
+				});
+			}
+
+			if (toLoginBtn) {
+				toLoginBtn.addEventListener('click', function (e) {
+					e.preventDefault();
+					showLogin();
+				});
+			}
+
+			if (modal) {
+				modal.addEventListener('show.bs.modal', showLogin);
+			}
+
+			// --- ENVÍO DEL FORMULARIO (FETCH) ---
+
+			if (registerForm) {
+				registerForm.addEventListener('submit', async function (e) {
+					e.preventDefault();
+
+					// 1. Obtención de valores
+					const username = regUsername.value.trim();
+					const email = regEmail.value.trim();
+					const password = regPass.value.trim();
+					const submitBtn = registerForm.querySelector('button[type="submit"]');
+					const originalText = submitBtn ? submitBtn.textContent : 'Registrar';
+
+					// 2. Validaciones front-end
+					if (!username || !email || !password) {
+						mensajePersonalizado(registerForm, 'Complete todos los campos', 'error');
+						return;
+					}
+
+					if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+						mensajePersonalizado(registerForm, 'Correo electrónico no válido', 'error');
+						return;
+					}
+
+					if (password.length < 6) {
+						mensajePersonalizado(registerForm, 'La contraseña debe tener al menos 6 caracteres', 'error');
+						return;
+					}
+
+					// 3. Envío de datos
+					try {
+						if (submitBtn) {
+							submitBtn.disabled = true;
+							submitBtn.textContent = 'Registrando...';
+						}
+
+						const resp = await fetch('/api/register', {
+							method: 'POST',
+							headers: {'Content-Type': 'application/json'},
+							body: JSON.stringify({username, email, password})
+						});
+
+						const data = await resp.json().catch(() => ({}));
+
+						if (!resp.ok) {
+							const errorMsg = data.message || "No se pudo registrar. Intente nuevamente.";
+							throw new Error(errorMsg);
+						}
+
+						// Éxito
+						mensajePersonalizado(registerForm, '¡Registro exitoso!', 'success');
+
+						// Opcional: pasar el username al campo de login
+						const loginUserField = document.getElementById('login_username');
+						if (loginUserField) loginUserField.value = username;
+
+						setTimeout(showLogin, 1500);
+
+					} catch (err) {
+						mensajePersonalizado(registerForm, err.message, 'error');
+					} finally {
+						if (submitBtn) {
+							submitBtn.disabled = false;
+							submitBtn.textContent = originalText;
+						}
+					}
+				});
+			}
+		})();
+	</script>
+</body>
+
+</html>
